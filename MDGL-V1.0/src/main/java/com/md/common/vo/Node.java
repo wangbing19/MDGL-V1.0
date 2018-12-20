@@ -30,5 +30,10 @@ public class Node implements Serializable{
 	public void setParentId(Integer parentId) {
 		this.parentId = parentId;
 	}
+	@Override
+	public String toString() {
+		return "Node [id=" + id + ", name=" + name + ", parentId=" + parentId + "]";
+	}
+	
 
 }

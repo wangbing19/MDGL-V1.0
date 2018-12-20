@@ -114,6 +114,18 @@
 			doInitEditFormData(data);
 
 	});
+	/* $(document).ready(function(){
+	  $("#mainContentId")
+	  .on("click",".load-sys-menu",doLoadZtreeNodes);
+	  
+	     $("#menuLayer")
+	     .on("click",".btn-confirm",doSetSelectNode)
+	     .on("click",".btn-cancel",doHideTree);
+	     
+	     $(".box-footer")
+	     .on("click",".btn-cancel",doCancel)
+	     .on("click",".btn-save",doSaveOrUpdate);
+	 });*/
 
 	function doInitEditFormData(data) {
 		$(".typeRadio input[value='" + data.type + "']").prop("checked", true);
