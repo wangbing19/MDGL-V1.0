@@ -14,7 +14,7 @@
                                 <i class="fa fa-search"></i>
 							</button>
 							<button type="button" class="btn btn-default btn-add">添加</button>
-							<button type="button" class="btn btn-default btn-update">修改</button>
+							<!-- <button type="button" class="btn btn-default btn-update">修改</button> -->
 						</div>
 					</div>
 				</div>
@@ -24,19 +24,13 @@
 				<table class="table table-hover">
 					<thead>
 						<tr>
-							<th>ID</th>
+							<th></th>
 							<th>姓名</th>
 							<th>联系电话</th>
-							<th>账户余额</th>
-							<th>训练数</th>
-							<th>充值记录</th>
-							<th>课程记录</th>
-							<th>状态</th>
-							<th>咨询诊断表</th>
-							<th>主监护人</th>
-							<th>次监护人</th>
-							<th>上次训练时间</th>
-							<th>建表时间</th>
+							<th>裸眼远视力</th>
+							<th>矫正远视力</th>
+							<th>导师</th>
+							<th>时间</th>
 							<th>操作</th>
 						</tr>
 					</thead>
@@ -58,8 +52,6 @@
 	   $(".input-group-btn")
 	   .on("click",".btn-search",doQueryObjects)
 	   .on("click",".btn-add,.btn-update",doLoadEditUI);
-	   $("tbody").on("click",".btn-valid",doValidById);
-	   $("tbody").on("click",".btn-all",userProfile);
 	   $("tbody").on("click",".btn-delete",doDeleteObject);
    });
    
@@ -85,7 +77,7 @@
 	   //1.params
 	   var params={"id":id};
 	   //2.url
-	   var url="customer/doFindObjectById.do";
+	   var url="cusConsultation/doFindObjectById.do";
 	   //3.ajax request
 	   $.getJSON(url,params,function(result){//JsonResult
 		   if(result.state==1){
@@ -101,20 +93,20 @@
 	 return $("tbody input[name='radioId']:checked").val();
    }
    function doLoadPage(title){
-	   var url="customer/doCustomerEditUI.do"
+	   var url="cusConsultation/doCusConsultationEditUI.do"
 	   $("#mainContentId").load(url,function(){
 		   $(".box-title").html(title);
 	   }) 
    }
    //禁用和启用操作
-   function doValidById(){
+/*    function doValidById(){
 	   //params
 	   var rowData=$(this).parents("tr").data("rowData");
 	   var id=rowData.id;
 	   var newValid=rowData.state?0:1;
 	   var params={"id":rowData.id,"state":newValid};
 	   //url
-	   var url="customer/doUpdateStateById.do";
+	   var url="cusConsultation/doUpdateStateById.do";
 	   //ajax request
        var btn=$(this);//获取点击的button对象
 	   $.post(url,params,function(result){
@@ -127,7 +119,7 @@
     		   alert(result.message);
     	   }
        })    
-   }    
+   } */    
    function doEditRow(obj,valid){
 	   //1.修改按钮上的内容
 	   $(obj).html(valid?"启用":"禁用");
@@ -146,7 +138,7 @@
    }
    //页面加载完成异步加载当前页数据
    function doGetObjects(){
-	   var url="customer/doFindPageObjects.do";
+	   var url="cusConsultation/doFindPageObjects.do";
 	   var pageCurrent=$("#pageId").data("pageCurrent");
 	   if(!pageCurrent)pageCurrent=1;
 	   var params={"pageCurrent":pageCurrent}
@@ -160,7 +152,7 @@
    function doHandleResponseResult(result){
 	   if(result.state==1){
 		  doSetTableBodyRows(result.data.records);
-		  doSetPagination(result.data);
+		 // doSetPagination(result.data);
 		}else{
 		  alert(result.message);
 	   }
@@ -179,19 +171,14 @@
 		  tBody.append(tr);
 	  }
    }
-   function userProfile(id){
-	   var url="customer/doCustomerAll.do"
-		   $("#mainContentId").load(url,function(){
-			   $(".box-title").html(title);
-		   }) 
-   }
+   
    function doDeleteObject(){
 	   if(!confirm("确认删除吗"))return;
 	   //1.params
 	   var id=$(this).parents("tr").data("id");
 	   var params={"id":id};
 	   //2.url
-	   var url="customer/doDeleteObject.do"
+	   var url="cusConsultation/doDeleteObject.do"
 	   //3.ajax request
 	   $.post(url,params,function(result){
 		   if(result.state==1){
@@ -207,20 +194,13 @@
 	   console.log(row);
 	   var tds="<td><input type='radio' name='radioId' value='"+row.id+"' ></td>"+
 	   "<td>"+row.name+"</td>"+
-	     "<td>"+row.tel+"</td>"+
-	     "<td>"+row.balance+"</td>"+
-	     "<td>"+row.totalTrainingTime+"/"+row.timesOfTraining+"</td>"+
-	     "<td>"+row.rechargeCount+"</td>"+
-	     "<td>"+row.scheduleCount+"</td>"+
-	     "<td>"+(row.state?"启用":"禁用")+"</td>"+
-	     "<td>"+"按键"+"</td>"+
-	     "<td>"+row.guardian+"</td>"+
-	     "<td>"+row.lastGuardian+"</td>"+
-	     "<td>"+new Date(row.lastTrain).toLocaleString()+"</td>"+
-	     "<td>"+new Date(row.gmtCreate).toLocaleString()+"</td>"+
-	     "<td><button type='button' class='btn btn-default btn-all'>"+"查看"+"</button></td>"+
-	     "<td><button type='button' class='btn btn-default btn-delete'>"+"删除"+"</button></td>"+
-	     "<td><button type='button' class='btn btn-default btn-valid'>"+(row.valid?"禁用":"启用")+"</button></td>"; 
+       "<td>"+row.tel+"</td>"+
+       "<td>"+"L:"+row.lD+"<br/>"+"R:"+row.rD+"</td>"+
+       "<td>"+"L:"+row.lCva+"<br/>"+"R:"+row.rCva+"</td>"+
+       "<td>"+row.tutor+"</td>"+
+       "<td>"+new Date(row.gmtModified).toLocaleString()+"</td>"+
+       "<td><a class='btn-delete'>delete</a>"+
+       "&nbsp;<a class='btn-update'>update</a></td>";
        return tds;
    }
 </script>

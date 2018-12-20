@@ -8,19 +8,76 @@
       <form class="form-horizontal">
         <div class="box-body">
           <div class="form-group">
-            <label for="usernameId" class="col-sm-2 control-label">用户名</label>
+            <label for="nameId" class="col-sm-2 control-label">用户名</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="usernameId">
-            </div>
-          </div>
-          <div class="form-group" id="pwdDiv">
-            <label for="passwordId" class="col-sm-2 control-label">密码</label>
-
-            <div class="col-sm-10">
-              <input type="password" class="form-control"  id="passwordId">
+              <input type="text" class="form-control" id="nameId">
             </div>
           </div>
           
+          
+          <div class="form-group">
+            <label for="ageId" class="col-sm-2 control-label">年龄</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="ageId">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="birthdayId" class="col-sm-2 control-label">生日</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="birthdayId">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="genderId" class="col-sm-2 control-label">性别</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="genderId">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="homeId" class="col-sm-2 control-label">家庭地址</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="homeId">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="schoolId" class="col-sm-2 control-label">学校地址</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="schoolId">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="guardianId" class="col-sm-2 control-label">监护人</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="guardianId">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="telId" class="col-sm-2 control-label">电话</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="telId">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="lastGuardianId" class="col-sm-2 control-label">次级监护人</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="lastGuardianId">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="lastGuardianTelId" class="col-sm-2 control-label">备用电话</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="lastGuardianTelId">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="remarkId" class="col-sm-2 control-label">信息备注</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="remarkId">
+            </div>
+          </div>
+          
+          
+         <!--  
           <div class="form-group">
             <label for="deptId" class="col-sm-2 control-label">所属部门</label>
             <div class="col-sm-10">
@@ -42,7 +99,7 @@
           </div>
           <div class="form-group">
             <label for="rolesId" class="col-sm-2 control-label">角色</label>
-            <div class="col-sm-10" id="rolesId">
+            <div class="col-sm-10" id="rolesId"> -->
               
             </div>
           </div>
@@ -54,12 +111,12 @@
         </div>
         <!-- /.box-footer -->
       </form>
-     <div class="layui-layer layui-layer-page layui-layer-molv layer-anim" id="treeLayer" type="page" times="2" showtime="0" contype="object"
+   <!--   <div class="layui-layer layui-layer-page layui-layer-molv layer-anim" id="treeLayer" type="page" times="2" showtime="0" contype="object"
 		style="z-index:59891016; width: 300px; height: 450px; top: 100px; left: 500px; display:none">
 		<div class="layui-layer-title" style="cursor: move;">选择部门</div>
 		<div class="layui-layer-content" style="height: 358px;">
 			<div style="padding: 10px;" class="layui-layer-wrap">
-				<ul id="zTreeId" class="ztree"></ul>    <!-- 动态加载树 -->
+				<ul id="zTreeId" class="ztree"></ul>    动态加载树
 			</div>
 		</div>
 		<span class="layui-layer-setwin"> <a class="layui-layer-ico layui-layer-close layui-layer-close1 btn-cancel" ></a></span>
@@ -67,12 +124,12 @@
 			<a class="layui-layer-btn0 btn-confirm">确定</a>
 			<a class="layui-layer-btn1 btn-cancel">取消</a>
 	     </div>
-      </div>
+      </div> -->
     </div>
 <script type="text/javascript" src="bower_components/ztree/jquery.ztree.all.min.js"></script>
 <script type="text/javascript" src="bower_components/layer/layer.js"></script>
 <script type="text/javascript">
- var zTree; 
+/*  var zTree; 
  //初始化zTree时会用到
  var setting = {
 	data : {
@@ -83,10 +140,11 @@
 			rootPId : null  //根节点id
 		}//json 格式javascript对象
 	}
- }//json 格式的javascript对象
+ } *///json 格式的javascript对象
  $(document).ready(function(){
 	 //页面加载完成以后加载角色信息并初始化页面
-	  doLoadRoles();
+	 // doLoadRoles();
+	 doInitFormData();
 	 //事件注册
 	 $(".box-footer")
 	 .on("click",".btn-cancel",doCancel)
@@ -96,15 +154,15 @@
 	  .on("click",".btn-cancel",doHideTree)
 	  .on("click",".btn-confirm",doConfirm);
 	 
-	 $(".form-horizontal")
-	 .on("click",".load-sys-dept",doLoadZTreeNodes);
+	/*  $(".form-horizontal")
+	 .on("click",".load-sys-dept",doLoadZTreeNodes); */
  });
  
  function doHideTree(){
 	  $("#treeLayer").css("display","none");
  }
  //确定按钮
- function doConfirm(){
+/*  function doConfirm(){
 	  //1.获取选中的记录(id,name);
 	  var selectedNodes=zTree.getSelectedNodes();
 	  var node=selectedNodes[0];
@@ -114,9 +172,9 @@
 	  $("#deptId").data("deptId",node.id)
 	  //3.隐藏zTree对应的Div
 	  doHideTree();
- }
+ } */
  
- function doLoadZTreeNodes(){
+/*  function doLoadZTreeNodes(){
 	  var url="dept/doFindZTreeNodes.do";
 	  $("#treeLayer").css("display","block");
 	  $.getJSON(url,function(result){
@@ -126,19 +184,19 @@
 			  alert(result.message);
 		  }
 	  });
- }
+ } */
  function doCancel(){
 	$("#mainContentId").removeData("rowData");
-	$("#mainContentId").load("user/doUserListUI.do");
+	$("#mainContentId").load("customer/doCustomerListUI.do");
  }
  function doSaveOrUpdate(){
 	 var rowData=$("#mainContentId").data("rowData");
 	 //1.获取表单数据
 	 var params=doGetEditFormData();
-	 if(rowData)params.id=rowData.user.id;
+	 if(rowData)params.id=rowData.cusCustomer.id;
 	 //2.发起异步请求
-	 var insertUrl="user/doSaveObject.do";
-	 var updateUrl="user/doUpdateObject.do";
+	 var insertUrl="customer/doSaveObject.do";
+	 var updateUrl="customer/doUpdateObject.do";
 	 var url=rowData?updateUrl:insertUrl;
 	 console.log(params);
 	 $.post(url,params,function(result){
@@ -154,24 +212,30 @@
  function doGetEditFormData(){
 	 //获取用户输入的数据
 	 var params={
-	    username:$("#usernameId").val(),
-	    password:$("#passwordId").val(),
-	    email:$("#emailId").val(),
-	    mobile:$("#phoneId").val(),
-	    deptId:$("#deptId").data("deptId")
+	    name:$("#nameId").val(),
+	    age:$("#ageId").val(),
+	    birthday:$("#birthdayId").val(),
+	    gender:$("#genderId").val(),
+	    home:$("#homeId").val(),
+	    school:$("#schoolId").val(),
+	    guardian:$("#guardianId").val(),
+	    tel:$("#telId").val(),
+	    lastGuardian:$("#lastGuardianId").val(),
+	    lastGuardianTel:$("#lastGuardianTelId").val(),
+	    remark:$("#remarkId").val()
 	 }
 	 //获取选择的角色
-	 var roleIds=new Array();
+	/*  var roleIds=new Array();
 	 $("#rolesId input[name='roleId']")
 	 .each(function(){
 		 if($(this).prop("checked")){
 			roleIds.push($(this).val());
 		 }
 	 });
-	 params.roleIds=roleIds.toString();
+	 params.roleIds=roleIds.toString(); */
 	 return params;
  }
- function doLoadRoles(){
+/*  function doLoadRoles(){
 	 var url="role/doFindRoles.do"
 	 $.getJSON(url,function(result){
 		 if(result.state==1){
@@ -181,25 +245,32 @@
 		  alert(result.message);
 		 }
 	 })
- }
+ } */
  function doInitFormData(){
      var data=$("#mainContentId").data("rowData");
      if(!data)return;
-     $("#pwdDiv").remove();
+    
 	 console.log(data);
 	 //初始化用户信息 
-	 $("#usernameId").val(data.user.username);
-	 $("#deptId").val(data.user.sysDept.name);
-	 console.log("data.user.sysDept.idss="+data.user.sysDept.id);
-	 $("#deptId").data("deptId",data.user.sysDept.id);
-	 $("#emailId").val(data.user.email);
-	 $("#phoneId").val(data.user.mobile);
-	 //初始化用户角色信息
-	 var ids=data.roleIds;
-	 for(var i in ids){
-	  $("#rolesId input[value='"+ids[i]+"']")
-	  .prop("checked",true);
-	 }
+	 $("#nameId").val(data.cusCustomer.name);
+	 $("#ageId").val(data.cusCustomer.age);
+	 $("#birthdayId").val(data.cusCustomer.birthday);
+	 $("#genderId").val(data.cusCustomer.gender);
+	 $("#homeId").val(data.cusCustomer.home);
+	 $("#schoolId").val(data.cusCustomer.school);
+	 $("#guardianId").val(data.cusCustomer.guardian);
+	 $("#telId").val(data.cusCustomer.tel);
+	 console.log("+++"+data.cusCustomer.tel);
+	 $("#lastGuardianId").val(data.cusCustomer.lastGuardian);
+	 $("#namelastGuardianTelIdId").val(data.cusCustomer.lastGuardianTel);
+	 $("#remarkId").val(data.cusCustomer.remark);
+	    
+//	 //初始化用户角色信息
+//	 var ids=data.roleIds;
+//	 for(var i in ids){
+//	  $("#rolesId input[value='"+ids[i]+"']")
+//	  .prop("checked",true);
+//	 }
  }
 function doInitPageRoles(data){
 	 //1.获取角色要显示的位置对象
