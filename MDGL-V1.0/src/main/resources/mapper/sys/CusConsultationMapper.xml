@@ -34,7 +34,7 @@
 	</select>
 	
 	<!-- 将CusCustomer类型数据添加到数据库 -->
-	<insert id="insertObject">
+	<insert id="insertObject" parameterType="com.md.sys.entity.cus.CusConsultation">
 		insert into cus_consultation
 		(name,age,gender,tel,eye,decline_time,diagnose,oculopathy,correction_method,effect,visual_acuity,f_vision_condition,
 		f_other,m_vision_condition,m_other,sleeping_time,eye_project,reading_time,reading_distance,watching_time,watching_distance,
@@ -52,5 +52,57 @@
 	<delete id="deleteObject">
 		delete from cus_consultation where id=#{id}
 	</delete>
+	
+	<!--  基于咨询表id更改用户信息 -->
+	<update id="updateObject">
+		update cus_consultation
+		<set>
+			<if test="name!=null and name!=''">name=#{name},</if>
+			<if test="age!=null and age!=''">age=#{age},</if>
+			<if test="gender!=null and gender!=''">gender=#{gender},</if>
+			<if test="tel!=null and tel!=''">tel=#{tel},</if>
+			<if test="eye!=null and eye!=''">eye=#{eye},</if>
+			<if test="declineTime!=null and declineTime!=''">decline_time=#{declineTime},</if>
+			<if test="diagnose!=null and diagnose!=''">diagnose=#{diagnose},</if>
+			<if test="oculopathy!=null and oculopathy!=''">oculopathy=#{oculopathy},</if>
+			<if test="correctionMethod!=null and correctionMethod!=''">correction_method=#{correctionMethod},</if>
+			<if test="effect!=null and effect!=''">effect=#{effect},</if>
+			<if test="visualAcuity!=null and visualAcuity!=''">visual_acuity=#{visualAcuity},</if>
+			<if test="fVisionCondition!=null and fVisionCondition!=''">f_vision_condition=#{fVisionCondition},</if>
+			<if test="fOther!=null and fOther!=''">f_other=#{fOther},</if>
+			<if test="mVisionCondition!=null and mVisionCondition!=''">m_vision_condition=#{mVisionCondition},</if>
+			<if test="mOther!=null and mOther!=''">m_other=#{mOther},</if>
+			<if test="sleepingTime!=null and sleepingTime!=''">sleeping_time=#{sleepingTime},</if>
+			<if test="eyeProject!=null and eyeProject!=''">eye_project=#{eyeProject},</if>
+			<if test="readingTime!=null and readingTime!=''">reading_time=#{readingTime},</if>
+			<if test="readingDistance!=null and readingDistance!=''">reading_distance=#{readingDistance},</if>
+			<if test="watchingTime!=null and watchingTime!=''">watching_time=#{watchingTime},</if>
+			<if test="watchingDistance!=null and watchingDistance!=''">watching_distance=#{watchingDistance},</if>
+			<if test="eyePosition!=null and eyePosition!=''">eye_position=#{eyePosition},</if>
+			<if test="homeLightingEnvironment!=null and homeLightingEnvironment!=''">home_lighting_environment=#{homeLightingEnvironment},</if>
+			<if test="classroomLightingEnvironment!=null and classroomLightingEnvironment!=''">classroom_lighting_environment=#{classroomLightingEnvironment},</if>
+			<if test="rD!=null and rD!=''">r_d=#{rD},</if>
+			<if test="lD!=null and lD!=''">l_d=#{lD},</if>
+			<if test="rCva!=null and rCva!=''">r_cva=#{rCva},</if>
+			<if test="lCva!=null and lCva!=''">l_cva=#{lCva},</if>
+			<if test="tutor!=null and tutor!=''">tutor=#{tutor},</if>
+			<if test="modifiedUser!=null and modifiedUser!=''">modified_user=#{modifiedUser},</if>
+			gmt_modified=now()
+		</set>
+		where id=#{id}
+	</update>
+	
+	<select id="findObjectById" parameterType="int" resultType="com.md.sys.entity.cus.CusConsultation">
+		select 
+		name,age,gender,tel,eye,decline_time declineTime,diagnose,oculopathy,correction_method correctionMethod,effect,
+		visual_acuity visualAcuity,f_vision_condition fVisionCondition,f_other fOther,m_vision_condition mVisionCondition,
+		m_other mOther,sleeping_time sleepingTime,eye_project eyeProject,reading_time readingTime,reading_distance readingDistance,
+		watching_time watchingTime,watching_distance watchingDistance,eye_position eyePosition,
+		home_lighting_environment homeLightingEnvironment,classroom_lighting_environment classroomLightingEnvironment,r_d rD,l_d lD,
+		r_cva rCva,l_cva lCva,tutor,gmt_create gmtCreate,gmt_modified gmtModified,created_user createdUser,
+		modified_user modifiedUser
+		from cus_consultation
+		where id=#{id}
+	</select>
 	
 </mapper>

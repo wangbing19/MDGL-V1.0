@@ -27,7 +27,7 @@ public class CusConsultationServiceImpl implements CusConsultationService {
 			throw new ServiceException("页码值不正确");
 		//2.依据条件获取总记录数并进行验证
 		int rowCount = CusConsultationDao.getRowCount(name,tel);
-		System.out.println(rowCount);
+	//	System.out.println(rowCount);
 		if(rowCount==0)
 			throw new ServiceException("记录不存在");
 		//3.基于条件查询当前页记录
@@ -62,6 +62,7 @@ public class CusConsultationServiceImpl implements CusConsultationService {
 			throw new ServiceException("电话不能为空");
 		//保存数据
 		int rows = CusConsultationDao.insertObject(entity);
+		
 		//返回结果
 		return rows;
 	}
@@ -71,15 +72,49 @@ public class CusConsultationServiceImpl implements CusConsultationService {
 	 */
 	@Override
 	public int deleteObject(Integer id) {
+		System.out.println("测试"+id);
 		//验证数据
 		if(id==null||id<=0)
-			throw new ServiceException("id错误");
+			throw new ServiceException("请选择一条数据");
 		//执行删除
 		int rows = CusConsultationDao.deleteObject(id);
 		//判断数据有无
 		if(rows==0)
 			throw new ServiceException("数据可能已删除");
 		return rows;
+	}
+
+	/**
+	 * 基于咨询表id更改用户信息
+	 */
+	@Override
+	public int updateObject(CusConsultation entity) {
+		//验证数据
+		if(entity==null)
+			throw new ServiceException("对象不能为空");
+		if(entity.getId()==0)
+			throw new ServiceException("对象id不能为空");
+		if(StringUtils.isEmpty(entity.getName()))
+			throw new ServiceException("用户名不能为空");
+		if(StringUtils.isEmpty(entity.getTel()))
+			throw new ServiceException("电话不能为空");
+		//执行
+		int rows = CusConsultationDao.updateObject(entity);
+		if(rows==0)
+			throw new ServiceException("修改失败");
+		return rows;
+	}
+
+	/**
+	 * 基于咨询表id,查询相关id所有信息
+	 */
+	@Override
+	public CusConsultation findObjectById(Integer id) {
+		if(id==null||id<=0)
+			throw new ServiceException("id错误");
+		//执行删除
+		CusConsultation cusConsultation = CusConsultationDao.findObjectById(id);
+		return cusConsultation;
 	}
 
 

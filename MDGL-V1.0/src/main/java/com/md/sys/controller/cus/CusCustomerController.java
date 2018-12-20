@@ -77,6 +77,7 @@ public class CusCustomerController {
 		return new JsonResult("Update Ok");
 	}
 	
+	/**基于客户id查询客户所有信息*/
 	@RequestMapping("doFindObjectById")
 	@ResponseBody
 	public JsonResult doFindObjectById(Integer id) {

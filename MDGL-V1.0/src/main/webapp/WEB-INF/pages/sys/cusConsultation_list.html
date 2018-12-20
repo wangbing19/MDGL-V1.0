@@ -51,8 +51,8 @@
 	   });
 	   $(".input-group-btn")
 	   .on("click",".btn-search",doQueryObjects)
-	   .on("click",".btn-add,.btn-update",doLoadEditUI);
-	   $("tbody").on("click",".btn-delete",doDeleteObject);
+	   .on("click",".btn-add",doLoadEditUI);
+	   $("tbody").on("click",".btn-delete",doDeleteObject).on("click",".btn-update",doLoadEditUI);;
    });
    
    function doLoadEditUI(){
@@ -63,6 +63,7 @@
 		   doLoadPage(title);
 	   }else if($(this).hasClass("btn-update")){
 		   title="修改用户";
+		   alert(title);
 		   var id=doGetCheckedId();
 		   console.log("id="+id)
 		   if(!id){
@@ -89,37 +90,20 @@
 	   });
    }
    
-   function doGetCheckedId(){
-	 return $("tbody input[name='radioId']:checked").val();
-   }
+	function doGetCheckedId(){
+		var rowData=$(this).parents("tr").data("rowData");
+		var id=rowData.records.id;
+		console.log(id);
+		return id;
+	}
    function doLoadPage(title){
 	   var url="cusConsultation/doCusConsultationEditUI.do"
 	   $("#mainContentId").load(url,function(){
 		   $(".box-title").html(title);
 	   }) 
    }
-   //禁用和启用操作
-/*    function doValidById(){
-	   //params
-	   var rowData=$(this).parents("tr").data("rowData");
-	   var id=rowData.id;
-	   var newValid=rowData.state?0:1;
-	   var params={"id":rowData.id,"state":newValid};
-	   //url
-	   var url="cusConsultation/doUpdateStateById.do";
-	   //ajax request
-       var btn=$(this);//获取点击的button对象
-	   $.post(url,params,function(result){
-    	   if(result.state==1){
-    		   alert(result.message);
-    		   //doGetObjects();//重新查询刷新
-    		   //优化方式实现(局部刷新:修改button显示,修改td内容显示)
-    		   doEditRow(btn,rowData.state);
-    	   }else{
-    		   alert(result.message);
-    	   }
-       })    
-   } */    
+
+ 
    function doEditRow(obj,valid){
 	   //1.修改按钮上的内容
 	   $(obj).html(valid?"启用":"禁用");
@@ -172,24 +156,29 @@
 	  }
    }
    
-   function doDeleteObject(){
-	   if(!confirm("确认删除吗"))return;
-	   //1.params
-	   var id=$(this).parents("tr").data("id");
-	   var params={"id":id};
-	   //2.url
-	   var url="cusConsultation/doDeleteObject.do"
-	   //3.ajax request
-	   $.post(url,params,function(result){
-		   if(result.state==1){
-			   alert(result.message);
-			   doGetObjects();
-		   }else{
-			   alert(result.message);
-		   }
-	   })
+	function doDeleteObject(){
+		if(!confirm("确认删除吗"))return;
+		//1.params
+		var rowData=$(this).parents("tr").data("rowData");
+		var id=rowData.id;
+		console.log(id)
+		var params={"id":id};
+		//2.url
+		var url="cusConsultation/doDeleteObject.do"
+		//3.ajax request
+		$.post(url,params,function(result){
+			if(result.state==1){
+				alert(result.message);
+				doGetObjects();
+			}else{
+				alert(result.message);
+			}
+		})
 	   
-   }
+	}
+   
+   
+   
    function doCreateTds(row){
 	   console.log(row);
 	   var tds="<td><input type='radio' name='radioId' value='"+row.id+"' ></td>"+
