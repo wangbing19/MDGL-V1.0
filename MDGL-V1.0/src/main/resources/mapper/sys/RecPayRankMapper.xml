@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 命名空间：映射文件所在目录.名称 -->
+<mapper namespace="com.md.sys.dao.rec.RecPayRankDao">
+
+	<!-- 根据客户id(customer_id)查询总数 -->
+	<select id="findByCustomerId" parameterType="int" resultType="int">
+		select count(*) from rec_pay_rank 
+		where customer_id=#{id}
+	</select>
+	
+
+</mapper>
