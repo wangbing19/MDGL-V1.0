@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 命名空间：映射文件所在目录.名称 -->
+<mapper namespace="com.md.sys.dao.cus.CusConsultationDao">
+
+	<!-- 基于用户名/电话的查询条件sql引用语句 -->
+	<sql id="queryWhereId">
+       <where>
+			<!-- name条件 -->
+			<if test="name!=null and name!=''">
+				name like concat("%",#{name},"%")
+			</if>
+			<!-- tel条件 -->
+			<if test="tel!=null and tel!=''">
+				or name like concat("%",#{tel},"%")
+			</if>
+		</where>
+	</sql>
+	
+	<!-- 基于用户姓名及分页条件查询,无用户名输入基于分页条件查询 -->
+	<select id="findPageObjects" resultType="com.md.sys.entity.cus.CusConsultation">
+		select id,name,tel,r_d rD,l_d lD,r_cva rCva,l_cva lCva,tutor,gmt_modified gmtModified 
+		from cus_consultation 
+        <include refid="queryWhereId"/>
+		limit #{startIndex},#{pageSize}
+	</select>
+	
+	<!-- 基于用户名查询该用户总数,无用户名输入查询所有用户总数 -->
+	<select id="getRowCount" resultType="int">
+		select count(*) from cus_consultation
+		<include refid="queryWhereId"/>
+	</select>
+	
+	<!-- 将CusCustomer类型数据添加到数据库 -->
+	<insert id="insertObject" parameterType="com.md.sys.entity.cus.CusConsultation">
+		insert into cus_consultation
+		(name,age,gender,tel,eye,decline_time_year,decline_time_month,diagnose,oculopathy,correction_method,effect,visual_acuity,f_vision_condition,
+		f_other,m_vision_condition,m_other,sleeping_time,eye_project,eye_project_other,reading_time,reading_distance,watching_time,watching_distance,
+		eye_position,home_lighting_environment,classroom_lighting_environment,r_d,l_d,r_cva,l_cva,tutor,
+		gmt_create,gmt_modified,created_user,modified_user)
+		values
+		(#{name},#{age},#{gender},#{tel},#{eye},#{declineTimeYear},#{declineTimeMonth},#{diagnose},#{oculopathy},#{correctionMethod},#{effect},
+		#{visualAcuity},#{fVisionCondition},#{fOther},#{mVisionCondition},#{mOther},#{sleepingTime},#{eyeProject},#{eyeProjectOther},#{readingTime},
+		#{readingDistance},#{watchingTime},#{watchingDistance},#{eyePosition},#{homeLightingEnvironment},
+		#{classroomLightingEnvironment},#{rD},#{lD},#{rCva},#{lCva},#{tutor},now(),now(),#{createdUser},
+		#{modifiedUser})
+	</insert>
+	
+	<!-- 基于咨询表客户id删除咨询表信息 -->
+	<delete id="deleteObject">
+		delete from cus_consultation where id=#{id}
+	</delete>
+	
+	<!--  基于咨询表id更改用户信息 -->
+	<update id="updateObject">
+		update cus_consultation
+		<set>
+			<if test="name!=null and name!=''">name=#{name},</if>
+			<if test="age!=null and age!=''">age=#{age},</if>
+			<if test="gender!=null and gender!=''">gender=#{gender},</if>
+			<if test="tel!=null and tel!=''">tel=#{tel},</if>
+			<if test="eye!=null and eye!=''">eye=#{eye},</if>
+			<if test="declineTime!=null and declineTime!=''">decline_time_year=#{declineTimeYear},</if>
+			<if test="declineTime!=null and declineTime!=''">decline_time_month=#{declineTimeMonth},</if>
+			<if test="diagnose!=null and diagnose!=''">diagnose=#{diagnose},</if>
+			<if test="oculopathy!=null and oculopathy!=''">oculopathy=#{oculopathy},</if>
+			<if test="correctionMethod!=null and correctionMethod!=''">correction_method=#{correctionMethod},</if>
+			<if test="effect!=null and effect!=''">effect=#{effect},</if>
+			<if test="visualAcuity!=null and visualAcuity!=''">visual_acuity=#{visualAcuity},</if>
+			<if test="fVisionCondition!=null and fVisionCondition!=''">f_vision_condition=#{fVisionCondition},</if>
+			<if test="fOther!=null and fOther!=''">f_other=#{fOther},</if>
+			<if test="mVisionCondition!=null and mVisionCondition!=''">m_vision_condition=#{mVisionCondition},</if>
+			<if test="mOther!=null and mOther!=''">m_other=#{mOther},</if>
+			<if test="sleepingTime!=null and sleepingTime!=''">sleeping_time=#{sleepingTime},</if>
+			<if test="eyeProject!=null and eyeProject!=''">eye_project=#{eyeProject},</if>
+			<if test="eyeProject!=null and eyeProject!=''">eye_project_other=#{eyeProjectOther},</if>
+			<if test="readingTime!=null and readingTime!=''">reading_time=#{readingTime},</if>
+			<if test="readingDistance!=null and readingDistance!=''">reading_distance=#{readingDistance},</if>
+			<if test="watchingTime!=null and watchingTime!=''">watching_time=#{watchingTime},</if>
+			<if test="watchingDistance!=null and watchingDistance!=''">watching_distance=#{watchingDistance},</if>
+			<if test="eyePosition!=null and eyePosition!=''">eye_position=#{eyePosition},</if>
+			<if test="homeLightingEnvironment!=null and homeLightingEnvironment!=''">home_lighting_environment=#{homeLightingEnvironment},</if>
+			<if test="classroomLightingEnvironment!=null and classroomLightingEnvironment!=''">classroom_lighting_environment=#{classroomLightingEnvironment},</if>
+			<if test="rD!=null and rD!=''">r_d=#{rD},</if>
+			<if test="lD!=null and lD!=''">l_d=#{lD},</if>
+			<if test="rCva!=null and rCva!=''">r_cva=#{rCva},</if>
+			<if test="lCva!=null and lCva!=''">l_cva=#{lCva},</if>
+			<if test="tutor!=null and tutor!=''">tutor=#{tutor},</if>
+			<if test="modifiedUser!=null and modifiedUser!=''">modified_user=#{modifiedUser},</if>
+			gmt_modified=now()
+		</set>
+		where id=#{id}
+	</update>
+	
+	<select id="findObjectById" parameterType="int" resultType="com.md.sys.entity.cus.CusConsultation">
+		select 
+		name,age,gender,tel,eye,decline_time_year declineTimeYear,decline_time_month declineTimeMonth,diagnose,oculopathy,
+		correction_method correctionMethod,effect,visual_acuity visualAcuity,f_vision_condition fVisionCondition,f_other fOther,
+		m_vision_condition mVisionCondition,m_other mOther,sleeping_time sleepingTime,eye_project eyeProject,eye_project_other eyeProjectOther,reading_time readingTime,
+		reading_distance readingDistance,watching_time watchingTime,watching_distance watchingDistance,eye_position eyePosition,
+		home_lighting_environment homeLightingEnvironment,classroom_lighting_environment classroomLightingEnvironment,r_d rD,l_d lD,
+		r_cva rCva,l_cva lCva,tutor,gmt_create gmtCreate,gmt_modified gmtModified,created_user createdUser,modified_user modifiedUser 
+		from cus_consultation 
+		where id=#{id}
+	</select>
+	
+</mapper>
