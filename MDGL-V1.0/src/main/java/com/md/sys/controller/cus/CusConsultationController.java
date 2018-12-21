@@ -45,12 +45,28 @@ public class CusConsultationController {
 		return new JsonResult("Save ok");
 	}
 	
-	/**将CusCustomer类型数据添加到数据库*/
+	/**基于id删除咨询表信息*/
 	@RequestMapping("doDeleteObject")
 	@ResponseBody
 	public JsonResult doDeleteObject(Integer id) {
 		cusConsultationService.deleteObject(id);
 		return new JsonResult("Delete ok");
+	}
+	
+	/**基于咨询表id更改用户信息*/
+	@RequestMapping("doUpdateObject")
+	@ResponseBody
+	public JsonResult doUpdateObject(CusConsultation cusConsultation) {
+		cusConsultationService.updateObject(cusConsultation);
+		return new JsonResult("Update ok");
+	}
+	
+	/**基于咨询表id,查询相关id所有信息*/
+	@RequestMapping("doFindObjectById")
+	@ResponseBody
+	public JsonResult doFindObjectById(Integer id) {
+		CusConsultation cusConsultation = cusConsultationService.findObjectById(id);
+		return new JsonResult(cusConsultation);
 	}
 	
 	
