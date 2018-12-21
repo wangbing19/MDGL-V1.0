@@ -41,6 +41,7 @@ public class CusConsultationController {
 	@RequestMapping("doSaveObject")
 	@ResponseBody
 	public JsonResult doSaveObject(CusConsultation cusConsultation) {
+		System.out.println(cusConsultation.toString());
 		cusConsultationService.saveObject(cusConsultation);
 		return new JsonResult("Save ok");
 	}
