@@ -144,13 +144,22 @@
    function doGetObjects(){
 	   var url="user/doFindPageObjects.do";
 	   var pageCurrent=$("#pageId").data("pageCurrent");
-	   if(!pageCurrent)pageCurrent=1;
-	   var params={"pageCurrent":pageCurrent}
+	   if(!pageCurrent){
+		   pageCurrent=1;
+	   }
+	   var params={"pageCurrent":pageCurrent};
 	   params.username=$("#searchNameId").val().trim();
+	   if(params.username){
+		   console.log(params.username);
+		   url="user/doSearchPageObjects.do";
+	   }
+	   
 	   $.getJSON(url,params,function(result){
+		   console.log(result);
 		   doHandleResponseResult(result);
 	   });
    }
+   
    function doHandleResponseResult(result){
 	   if(result.state==1){
 		   

@@ -35,8 +35,16 @@ public class SysUserController {
 	@RequestMapping("doFindPageObjects")
 	@ResponseBody
 	public JsonResult doFindPageObjects(String username, Integer pageCurrent) {
+		System.out.println(username);
 		System.out.println("find.service=" + sysUserService.getClass().getName());
 		return new JsonResult(sysUserService.findPageObjects(username, pageCurrent));
+	}
+	@RequestMapping("doSearchPageObjects")
+	@ResponseBody
+	public JsonResult searchPageObjects(String username, Integer pageCurrent) {
+		System.out.println(username);
+		System.out.println("find.service=" + sysUserService.getClass().getName());
+		return new JsonResult(sysUserService.searchPageObjects(username, pageCurrent));
 	}
 	
 	@RequestMapping("doValidById")
@@ -50,4 +58,24 @@ public class SysUserController {
 	public JsonResult doFindZTreeNodes() {
 		return new JsonResult(sysUserService.findZTreeNodes());
 	}
+	@RequestMapping("doSaveObject")
+	@ResponseBody
+	public JsonResult doSaveObject(SysUser sysUser) {
+		System.out.println("doSaveObject"+sysUser);
+		sysUserService.doSaveObject(sysUser);
+		return new JsonResult("insert ok");
+	}
+	@RequestMapping("doFindObjectById")
+	@ResponseBody
+	public JsonResult doFindObjectById(Integer id) {
+		SysUser doFindObjectById = sysUserService.doFindObjectById(id);
+		return new JsonResult(doFindObjectById);
+	}
+	@RequestMapping("doUpdateObject")
+	@ResponseBody
+	public JsonResult doUpdateObject(SysUser sysUser) {
+		int doUpdateObject = sysUserService.doUpdateObject(sysUser);
+		return new JsonResult("update ok");
+	}
+	
 }

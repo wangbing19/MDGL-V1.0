@@ -20,9 +20,17 @@ public interface SysUserService {
 	 * @return
 	 */
 	PageObject<SysUser> findPageObjects(String username, Integer pageCurrent);
+	PageObject<SysUser> searchPageObjects(String username, Integer pageCurrent);
 
 	List<SysUser> findUserByUserName();
 
 	int doValidById(Integer id, Integer valid);
+
 	List<Node> findZTreeNodes();
+
+	int doSaveObject(SysUser sysUser);
+
+	SysUser doFindObjectById(Integer id);
+	
+	int doUpdateObject(SysUser sysUser);
 }
