@@ -30,6 +30,10 @@ public interface SysUserDao {
 			 @Param("username")String username,
 			 @Param("startIndex")Integer startIndex,
 			 @Param("pageSize")Integer pageSize);
+	 List<SysUser> searchPageObjects(
+			 @Param("username")String username,
+			 @Param("startIndex")Integer startIndex,
+			 @Param("pageSize")Integer pageSize);
 	 
 	 List<SysUser> findUserByUserName();
 	 
@@ -39,6 +43,10 @@ public interface SysUserDao {
 			 @Param("modifiedUser")String modifiedUser
 			 );
 	 List<Node> findZTreeNodes();
+	 int doinsertObject(SysUser sysUser);
+	 SysUser doFindObjectById(Integer id);
+	 int doUpdateObject(SysUser sysUser);
+	 
 }
 
 
