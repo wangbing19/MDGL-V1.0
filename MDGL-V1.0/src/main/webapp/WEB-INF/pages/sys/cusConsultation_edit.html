@@ -1,83 +1,645 @@
-<html lang="zh-cn"><head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8"><script>
-var CONTEXT_PATH = 'http://127.0.0.1:8081/kangtong';
-</script>
-<link href="bootstrap.css" rel="stylesheet">
-<link href="font-awesome.css" rel="stylesheet">
-<link href="ui.css" rel="stylesheet">
-<link href="animate.css" rel="stylesheet">
-<link href="style.css" rel="stylesheet">
-<link href="select2.css" rel="stylesheet">
-<link href="s2-doc.css" rel="stylesheet">
-<link href="iconfont.css" rel="stylesheet">
-<link href="custom.css" rel="stylesheet">
-<link href="toastr.css" rel="stylesheet">
-<link href="blueimp-gallery.css" rel="stylesheet">
-<link href="awesome-bootstrap-checkbox.css" rel="stylesheet">
-<link href="validationEngine.css" rel="stylesheet">
-<link href="webuploader.css" rel="stylesheet">
-<link href="datepicker3.css" rel="stylesheet">
+<!-- Horizontal Form -->
+<div class="box box-info">
+	<div class="box-header with-border">
+		<h3 class="box-title">添加用户</h3>
+	</div>
+	<!-- /.box-header -->
+	<!-- form start -->
+	<form class="form-horizontal">
+		<!-- 问卷主体 -->
+		<div id="container" class="g_container">
 
-<style>
-	/*.ui-jqgrid tr.jqgrow td {*/
-		/*white-space: normal !important;*/
-		/*height:30px;*/
-		/*vertical-align:text-top;*/
-		/*padding-top:2px;*/
-		/*overflow:hidden;*/
-	/*}*/
+			<!--	<div class="survey_background_wrap" style="height: 498px;"></div>-->
+			<div>
+				<!-- style="margin: 200px;" -->
+				<div>
+					<div>
+						<!-- style="text-align: center" -->
+						<h1 style="display: block;">
+							<div>
+								<div>
+									<p>基本信息咨询表</p>
+								</div>
+							</div>
+						</h1>
+						<div style="font-size: 175%;">
+							<div >
+								<!-- style="text-align: center" -->
+								<div  data-type="description" data-id="q-34-iyZk" style="display: block;">
+									<div >
+										<div class="description_content">
+											<span> <strong>姓名：</strong> <input type="text"
+												class="fill_blank needsclick" role="textbox"
+												aria-labelledby="questionTitle_q-33-AlYW"
+												style="width: 112px;" id="nameID"></span> <span> <strong>年龄：</strong>
+												<input type="text" class="fill_blank needsclick "
+												role="textbox" aria-labelledby="questionTitle_q-33-AlYW"
+												style="width: 112px;" id="ageID"></span> <span> <strong>性别：</strong>
+												<input type="text" class="fill_blank needsclick"
+												role="textbox" aria-labelledby="questionTitle_q-33-AlYW"
+												style="width: 112px;" id="sexID"></span> <span> <strong>联系方式：</strong>
+												<input type="number" class="fill_blank needsclick numbInput"
+												role="textbox" aria-labelledby="questionTitle_q-33-AlYW"
+												style="width: 112px;" id="phoneID"></span>
+										</div>
+									</div>
+								</div>
+								<br />
+								<div class="survey_prefix"
+									style="display: block; margin-top: 40px;">
+									<div class="inner">
+										<h2 class="prefix_content">
+											<p style="color: #00a2d4;">
+												<strong>主要信息采集</strong>
+											</p>
+										</h2>
+									</div>
+								</div>
+								<br />
+								<div class="form-group">
+									<label for="ageId" class="col-sm-2 control-label"></label>
+									<div class="col-sm-10">
+										<p>
+											1.您从什么时候发现视力下降：&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <input
+												type="text" class="fill_blank needsclick" role="textbox"
+												aria-labelledby="questionTitle_q-7-5MOe"
+												style="width: 50px;" id="whitchEyeID">&nbsp;眼&nbsp;
+											&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <input type="text"
+												class="fill_blank needsclick" role="textbox"
+												aria-labelledby="questionTitle_q-7-5MOe"
+												style="width: 50px;" id="yearID">&nbsp;年&nbsp;
+											&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <input type="text"
+												class="fill_blank needsclick" role="textbox"
+												aria-labelledby="questionTitle_q-7-5MOe"
+												style="width: 28px;" id="monthID">&nbsp;月
+										</p>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="diagnoseId" class="col-sm-2 control-label"></label>
+									<div class="col-sm-10">
+										<tr>
+											2.是否到专业医疗机构确诊：
+											<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+											<input type="radio" name="diagnose" id="diagnoseId" value="1">是
+											<input type="radio" name="diagnose" id="diagnoseId" value="0">否
+										</tr>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="oculopathyId" class="col-sm-2 control-label"></label>
+									<div class="col-sm-10">
+										<tr>
+											3.确认为何种病症:
+											<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+											<input type="radio" name="oculopathy" id="oculopathyId"
+												value="0">近视
+											<input type="radio" name="oculopathy" id="oculopathyId"
+												value="1">远视
+											<input type="radio" name="oculopathy" id="oculopathyId"
+												value="2">弱视
+											<input type="radio" name="oculopathy" id="oculopathyId"
+												value="3">斜视
+											<input type="radio" name="oculopathy" id="oculopathyId"
+												value="4">其他
+											<input type="text" name="oculopathy" id="oculopathyOther">
+										</tr>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="correctionMethodId" class="col-sm-2 control-label"></label>
+									<div class="col-sm-10">
+										<tr>
+											4.发现症状后采用何种矫正方法:
+											<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+											<input type="checkbox" name="correctionMethod"
+												id="correctionMethodId" value="0">训练
+											<input type="checkbox" name="correctionMethod"
+												id="correctionMethodId" value="1">配镜
+											<input type="checkbox" name="correctionMethod"
+												id="correctionMethodId" value="2">手术
+										</tr>
+									</div>
+								</div>
 
-	.contentDIV {
-		white-space: normal !important;
-		height:55px;
-		vertical-align:text-top;
-		padding-top:2px;
-		overflow:hidden;
-	}
+								<div class="form-group">
+									<label for="effectId" class="col-sm-2 control-label"></label>
+									<div class="col-sm-10">
+										<p>
+											5.效果如何:<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <input
+												type="radio" name="effect" id="effectId" value="0">效果好
+											<input type="radio" name="effect" id="effectId" value="1">效果不佳
+										</p>
+									</div>
+								</div>
 
-	.wrapperContentDIV{
-		white-space: normal !important;
-		height:auto;
-		vertical-align:text-top;
-		padding-top:2px;
-		overflow:hidden;
-	}
-</style>
+								<div class="form-group">
+									<label for="visualAcuityId" class="col-sm-2 control-label"></label>
+									<div class="col-sm-10">
+										<p>
+											6.现视力情况:<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <input
+												type="radio" name="visualAcuity" id="visualAcuityId"
+												value="0">无变化 <input type="radio"
+												name="visualAcuity" id="visualAcuityId" value="1">继续下降
+											<input type="radio" name="visualAcuity" id="visualAcuityId"
+												value="1">有提升
+										</p>
+									</div>
+								</div>
 
-<script src="jquery_009.js"></script>
-<script src="jquery_007.js"></script><style type="text/css">.jdirk-shine { filter: alpha(opacity=40); opacity: 0.4; }</style>
-<script src="jquery_006.js"></script>
-<script src="jquery_008.js"></script>
-<script src="bootstrap.js"></script>
-<script src="layer.js"></script><link rel="stylesheet" href="layer.css" id="layui_layer_skinlayercss" style="">
-<script src="jquery_012.js"></script>
-<script src="grid.js"></script>
-<script src="content.js"></script>
-<script src="jquery_002.js"></script>
-<script src="icheck.js"></script>
-<script src="toastr.js"></script>
-<script src="jstool.js"></script>
-<script src="jquery_011.js"></script>
-<script src="messages_zh.js"></script>
-<!--
-<script src="/kangtong/js/hplus/js/mc_resources.js"></script>
- -->
-<script src="jquery_003.js"></script>
-<script src="jquery_004.js"></script>
-<script src="select2.js"></script>
-<script src="zh-CN.js"></script>
-<script src="webuploader.js"></script>
-<script src="jquery_005.js"></script>
-<script src="laydate.js"></script><link type="text/css" rel="stylesheet" href="laydate.css"><link type="text/css" rel="stylesheet" href="laydate_002.css" id="LayDateSkin">
-<script src="bootstrap-datepicker.js"></script>
-<script src="distpicker_002.js"></script>
-<script src="distpicker.js"></script>
-<script src="jstool.js"></script>
-<script src="replace.js"></script>
+								<div class="question question_description"
+									id="question_q-12-emxw" data-type="description"
+									data-id="q-12-emxw" style="display: block;">
+									<div class="inner">
+										<div class="description_content">
+											<p style="color: #00a2d4;">
+												<strong>遗传因素排查</strong>
+											</p>
+										</div>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label for="fVisionConditionId" class="col-sm-2 control-label"></label>
+									<div class="col-sm-10">
+										<p>
+											7.父亲:<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;近视( <input
+												type="radio" name="fVisionCondition" id="fVisionConditionId"
+												value="0">轻 <input type="radio"
+												name="fVisionCondition" id="fVisionConditionId" value="1">中
+											<input type="radio" name="fVisionCondition"
+												id="fVisionConditionId" value="2">重)&nbsp; &nbsp;远视(
+											<input type="radio" name="fVisionCondition"
+												id="fVisionConditionId" value="3">轻 <input
+												type="radio" name="fVisionCondition" id="fVisionConditionId"
+												value="4">中 <input type="radio"
+												name="fVisionCondition" id="fVisionConditionId" value="5">重)&nbsp;
+											&nbsp;散光( <input type="radio" name="fVisionCondition"
+												id="fVisionConditionId" value="6">轻 <input
+												type="radio" name="fVisionCondition" id="fVisionConditionId"
+												value="7">中 <input type="radio"
+												name="fVisionCondition" id="fVisionConditionId" value="8">重)<br />&nbsp;
+											&nbsp; &nbsp; &nbsp; <input type="radio"
+												name="fVisionCondition" id="fVisionConditionId" value="9">斜视
+											<input type="radio" name="fVisionCondition"
+												id="fVisionConditionId" value="10">弱视 <input
+												type="radio" name="fVisionCondition" id="fVisionConditionId"
+												value="11">其他眼病 <input type="text"
+												name="fVisionCondition" id="fVisionConditionOther">
+											<input type="radio" name="fVisionCondition"
+												id="fVisionConditionId" value="12">无
+										</p>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label for="mVisionConditionId" class="col-sm-2 control-label"></label>
+									<div class="col-sm-10">
+										<p>
+											8.母亲:<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;近视( <input
+												type="radio" name="mVisionCondition" id="mVisionConditionId"
+												value="0">轻 <input type="radio"
+												name="mVisionCondition" id="mVisionConditionId" value="1">中
+											<input type="radio" name="mVisionCondition"
+												id="mVisionConditionId" value="2">重)&nbsp; &nbsp;远视(
+											<input type="radio" name="mVisionCondition"
+												id="mVisionConditionId" value="3">轻 <input
+												type="radio" name="mVisionCondition" id="mVisionConditionId"
+												value="4">中 <input type="radio"
+												name="mVisionCondition" id="mVisionConditionId" value="5">重)&nbsp;
+											&nbsp;散光( <input type="radio" name="mVisionCondition"
+												id="mVisionConditionId" value="6">轻 <input
+												type="radio" name="mVisionCondition" id="mVisionConditionId"
+												value="7">中 <input type="radio"
+												name="mVisionCondition" id="mVisionConditionId" value="8">重)<br />
+											&nbsp; &nbsp; &nbsp; &nbsp; <input type="radio"
+												name="mVisionCondition" id="mVisionConditionId" value="9">斜视
+											<input type="radio" name="mVisionCondition"
+												id="mVisionConditionId" value="10">弱视 <input
+												type="radio" name="mVisionCondition" id="mVisionConditionId"
+												value="11">其他眼病 <input type="text"
+												name="mVisionCondition" id="mVisionConditionOther">
+											<input type="radio" name="mVisionCondition"
+												id="mVisionConditionId" value="12">无
+										</p>
+									</div>
+								</div>
+
+								<div class="question question_description"
+									id="question_q-18-k96o" data-type="description"
+									data-id="q-18-k96o" style="display: block;">
+									<div class="inner">
+										<div class="description_content">
+											<p style="color: #00a2d4;">
+												<strong>睡眠状况</strong>
+											</p>
+										</div>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label for="sleepingTimeId" class="col-sm-2 control-label"></label>
+									<div class="col-sm-10">
+										<p>
+											9.睡眠状况:<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <input
+												type="radio" name="sleepingTime" id="sleepingTimeId"
+												value="0">6小时 <input type="radio"
+												name="sleepingTime" id="sleepingTimeId" value="1">7小时
+											<input type="radio" name="sleepingTime" id="sleepingTimeId"
+												value="2">8小时 <input type="radio"
+												name="sleepingTime" id="sleepingTimeId" value="3">9小时
+											<input type="radio" name="sleepingTime" id="sleepingTimeId"
+												value="4">10小时 <input type="radio"
+												name="sleepingTime" id="sleepingTimeId" value="5">11小时
+										</p>
+									</div>
+								</div>
+
+								<div class="question question_description"
+									id="question_q-20-vrjI" data-type="description"
+									data-id="q-20-vrjI" style="display: block;">
+									<div class="inner">
+										<div class="description_content">
+											<p style="color: #00a2d4;">
+												<strong>用眼习惯采集</strong>
+											</p>
+										</div>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label for="eyeProjectOtherId" class="col-sm-2 control-label"></label>
+									<div class="col-sm-10">
+										<tr>
+											10.用眼项目:
+											<span style="color: #53aaf3; margin-left: 3px;"
+												class="multiple_choice" title="[多选题]" aria-label="[多选题]">[多选题]</span>
+											<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+											<input type="checkbox" name="eyeProjectOther"
+												id="eyeProjectOtherId" value="0">看书
+											<input type="checkbox" name="eyeProjectOther"
+												id="eyeProjectOtherId" value="1">看电视
+											<input type="checkbox" name="eyeProjectOther"
+												id="eyeProjectOtherId" value="2">玩手机平板
+											<input type="checkbox" name="eyeProjectOther"
+												id="eyeProjectOtherId" value="3">其他
+											<input type="text" name="eyeProjectOther"
+												id="eyeProjectOtherOther">
+										</tr>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label for="readingTimeId" class="col-sm-2 control-label"></label>
+									<div class="col-sm-10">
+										<p>
+											11.每次看书、作业的时长：<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <input
+												type="radio" name="readingTime" id="readingTimeId" value="0">1小时
+											<input type="radio" name="readingTime" id="readingTimeId"
+												value="1">1-2小时 <input type="radio"
+												name="readingTime" id="readingTimeId" value="2">2-3小时
+											<input type="radio" name="readingTime" id="readingTimeId"
+												value="3">3-4小时
+										</p>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label for="readingDistanceId" class="col-sm-2 control-label"></label>
+									<div class="col-sm-10">
+										<p>
+											12.看书距离：<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <input
+												type="radio" name="readingDistance" id="readingDistanceId"
+												value="0">10厘米 <input type="radio"
+												name="readingDistance" id="readingDistanceId" value="1">10-15厘米
+											<input type="radio" name="readingDistance"
+												id="readingDistanceId" value="2">15-20厘米 <input
+												type="radio" name="readingDistance" id="readingDistanceId"
+												value="3">20-30厘米 <input type="radio"
+												name="readingDistance" id="readingDistanceId" value="4">30厘米
+										</p>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label for="watchingTimeId" class="col-sm-2 control-label"></label>
+									<div class="col-sm-10">
+										<p>
+											13.单次看电视时长：<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <input
+												type="radio" name="watchingTime" id="watchingTimeId"
+												value="0">1小时 <input type="radio"
+												name="watchingTime" id="watchingTimeId" value="1">1-2小时
+											<input type="radio" name="watchingTime" id="watchingTimeId"
+												value="2">2-3小时 <input type="radio"
+												name="watchingTime" id="watchingTimeId" value="3">3-4小时
+										</p>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label for="watchingDistanceId" class="col-sm-2 control-label"></label>
+									<div class="col-sm-10">
+										<p>
+											14.看电视距离：<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <input
+												type="radio" name="watchingDistance" id="watchingDistanceId"
+												value="0">2米 <input type="radio"
+												name="watchingDistance" id="watchingDistanceId" value="1">2-3米
+											<input type="radio" name="watchingDistance"
+												id="watchingDistanceId" value="2">3-4米 <input
+												type="radio" name="watchingDistance" id="watchingDistanceId"
+												value="3">4米
+										</p>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label for="eyePositionId" class="col-sm-2 control-label"></label>
+									<div class="col-sm-10">
+										<tr>
+											15.用眼姿势（有无）：
+											<span style="color: #53aaf3; margin-left: 3px;"
+												class="multiple_choice" title="[多选题]" aria-label="[多选题]">[多选题]</span>
+											<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+											<input type="checkbox" name="eyePosition" id="eyePositionId"
+												value="0">歪头
+											<input type="checkbox" name="eyePosition" id="eyePositionId"
+												value="1">斜眼
+											<input type="checkbox" name="eyePosition" id="eyePositionId"
+												value="2">躺着看
+											<input type="checkbox" name="eyePosition" id="eyePositionId"
+												value="3">在车上看
+											<input type="checkbox" name="eyePosition" id="eyePositionId"
+												value="4">走路看书
+											<input type="checkbox" name="eyePosition" id="eyePositionId"
+												value="5">其他
+											<input type="text" name="eyePosition" id="eyePositionOther">
+										</tr>
+									</div>
+								</div>
+
+								<div class="question question_description"
+									id="question_q-29-QlzB" data-type="description"
+									data-id="q-29-QlzB" style="display: block;">
+									<div class="inner">
+										<div class="description_content">
+											<p style="color: #00a2d4;">
+												<strong>用眼环境</strong>
+											</p>
+										</div>
+									</div>
+								</div>
 
 
+								<div class="form-group">
+									<label for="homeLightingEnvironmentId"
+										class="col-sm-2 control-label"></label>
+									<div class="col-sm-10">
+										<p>
+											16.家庭环境光线：<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <input
+												type="radio" name="homeLightingEnvironment"
+												id="homeLightingEnvironmentId" value="0">强光 <input
+												type="radio" name="homeLightingEnvironment"
+												id="homeLightingEnvironmentId" value="1">适宜 <input
+												type="radio" name="homeLightingEnvironment"
+												id="homeLightingEnvironmentId" value="2">偏暗 <input
+												type="radio" name="homeLightingEnvironment"
+												id="homeLightingEnvironmentId" value="3">暗 <input
+												type="radio" name="homeLightingEnvironment"
+												id="homeLightingEnvironmentId" value="4">光线闪烁
+										</p>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label for="classroomLightingEnvironmentId"
+										class="col-sm-2 control-label"></label>
+									<div class="col-sm-10">
+										<p>
+											17.教室环境光线：<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <input
+												type="radio" name="classroomLightingEnvironment"
+												id="classroomLightingEnvironmentId" value="0">强光 <input
+												type="radio" name="classroomLightingEnvironment"
+												id="classroomLightingEnvironmentId" value="1">适宜 <input
+												type="radio" name="classroomLightingEnvironment"
+												id="classroomLightingEnvironmentId" value="2">偏暗 <input
+												type="radio" name="classroomLightingEnvironment"
+												id="classroomLightingEnvironmentId" value="3">暗 <input
+												type="radio" name="classroomLightingEnvironment"
+												id="classroomLightingEnvironmentId" value="4">光线闪烁
+										</p>
+									</div>
+								</div>
+
+
+								<div class="question question_description"
+									id="question_q-30-yGgM" data-type="description"
+									data-id="q-30-yGgM" style="display: block;">
+									<div class="inner">
+										<div class="description_content">
+											<p style="color: #00a2d4;">
+												<strong>视力检查</strong>
+											</p>
+										</div>
+									</div>
+								</div>
+
+
+								<div class="form-group">
+									<div class="col-sm-10">
+										<tr>
+											<label for="rDId" class="col-sm-2 control-label">18.裸眼远视力（5米）：</label>
+											<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 右眼&nbsp;
+											<input type="text" name="rD" id="rDId">&nbsp; &nbsp;
+											&nbsp; 左眼&nbsp;
+											<input type="text" name="lD" id="lDId">
+										</tr>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<div class="col-sm-10">
+										<tr>
+											<label for="rCvaId" class="col-sm-2 control-label">19.矫正远视力（5米）:</label>
+											<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 右眼&nbsp;
+											<input type="text" name="rCva" id="rCvaId">&nbsp;
+											&nbsp; &nbsp; 左眼&nbsp;
+											<input type="text" name="lCva" id="lCvaId">
+										</tr>
+									</div>
+								</div>
+								<br />
+								<br />
+								<br />
+								<br />
+								<div class="form-group">
+									<div class="col-sm-10">
+										<span style="float: left;"> <strong> <label
+												for="tutorId" class="col-sm-2 control-label">训练导师</label>
+										</strong> <input type="text" name="tutor" id="tutorId"
+											style="width: 112px;">
+										</span> <span style="float: right;"> <strong> <label
+												for="gmtCreateId" class="col-sm-2 control-label">时间</label>
+										</strong> <input type="text" name="gmtCreate" id="gmtCreateId"
+											style="width: 112px;">
+										</span>
+									</div>
+								</div>
+							</div><br /><br /><br />
+							<div class="box-footer">
+								<button type="button" class="btn btn-default btn-cancel"
+									style="float: left;">Cancel</button>
+								<button type="button" class="btn btn-info pull-right btn-save"
+									style="float: right;">Save</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+<script type="text/javascript"
+	src="bower_components/ztree/jquery.ztree.all.min.js"></script>
+<script type="text/javascript" src="bower_components/layer/layer.js"></script>
 <script type="text/javascript">
-	// 获取系统当前时间
+	//json 格式的javascript对象
+	$(document).ready(
+			function() {
+				//页面加载完成以后加载角色信息并初始化页面
+				doLoadRoles();
+				//事件注册
+				$('#fillTime').val(getNowFormatDate());
+				$(".box-footer").on("click", ".btn-cancel", doCancel).on(
+						"click", ".btn-save", doSaveOrUpdate);
+
+				/* 	  $("#treeLayer")
+				 .on("click",".btn-cancel",doHideTree)
+				 .on("click",".btn-confirm",doConfirm);
+				 */
+				/*  $(".form-horizontal")
+				 .on("click",".load-sys-dept",doLoadZTreeNodes); */
+			});
+
+	/*  function doHideTree(){
+	 $("#treeLayer").css("display","none");
+	 } */
+	//确定按钮
+	/*  function doConfirm(){
+	 //1.获取选中的记录(id,name);
+	 var selectedNodes=zTree.getSelectedNodes();
+	 var node=selectedNodes[0];
+	 //2.将id和name填写或绑定在具体对象上
+	 $("#deptId").val(node.name);
+	 console.log("node.id="+node.id)
+	 $("#deptId").data("deptId",node.id)
+	 //3.隐藏zTree对应的Div
+	 //  doHideTree();
+	 }
+	 */
+	/*  function doLoadZTreeNodes(){
+	 var url="dept/doFindZTreeNodes.do";
+	 $("#treeLayer").css("display","block");
+	 $.getJSON(url,function(result){
+	 if(result.state==1){
+	 zTree = $.fn.zTree.init($("#zTreeId"),setting,result.data);
+	 }else{
+	 alert(result.message);
+	 }
+	 });
+	 } */
+	function doCancel() {
+		$("#mainContentId").removeData("rowData");
+		$("#mainContentId").load("cusConsultation/doCusConsultationListUI.do");
+	}
+	function doSaveOrUpdate() {
+		var rowData = $("#mainContentId").data("rowData");
+		//1.获取表单数据
+		// var params=doGetEditFormData();
+		var params = check();
+		console.log(params);
+		if (rowData)
+			params.id = rowData.user.id;
+		//2.发起异步请求
+		var insertUrl = "cusConsultation/doSaveObject.do";
+		var updateUrl = "cusConsultation/doUpdateObject.do";
+		var url = rowData ? updateUrl : insertUrl;
+		console.log(params);
+		$.post(url, params, function(result) {
+			if (result.state == 1) {
+				alert(result.message);
+				doCancel();
+			} else {
+				alert(result.message);
+			}
+		})
+	}
+	function doGetEditFormData() {
+		//获取用户输入的数据
+		var params = {
+			username : $("#usernameId").val(),
+			password : $("#passwordId").val(),
+			email : $("#emailId").val(),
+			mobile : $("#phoneId").val(),
+			deptId : $("#deptId").data("deptId")
+		}
+		/* 	 //获取选择的角色
+		 var roleIds=new Array();
+		 $("#rolesId input[name='roleId']")
+		 .each(function(){
+		 if($(this).prop("checked")){
+		 roleIds.push($(this).val());
+		 }
+		 });
+		 params.roleIds=roleIds.toString(); */
+		return params;
+	}
+	function doLoadRoles() {
+		// var url="role/doFindRoles.do"
+		// $.getJSON(url,function(result){
+		// if(result.state==1){
+		//  doInitPageRoles(result.data);
+		doInitFormData();//修改时
+		// }else{
+		//  alert(result.message);
+		// }
+		//})
+	}
+	function doInitFormData() {
+		var data = $("#mainContentId").data("rowData");
+		if (!data)
+			return;
+		// $("#pwdDiv").remove();
+		console.log(data);
+		//初始化用户信息 
+		$("#usernameId").val(data.user.username);
+		$("#deptId").val(data.user.sysDept.name);
+		console.log("data.user.sysDept.idss=" + data.user.sysDept.id);
+		$("#deptId").data("deptId", data.user.sysDept.id);
+		$("#emailId").val(data.user.email);
+		$("#phoneId").val(data.user.mobile);
+		//初始化用户角色信息
+		/*  var ids=data.roleIds;
+		 for(var i in ids){
+		  $("#rolesId input[value='"+ids[i]+"']")
+		  .prop("checked",true);
+		 } */
+	}
+	/* function doInitPageRoles(data){
+	 //1.获取角色要显示的位置对象
+	 var div=$("#rolesId");
+	 div.empty();
+	 //2.迭代数据，将数据追加到div
+	 var input="<input type='checkbox' name='roleId' value='[id]'>[name]"+
+	 for(var i in data){
+	 //记住每次replace时都会产生一个新的字符串对象
+	 var newInput=
+	 input.replace("[id]",data[i].id)
+	 .replace("[name]",data[i].name);
+	 div.append(newInput)
+	 }
+	 } */
+
+	//获取系统当前时间
 	function getNowFormatDate() {
 		var date = new Date();
 		var month = date.getMonth() + 1;
@@ -91,7 +653,7 @@ var CONTEXT_PATH = 'http://127.0.0.1:8081/kangtong';
 		var currentdate = date.getFullYear() + "-" + month + "-" + strDate;
 		return currentdate;
 	}
-	function getMonthFirstDay() {
+	/* function getMonthFirstDay() {
 		var date = new Date();
 		var month = date.getMonth() + 1;
 		if (month >= 1 && month <= 9) {
@@ -100,6 +662,248 @@ var CONTEXT_PATH = 'http://127.0.0.1:8081/kangtong';
 		var currentdate = date.getFullYear() + "-" + month + "-01";
 		return currentdate;
 	}
+	 */
+	//var is_enable = true;
+	function checkField(value) {
+		if (value != null && value.length > 0) {
+			return true;
+		}
+		return false;
+	}
+	function check() {
+
+		// if(is_enable == false) return;
+
+		var params = {};
+		var name = $('#nameID').val();
+		if (name == null) {
+			alert('姓名不可以为空哦!');
+			return;
+		}
+		params.name = name;
+		alert(name)
+		console.log(params.name)
+
+		var tel = $('#phoneID').val();
+		if (checkField(tel)) {
+			params.tel = tel;
+		}
+		var age = $('#ageID').val();
+		if (checkField(age)) {
+			params.age = age;
+		}
+		var gender = $('#sexID').val();
+		if (checkField(gender)) {
+			/*   if(sex == '男'){
+			      params.gender = 1;
+			  }else  if(gender == '女'){
+			      params.gender = 2;
+			  }else{
+			      alert('性别填写有误!');
+			      return;
+			  }
+			}else{ */
+			params.gender = gender;
+		}
+
+		var eye = $('#whitchEyeID').val();
+		if (checkField(eye)) {
+			params.eye = eye;
+		}
+		var declineTimeYear = $('#yearID').val();
+		if (checkField(declineTimeYear)) {
+			params.declineTimeYear = declineTimeYear;
+		}
+
+		var declineTimeMonth = $('#monthID').val();
+		if (checkField(declineTimeMonth)) {
+			params.declineTimeMonth = declineTimeMonth;
+		}
+		/**是否诊断*/
+		var diagnose = $("input[name='diagnose']:checked").val();
+		if (checkField(diagnose)) {
+			params.diagnose = diagnose;
+		}
+		/**眼病*/
+		var oculopathy = $("input[name='oculopathy']:checked").val();
+		if (checkField(oculopathy)) {
+			if (oculopathy == "4") {
+				var oculopathy = $('#oculopathyOther').val();
+				params.oculopathy = oculopathy;
+			} else {
+				params.oculopathy = oculopathy;
+			}
+
+		}
+		/**矫正方法*/
+		var correctionMethod = new Array();
+		$("input[name='correctionMethod']:checked").each(function() {
+			if ($(this).prop("checked")) {
+				correctionMethod.push($(this).val());
+			}
+		});
+		params.correctionMethod = correctionMethod.toString();
+
+		/**效果*/
+		var effect = $("input[name='effect']:checked").val();
+		if (checkField(effect)) {
+			params.effect = effect;
+		}
+
+		/**现视力情况*/
+		var visualAcuity = $("input[name='visualAcuity']:checked").val();
+		if (checkField(visualAcuity)) {
+			params.visualAcuity = visualAcuity;
+		}
+
+		var fVisionCondition = $("input[name='answer_q-16-UpbV']:checked")
+				.attr("id");
+		if (checkField(fVisionCondition)) {
+			var fVisionCondition1 = fVisionCondition.split("_")[1];
+			var fVisionCondition2 = fVisionCondition.split("_")[2];
+			var fOther = "";
+			if (fVisionCondition1 == 6) {
+				fOther = $('#fatherVisionOther').val();
+				params.fOther = fOther;
+
+			}
+			params.fVisionCondition1 = fVisionCondition1;
+			params.fVisionCondition2 = fVisionCondition2;
+		}
+
+		var mVisionCondition = $("input[name='answer_q-16-UpbV1']:checked")
+				.attr("id");
+		if (checkField(mVisionCondition)) {
+			var motherVision1 = mVisionCondition.split("_")[1];
+			var motherVision2 = mVisionCondition.split("_")[2];
+			var mOther = "";
+			if (mOther == 6) {
+				mOther = $('#motherVisionOther').val();
+				params.mOther = mOther;
+			}
+			params.mVisionCondition1 = mVisionCondition1;
+			params.mVisionCondition2 = mVisionCondition2;
+		}
+
+		var sleepingTime = $("input[name='answer_q-19-oJ9n']:checked").attr(
+				"id");
+		if (checkField(sleepingTime)) {
+			var sleepingTimeValue = sleepingTime.split("_")[1];
+			params.sleepingTime = sleepingTimeValue;
+		}
+		//多选
+		var eyeProject = '';
+		var eyeProjectOther = $('#useEyeProjectOther').val();
+		params.eyeProjectOther = eyeProjectOther;
+
+		$('input[name="answer_q-21-Gh4D"]:checked').each(function() {
+			var obj = $(this).attr("id");
+			var objID = obj.split("_")[1];
+			eyeProject += objID;
+			eyeProject += ',';
+		});
+
+		if (eyeProject.length > 0) {
+			params.eyeProject = eyeProject;
+		}
+
+		var readingTime = $("input[name='answer_q-22-aGBL']:checked")
+				.attr("id");
+		if (checkField(readingTime)) {
+			var readingTimeValue = readingTime.split("_")[1];
+			params.readingTime = readingTimeValue;
+		}
+		var readingDistance = $("input[name='answer_q-23-jwFS']:checked").attr(
+				"id");
+		if (checkField(readingDistance)) {
+			var readingDistanceValue = readingDistance.split("_")[1];
+			params.readingDistance = readingDistanceValue;
+		}
+
+		var watchingTime = $("input[name='answer_q-24-huXT']:checked").attr(
+				"id");
+		if (checkField(watchingTime)) {
+			var watchingTimeValue = watchingTime.split("_")[1];
+			params.watchingTime = watchingTimeValue;
+		}
+
+		var watchingDistance = $("input[name='answer_q-25-qY8j']:checked")
+				.attr("id");
+		if (checkField(watchingDistance)) {
+			var watchingDistanceValue = watchingDistance.split("_")[1];
+			params.watchingDistance = watchingDistanceValue;
+		}
+
+		//多选
+
+		//   var eyePoseOther = $('#eyePoseOther').val();
+		//    params.eyePoseOther = eyePoseOther;
+		var eyePositionValue = "";
+		$('input[name="answer_q-26-frXa"]:checked').each(function() {
+			var obj = $(this).attr("id");
+			var objID = obj.split("_")[1];
+			eyePositionValue += objID;
+			eyePositionValue += ',';
+		});
+		if (eyePositionValue.length > 0) {
+			params.eyePosition = eyePositionValue;
+		}
+
+		var homeLightingEnvironment = $(
+				"input[name='answer_q-27-jS7u']:checked").attr("id");
+		if (checkField(homeLightingEnvironment)) {
+			var homeLightingEnvironmentValue = homeLightingEnvironment
+					.split("_")[1];
+			params.homeLightingEnvironment = homeLightingEnvironmentValue;
+		}
+
+		var classroomLightingEnvironment = $(
+				"input[name='answer_q-28-CPI8']:checked").attr("id");
+		if (checkField(classroomLightingEnvironment)) {
+			var classroomLightingEnvironmentValue = classroomLightingEnvironment
+					.split("_")[1];
+			params.classroomLightingEnvironment = classroomLightingEnvironmentValue;
+		}
+
+		var rD = $("#naked_eye_long_r").val();
+		if (checkField(rD)) {
+			params.rD = rD;
+		}
+		var lD = $("#naked_eye_long_l").val();
+		if (checkField(lD)) {
+			params.lD = lD;
+		}
+		var rCva = $("#correct_eye_long_r").val();
+		if (checkField(rCva)) {
+			params.rCva = rCva;
+		}
+		var lCva = $("#correct_eye_long_l").val();
+		if (checkField(lCva)) {
+			params.lCva = lCva;
+		}
+		var tutor = $("#director").val();
+		if (checkField(tutor)) {
+			params.tutor = tutor;
+		}
+		var gmtModified = $("#fillTime").val();
+		if (checkField(gmtModified)) {
+			params.gmtModified = gmtModified;
+		}
+
+		return params;
+		/*  $.post("/kangtong/question/addDirector.action", params, function(result) {
+		     is_enable = true;
+		     if(result == "SUCCESS"){
+		         layer.msg('保存成功！', {icon : 1,shift : 5}, function() {
+		             parent.location.reload();// 关闭当前窗口刷新父窗口
+		         });
+		     }else if(result == "EXIST"){
+		         layer.msg('已存在同名用户！', {icon : 2});
+		     }else if (result == "FAILED") {
+		         layer.msg('保存失败！', {icon : 2});
+		     }
+		 }); */
+	}
 </script>
 
 
@@ -107,1121 +911,3 @@ var CONTEXT_PATH = 'http://127.0.0.1:8081/kangtong';
 
 
 
-
-    <meta charset="UTF-8">
-    <!-- 指定多核浏览器用webkit模式 -->
-    <meta name="renderer" content="webkit">
-    <!-- 设计:三石,马克 | 前端:博,机神 | 后端:德爷,十力 | 团队博客: http://cdc.tencent.com/ -->
-    <!-- 去腾讯化版本 -->
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta name="format-detection" content="telephone=no">
-    <title>康瞳青少年视力康复中心基本信息表</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" type="text/css" href="addQDirector_data/page_survey.css">
-    <!--[if lte IE 8]>
-    <link rel="stylesheet" type="text/css" href="//cdn.ur.qq.com/stylesheets/pc/ie.css?v=1.9.145"/>
-    <![endif]-->
-
-    <!-- <script src="//js.aq.qq.com/js/aq_common.js"></script> -->
-<script>
-
-var is_enable = true;
-    function checkField(value) {
-        if(value != null && value.length>0) {
-            return true;
-        }
-        return false;
-    }
-
-
-    function bindInputChangeEvent() {
-        $(".numbInput").bind("input propertychange",function(){
-            var value = $(this).val();
-            var flag = checkNumber(value);
-            if(flag != 1){
-                $(this).val('');
-            }
-        });
-
-        $(".survey_form_checkbox").click(function(){
-
-            var value = $(this).is(':checked');
-
-            if(value == true) {
-                $(this).removeProp("checked");
-            }else if(value == true) {
-                $(this).prop("checked");
-            }
-        });
-    }
-
-    function checkNumber(value) {
-        //判断价格
-        var reg = /(^[-+]?[1-9]\d*(\.\d{1,2})?$)|(^[-+]?[0]{1}(\.\d{1,2})?$)/;
-
-        if(value == null || value.length==0)
-            return 0;
-        if (value!=null && value.length>0 && reg.test(value)) {
-            return 1;
-        } else {
-            return 2;
-        }
-
-    }
-
-    function check() {
-
-        if(is_enable == false) return;
-
-        var params = {};
-        var name = $('#nameID').val();
-        if(name == null || name.length == 0) {
-            alert('姓名不可以为空哦!');
-            return;
-        }
-        params.name = name;
-
-        var phone = $('#phoneID').val();
-        if(checkField(phone)){
-            params.phone = phone;
-        }
-        var age = $('#ageID').val();
-        if(checkField(age)){
-            params.age = age;
-        }
-        var sex = $('#sexID').val();
-        if(checkField(sex)){
-            if(sex == '男'){
-                params.sex = 1;
-            }else  if(sex == '女'){
-                params.sex = 2;
-            }else{
-                alert('性别填写有误!');
-                return;
-            }
-        }else{
-            params.sex = 1;
-        }
-
-        var whitchEye = $('#whitchEyeID').val();
-        if(checkField(whitchEye)){
-            params.whitchEye = whitchEye;
-        }
-        var year = $('#yearID').val();
-        if(checkField(year)){
-            params.year = year;
-        }
-        var month = $('#monthID').val();
-        if(checkField(month)){
-            params.month = month;
-        }
-        var isConfirmSymptom = $("input[name='isConfirmSymptom']:checked").attr("id");
-        if(checkField(isConfirmSymptom)){
-            var isConfirmSymptomValue = isConfirmSymptom.split("_")[1];
-            params.isConfirmSymptom = isConfirmSymptomValue;
-        }
-
-        var symptom = $("input[name='answer_q-8-z7jX']:checked").attr("id");
-        if(checkField(symptom)){
-            var symptomValue = symptom.split("_")[1];
-            var symptomOther = "";
-            if(symptomValue == 5) {
-                //还需要补充
-                symptomOther = $('#symptom_other').val();
-                params.symptomOther = symptomOther;
-
-            }
-            params.symptom = symptomValue;
-        }
-//        var correctMethod = $("input[name='answer_q-9-bADA']:checked").attr("id");
-//        if(checkField(correctMethod)){
-//            var correctMethodValue = correctMethod.split("_")[1];
-//            params.correctMethod = correctMethodValue;
-//        }
-//
-        var correctMethodValue = "";
-        $('input[name="answer_q-9-bADA"]:checked').each(function(){
-            var obj = $(this).attr("id");
-            var objID = obj.split("_")[1];
-            correctMethodValue += objID;
-            correctMethodValue += ',';
-        });
-        if(correctMethodValue.length > 0) {
-            params.correctMethod = correctMethodValue;
-        }
-
-
-        var effect = $("input[name='answer_q-10-4JG9']:checked").attr("id");
-        if(checkField(effect)){
-            var effectValue = effect.split("_")[1];
-            params.effect = effectValue;
-        }
-        var vision = $("input[name='answer_q-11-rN27']:checked").attr("id");
-        if(checkField(vision)){
-            var visionValue = vision.split("_")[1];
-            params.vision = visionValue;
-        }
-
-        var fatherVision = $("input[name='answer_q-16-UpbV']:checked").attr("id");
-        if(checkField(fatherVision)){
-            var fatherVision1 = fatherVision.split("_")[1];
-            var fatherVision2 = fatherVision.split("_")[2];
-            var fatherVisionOther = "";
-            if(fatherVision1 == 6) {
-                fatherVisionOther = $('#fatherVisionOther').val();
-                params.fatherVisionOther = fatherVisionOther;
-
-            }
-            params.fatherVision1 = fatherVision1;
-            params.fatherVision2 = fatherVision2;
-        }
-
-
-        var motherVision = $("input[name='answer_q-16-UpbV1']:checked").attr("id");
-        if(checkField(motherVision)){
-            var motherVision1 = motherVision.split("_")[1];
-            var motherVision2 = motherVision.split("_")[2];
-            var motherVisionOther = "";
-            if(motherVisionOther == 6) {
-                motherVisionOther = $('#motherVisionOther').val();
-                params.motherVisionOther = motherVisionOther;
-            }
-            params.motherVision1 = motherVision1;
-            params.motherVision2 = motherVision2;
-        }
-
-
-        var dailySleep = $("input[name='answer_q-19-oJ9n']:checked").attr("id");
-        if(checkField(dailySleep)){
-            var dailySleepValue = dailySleep.split("_")[1];
-            params.dailySleep = dailySleepValue;
-        }
-        //多选
-        var useEyeProjectValue = '';
-        var useEyeProjectOther = $('#useEyeProjectOther').val();
-        params.remark = useEyeProjectOther;
-
-        $('input[name="answer_q-21-Gh4D"]:checked').each(function(){
-            var obj = $(this).attr("id");
-            var objID = obj.split("_")[1];
-            useEyeProjectValue += objID;
-            useEyeProjectValue += ',';
-        });
-
-        if(useEyeProjectValue.length > 0) {
-            params.useEyeProject = useEyeProjectValue;
-        }
-
-        var useEyeTime = $("input[name='answer_q-22-aGBL']:checked").attr("id");
-        if(checkField(useEyeTime)){
-            var useEyeTimeValue = useEyeTime.split("_")[1];
-            params.useEyeTime = useEyeTimeValue;
-        }
-        var useEyeDistance = $("input[name='answer_q-23-jwFS']:checked").attr("id");
-        if(checkField(useEyeDistance)){
-            var useEyeDistanceValue = useEyeDistance.split("_")[1];
-            params.useEyeDistance = useEyeDistanceValue;
-        }
-
-
-        var eyeTVTime = $("input[name='answer_q-24-huXT']:checked").attr("id");
-        if(checkField(eyeTVTime)){
-            var eyeTVTimeValue = eyeTVTime.split("_")[1];
-            params.eyeTVTime = eyeTVTimeValue;
-        }
-
-
-        var eyeTVDistance = $("input[name='answer_q-25-qY8j']:checked").attr("id");
-        if(checkField(eyeTVDistance)){
-            var eyeTVDistanceValue = eyeTVDistance.split("_")[1];
-            params.eyeTVDistance = eyeTVDistanceValue;
-        }
-
-        //多选
-
-        var eyePoseOther = $('#eyePoseOther').val();
-        params.eyePoseOther = eyePoseOther;
-        var eyePoseValue = "";
-        $('input[name="answer_q-26-frXa"]:checked').each(function(){
-            var obj = $(this).attr("id");
-            var objID = obj.split("_")[1];
-            eyePoseValue += objID;
-            eyePoseValue += ',';
-        });
-        if(eyePoseValue.length > 0) {
-            params.eyePose = eyePoseValue;
-        }
-
-        var homeLight = $("input[name='answer_q-27-jS7u']:checked").attr("id");
-        if(checkField(homeLight)){
-            var homeLightValue = homeLight.split("_")[1];
-            params.homeLight = homeLightValue;
-        }
-
-        var roomLight = $("input[name='answer_q-28-CPI8']:checked").attr("id");
-        if(checkField(homeLight)){
-            var roomLightValue = roomLight.split("_")[1];
-            params.roomLight = roomLightValue;
-        }
-
-        var nakedEyeLongR = $("#naked_eye_long_r").val();
-        if(checkField(nakedEyeLongR)){
-            params.nakedEyeLongR = nakedEyeLongR;
-        }
-        var nakedEyeLongL = $("#naked_eye_long_l").val();
-        if(checkField(nakedEyeLongL)){
-            params.nakedEyeLongL = nakedEyeLongL;
-        }
-        var correctEyeLongR = $("#correct_eye_long_r").val();
-        if(checkField(correctEyeLongR)){
-            params.correctEyeLongR = correctEyeLongR;
-        }
-        var correctEyeLongL = $("#correct_eye_long_l").val();
-        if(checkField(correctEyeLongL)){
-            params.correctEyeLongL = correctEyeLongL;
-        }
-        var director = $("#director").val();
-        if(checkField(director)){
-            params.director = director;
-        }
-        var fillTime = $("#fillTime").val();
-        if(checkField(fillTime)){
-            params.fillTime = fillTime;
-        }
-        
-
-        $.post("/kangtong/question/addDirector.action", params, function(result) {
-            is_enable = true;
-            if(result == "SUCCESS"){
-                layer.msg('保存成功！', {icon : 1,shift : 5}, function() {
-                    parent.location.reload();// 关闭当前窗口刷新父窗口
-                });
-            }else if(result == "EXIST"){
-                layer.msg('已存在同名用户！', {icon : 2});
-            }else if (result == "FAILED") {
-                layer.msg('保存失败！', {icon : 2});
-            }
-        });
-    }
-    
-</script></head>
-
-
-
-<body class="g_wrapper page_survey g_survey" style="background-color: white;margin-top: 0px;">
-
-<!-- 问卷主体 -->
-<div id="container" class="g_container">
-
-    <div class="survey_background_wrap" style="height: 498px;"></div>
-    <div class="g_content">
-        <div class="survey_wrap">
-            <div class="survey_main">
-                <h1 class="survey_title" style="display: block;">
-                    <div class="inner">
-                        <div class="title_content">
-                            <p>康瞳青少年视力康复中心基本信息表</p>
-                        </div>
-                    </div>
-                </h1>
-                <div class="survey_content">
-
-                    <div class="question question_description" id="" data-type="description" data-id="q-34-iyZk" style="display: block;">
-                        <div class="inner">
-                            <div class="description_content">
-                                <span style="float: left;">
-                                    <strong>姓名：</strong>
-                                    <input type="text" class="fill_blank needsclick" role="textbox" aria-labelledby="questionTitle_q-33-AlYW" style="width: 112px;" id="nameID"></span>
-                                <span style="float: left;">
-                                    <strong>年龄：</strong>
-                                    <input type="text" class="fill_blank needsclick " role="textbox" aria-labelledby="questionTitle_q-33-AlYW" style="width: 112px;" id="ageID"></span>
-                                <span style="float: left;">
-                                    <strong>性别：</strong>
-                                    <input type="text" class="fill_blank needsclick" role="textbox" aria-labelledby="questionTitle_q-33-AlYW" style="width: 112px;" id="sexID"></span>
-                                <span style="float: left;">
-                                    <strong>联系方式：</strong>
-                                    <input type="number" class="fill_blank needsclick numbInput" role="textbox" aria-labelledby="questionTitle_q-33-AlYW" style="width: 112px;" id="phoneID"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="survey_prefix" style="display: block; margin-top: 40px;">
-                        <div class="inner">
-                            <h2 class="prefix_content">
-                                <p style="color: #00a2d4;"><strong>主要信息采集</strong></p>
-                            </h2>
-                        </div>
-                    </div>
-                    <div class="survey_container">
-                        <div class="survey_page" data-pid="p-1-wYXu" style="">
-                            <div class="question question_text_multiple" data-type="text_multiple" id="question_q-7-5MOe" data-id="q-7-5MOe" style="display: block;">
-                                <div class="inner">
-                                    <div class="title" id="questionTitle_q-7-5MOe" aria-label="第1题： 您从什么时候发现(左、右、双)眼视力下降：&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;年&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;月
- ">
-                                        <div role="presetation"> <span class="title_index"> <span class="question_index" data-for="q-7-5MOe">1</span>. </span>
-                                            <h3 class="title_text">
-                                                <p>您从什么时候发现视力下降：&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<input type="text" class="fill_blank needsclick" role="textbox" aria-labelledby="questionTitle_q-7-5MOe" style="width: 50px;" id="whitchEyeID">                                                        &nbsp;眼&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<input type="text" class="fill_blank needsclick" role="textbox" aria-labelledby="questionTitle_q-7-5MOe" style="width: 50px;" id="yearID">                                                        &nbsp;年&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<input type="text" class="fill_blank needsclick" role="textbox" aria-labelledby="questionTitle_q-7-5MOe" style="width: 28px;" id="monthID">&nbsp;月</p>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="question question_radio" id="question_q-1-cFei" data-type="radio" data-id="q-1-cFei" role="group" data-role="radiogroup" style="display: block;">
-                                <div class="inner">
-                                    <div class="title" id="questionTitle_q-1-cFei" aria-label="第2题： 是否到专业医疗机构确诊：
- ">
-                                        <div role="presetation"> <span class="title_index"> <span class="question_index" data-for="q-1-cFei">2</span>. </span>
-                                            <h3 class="title_text">
-                                                <p>是否到专业医疗机构确诊：</p>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                    <div class="inputs">
-                                        <div class="option_item" style="width: 20%;" role="radio" tabindex="0" aria-checked="false">
-                                            <input class="survey_form_checkbox" type="radio" name="isConfirmSymptom" data-oid="o-101-UpxM" data-exclusive="0" id="isConfirmSymptom_1" value="&lt;p&gt;是&lt;/p&gt;
-"> <label for="isConfirmSymptom_1"> <i class="survey_form_ui"></i> <div class="option_text"><p>是</p>
-                                        </div> </label> </div>
-                                        <div class="option_item" style="width: 20%;" role="radio" tabindex="-1" aria-checked="false"> <input class="survey_form_checkbox" type="radio" name="isConfirmSymptom" data-oid="o-102-Qt5y" data-exclusive="0" id="isConfirmSymptom_0" value="&lt;p&gt;否&lt;/p&gt;
-"> <label for="isConfirmSymptom_0"> <i class="survey_form_ui"></i> <div class="option_text"><p>否</p>
-                                        </div></label> </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="question question_radio" id="question_q-8-z7jX" data-type="radio" data-id="q-8-z7jX" role="group" data-role="radiogroup" style="display: block;">
-                                <div class="inner">
-                                    <div class="title" id="questionTitle_q-8-z7jX" aria-label="第3题： 确认为何种病症:
- ">
-                                        <div role="presetation"> <span class="title_index"> <span class="question_index" data-for="q-8-z7jX">3</span>. </span>
-                                            <h3 class="title_text">
-                                                <p>确认为何种病症:</p>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                    <div class="inputs">
-                                        <div class="option_item" style="width: 15%;" role="radio" tabindex="0" aria-checked="false"> <input class="survey_form_checkbox" type="radio" name="answer_q-8-z7jX" data-oid="o-101-e8HV" data-exclusive="0" id="symptom_1" value="&lt;p&gt;近视&lt;/p&gt;
-"> <label for="symptom_1"> <i class="survey_form_ui"></i> <div class="option_text"><p>近视</p>
-                                    </div></label> </div>
-                                        <div class="option_item" style="width: 15%;" role="radio" tabindex="1" aria-checked="false"> <input class="survey_form_checkbox" type="radio" name="answer_q-8-z7jX" data-oid="o-101-e8HV" data-exclusive="0" id="symptom_2" value="&lt;p&gt;远视&lt;/p&gt;
-"> <label for="symptom_2"> <i class="survey_form_ui"></i> <div class="option_text"><p>远视</p>
-                                        </div></label> </div>
-                                        <div class="option_item" style="width: 15%;" role="radio" tabindex="2" aria-checked="false"> <input class="survey_form_checkbox" type="radio" name="answer_q-8-z7jX" data-oid="o-102-ef7d" data-exclusive="0" id="symptom_3" value="&lt;p&gt;弱视&lt;/p&gt;
-"> <label for="symptom_3"> <i class="survey_form_ui"></i> <div class="option_text"><p>弱视</p>
-                                        </div>  </label> </div>
-                                        <div class="option_item" style="width: 15%;" role="radio" tabindex="3" aria-checked="false"> <input class="survey_form_checkbox" type="radio" name="answer_q-8-z7jX" data-oid="o-102-ef7d" data-exclusive="0" id="symptom_4" value="&lt;p&gt;斜视&lt;/p&gt;
-"> <label for="symptom_4"> <i class="survey_form_ui"></i> <div class="option_text"><p>斜视</p>
-                                        </div>  </label> </div>
-                                        <div class="option_item" style="width: 40%;" role="radio" tabindex="4" aria-checked="false"> <input class="survey_form_checkbox" type="radio" name="answer_q-8-z7jX" data-oid="o-103-VAIO" data-exclusive="0" id="symptom_5" value="&lt;p&gt;其他&lt;input type=&quot;text&quot; class=&quot;fill_blank needsclick&quot; role=&quot;textbox&quot; aria-labelledby=&quot;questionTitle_q-8-z7jX&quot; style=&quot;width: 56px;&quot; id=&quot;fillblank-7rG5&quot;&gt;&lt;/p&gt;
-"> <label for="symptom_5"> <i class="survey_form_ui"></i> <div class="option_text"><p>其他<input type="text" class="fill_blank needsclick" role="textbox" aria-labelledby="questionTitle_q-8-z7jX" style="width: 100px;" id="symptom_other"></p>
-                                        </div> </label> </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="question question_radio" id="question_q-9-bADA" data-type="radio" data-id="q-9-bADA" role="group" data-role="radiogroup" style="display: block;">
-                                <div class="inner">
-                                    <div class="title" id="questionTitle_q-9-bADA" aria-label="第4题： 发现症状后采用何种矫正方法:
- ">
-                                        <div role="presetation"> <span class="title_index"> <span class="question_index" data-for="q-9-bADA">4</span>. </span>
-                                            <h3 class="title_text">
-                                                <p>发现症状后采用何种矫正方法:</p>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                    <div class="inputs">
-                                        
-
-                                        
-                                        
-
-                                        
-                                        
-
-                                        <div class="option_item" style="width: 20%;" role="checkbox" tabindex="0" aria-checked="false"> <input class="survey_form_checkbox" type="checkbox" name="answer_q-9-bADA" data-oid="o-100-ABCD" data-exclusive="0" id="correctMethod_1" value="&lt;p&gt;训练&lt;/p&gt;
-"> <label for="correctMethod_1"> <i class="survey_form_ui"></i> <div class="option_text"><p>训练</p>
-                                        </div> </label> </div>
-                                        <div class="option_item" style="width: 20%;" role="checkbox" tabindex="0" aria-checked="false"> <input class="survey_form_checkbox" type="checkbox" name="answer_q-9-bADA" data-oid="o-100-ABCD" data-exclusive="0" id="correctMethod_2" value="&lt;p&gt;配镜&lt;/p&gt;
-"> <label for="correctMethod_2"> <i class="survey_form_ui"></i> <div class="option_text"><p>配镜</p>
-                                        </div> </label> </div>
-                                        <div class="option_item" style="width: 20%;" role="checkbox" tabindex="0" aria-checked="false"> <input class="survey_form_checkbox" type="checkbox" name="answer_q-9-bADA" data-oid="o-100-ABCD" data-exclusive="0" id="correctMethod_3" value="&lt;p&gt;手术&lt;/p&gt;
-"> <label for="correctMethod_3"> <i class="survey_form_ui"></i> <div class="option_text"><p>手术</p>
-                                        </div> </label> </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="question question_radio" id="question_q-10-4JG9" data-type="radio" data-id="q-10-4JG9" role="group" data-role="radiogroup" style="display: block;">
-                                <div class="inner">
-                                    <div class="title" id="questionTitle_q-10-4JG9" aria-label="第5题： 效果如何:
- ">
-                                        <div role="presetation"> <span class="title_index"> <span class="question_index" data-for="q-10-4JG9">5</span>. </span>
-                                            <h3 class="title_text">
-                                                <p>效果如何:</p>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                    <div class="inputs">
-                                        <div class="option_item" style="width: 20%;" role="radio" tabindex="0" aria-checked="false"> <input class="survey_form_checkbox" type="radio" name="answer_q-10-4JG9" data-oid="o-100-ABCD" data-exclusive="0" id="effect_1" value="&lt;p&gt;效果好&lt;/p&gt;
-"> <label for="effect_1"> <i class="survey_form_ui"></i> <div class="option_text"><p>效果好</p>
-                                        </div>  </label> </div>
-                                        <div class="option_item" style="width: 20%;" role="radio" tabindex="-1" aria-checked="false"> <input class="survey_form_checkbox" type="radio" name="answer_q-10-4JG9" data-oid="o-101-EFGH" data-exclusive="0" id="effect_2" value="&lt;p&gt;效果不佳&lt;/p&gt;
-"> <label for="effect_2"> <i class="survey_form_ui"></i> <div class="option_text"><p>效果不佳</p>
-                                        </div></label> </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="question question_radio" id="question_q-11-rN27" data-type="radio" data-id="q-11-rN27" role="group" data-role="radiogroup" style="display: block;">
-                                <div class="inner">
-                                    <div class="title" id="questionTitle_q-11-rN27" aria-label="第6题： 现视力情况:
- ">
-                                        <div role="presetation"> <span class="title_index"> <span class="question_index" data-for="q-11-rN27">6</span>. </span>
-                                            <h3 class="title_text">
-                                                <p>现视力情况:</p>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                    <div class="inputs">
-                                        <div class="option_item" style="width: 20%;" role="radio" tabindex="0" aria-checked="false"> <input class="survey_form_checkbox" type="radio" name="answer_q-11-rN27" data-oid="o-100-ABCD" data-exclusive="0" id="vision_1" value="&lt;p&gt;无变化&nbsp;&lt;/p&gt;
-"> <label for="vision_1"> <i class="survey_form_ui"></i> <div class="option_text"><p>无变化&nbsp;</p>
-                                        </div></label> </div>
-                                        <div class="option_item" style="width: 20%;" role="radio" tabindex="-1" aria-checked="false"> <input class="survey_form_checkbox" type="radio" name="answer_q-11-rN27" data-oid="o-101-EFGH" data-exclusive="0" id="vision_2" value="&lt;p&gt;继续下降&lt;/p&gt;
-"> <label for="vision_2"> <i class="survey_form_ui"></i> <div class="option_text"><p>继续下降</p>
-                                        </div></label> </div>
-                                        <div class="option_item" style="width: 20%;" role="radio" tabindex="-1" aria-checked="false"> <input class="survey_form_checkbox" type="radio" name="answer_q-11-rN27" data-oid="o-101-EFGH" data-exclusive="0" id="vision_3" value="&lt;p&gt;有提升&lt;/p&gt;
-"> <label for="vision_3"> <i class="survey_form_ui"></i> <div class="option_text"><p>有提升</p>
-                                        </div></label> </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="question question_description" id="question_q-12-emxw" data-type="description" data-id="q-12-emxw" style="display: block;">
-                                <div class="inner">
-                                    <div class="description_content">
-                                        <p style="color: #00a2d4;"><strong>遗传因素排查</strong></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="question question_radio" id="question_q-16-UpbV" data-type="radio" data-id="q-16-UpbV" role="group" data-role="radiogroup" style="display: block;">
-                                <div class="inner">
-                                    <div class="title" id="questionTitle_q-16-UpbV" aria-label="第7题： 父亲：
- ">
-                                        <div role="presetation"> <span class="title_index"> <span class="question_index" data-for="q-16-UpbV">7</span>. </span>
-                                            <h3 class="title_text">
-                                                <p>父亲：</p>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                    <div class="inputs">
-                                        <span style="font-size: 14px;margin-top: 8px;margin-right: 10px;display: inline-block;">近视(</span>
-                                        <div class="option_item" style="width: 8%;" role="radio" tabindex="0" aria-checked="false">
-                                            <input class="survey_form_checkbox" type="radio" name="answer_q-16-UpbV" data-oid="o-100-ABCD" data-exclusive="0" id="fatherVision_1_1" value="&lt;p&gt;选项&lt;/p&gt;
-                                                            ">
-                                            <label for="fatherVision_1_1">
-                                                <i class="survey_form_ui"></i>
-                                                <div class="option_text"><p>轻</p>
-                                                </div>
-                                            </label>
-                                        </div>
-                                        <div class="option_item" style="width: 8%;" role="radio" tabindex="0" aria-checked="false">
-                                            <input class="survey_form_checkbox" type="radio" name="answer_q-16-UpbV" data-oid="o-100-ABCD1" data-exclusive="0" id="fatherVision_1_2" value="&lt;p&gt;选项&lt;/p&gt;
-                                                            ">
-                                            <label for="fatherVision_1_2">
-                                                <i class="survey_form_ui"></i>
-                                                <div class="option_text"><p>中</p>
-                                                </div>
-                                            </label>
-                                        </div>
-                                        <div class="option_item" style="width: 8%;" role="radio" tabindex="0" aria-checked="false">
-                                            <input class="survey_form_checkbox" type="radio" name="answer_q-16-UpbV" data-oid="o-100-ABCD2" data-exclusive="0" id="fatherVision_1_3" value="&lt;p&gt;选项&lt;/p&gt;
-                                                            ">
-                                            <label for="fatherVision_1_3">
-                                                <i class="survey_form_ui"></i>
-                                                <div class="option_text"><p>重</p>
-                                                </div>
-                                            </label>
-                                        </div>
-                                        <span style="font-size: 14px; margin-left: -10px;margin-right: 5%;">)</span>
-                                        <span style="font-size: 14px;margin-top: 8px;margin-right: 10px;display: inline-block;">远视(</span>
-                                        <div class="option_item" style="width: 8%;" role="radio" tabindex="0" aria-checked="false">
-                                            <input class="survey_form_checkbox" type="radio" name="answer_q-16-UpbV" data-oid="o-100-ABCD3" data-exclusive="0" id="fatherVision_2_1" value="&lt;p&gt;选项&lt;/p&gt;
-                                                            ">
-                                            <label for="fatherVision_2_1">
-                                                <i class="survey_form_ui"></i>
-                                                <div class="option_text"><p>轻</p>
-                                                </div>
-                                            </label>
-                                        </div>
-                                        <div class="option_item" style="width: 8%;" role="radio" tabindex="0" aria-checked="false">
-                                            <input class="survey_form_checkbox" type="radio" name="answer_q-16-UpbV" data-oid="o-100-ABCD4" data-exclusive="0" id="fatherVision_2_2" value="&lt;p&gt;选项&lt;/p&gt;
-                                                            ">
-                                            <label for="fatherVision_2_2">
-                                                <i class="survey_form_ui"></i>
-                                                <div class="option_text"><p>中</p>
-                                                </div>
-                                            </label>
-                                        </div>
-                                        <div class="option_item" style="width: 8%;" role="radio" tabindex="0" aria-checked="false">
-                                            <input class="survey_form_checkbox" type="radio" name="answer_q-16-UpbV" data-oid="o-100-ABCD5" data-exclusive="0" id="fatherVision_2_3" value="&lt;p&gt;选项&lt;/p&gt;
-                                                            ">
-                                            <label for="fatherVision_2_3">
-                                                <i class="survey_form_ui"></i>
-                                                <div class="option_text"><p>重</p>
-                                                </div>
-                                            </label>
-                                        </div>
-                                        <span style="font-size: 14px;margin-left: -10px;margin-right: 5%;">)</span>
-                                        <span style="font-size: 14px;margin-top: 8px;margin-right: 10px;display: inline-block;">散光(</span>
-                                        <div class="option_item" style="width: 8%;" role="radio" tabindex="0" aria-checked="false">
-                                            <input class="survey_form_checkbox" type="radio" name="answer_q-16-UpbV" data-oid="o-100-ABCD6" data-exclusive="0" id="fatherVision_3_1" value="&lt;p&gt;选项&lt;/p&gt;
-                                                            ">
-                                            <label for="fatherVision_3_1">
-                                                <i class="survey_form_ui"></i>
-                                                <div class="option_text"><p>轻</p>
-                                                </div>
-                                            </label>
-                                        </div>
-                                        <div class="option_item" style="width: 8%;" role="radio" tabindex="0" aria-checked="false">
-                                            <input class="survey_form_checkbox" type="radio" name="answer_q-16-UpbV" data-oid="o-100-ABCD7" data-exclusive="0" id="fatherVision_3_2" value="&lt;p&gt;选项&lt;/p&gt;
-                                                            ">
-                                            <label for="fatherVision_3_2">
-                                                <i class="survey_form_ui"></i>
-                                                <div class="option_text"><p>中</p>
-                                                </div>
-                                            </label>
-                                        </div>
-                                        <div class="option_item" style="width: 8%;" role="radio" tabindex="0" aria-checked="false">
-                                            <input class="survey_form_checkbox" type="radio" name="answer_q-16-UpbV" data-oid="o-100-ABCD8" data-exclusive="0" id="fatherVision_3_3" value="&lt;p&gt;选项&lt;/p&gt;
-                                                            ">
-                                            <label for="fatherVision_3_3">
-                                                <i class="survey_form_ui"></i>
-                                                <div class="option_text"><p>重</p>
-                                                </div>
-                                            </label>
-                                        </div>
-                                        <span style="font-size: 14px;margin-left: -10px;">)</span>
-                                        <div class="option_item" style="width: 20%;" role="radio" tabindex="-1" aria-checked="false">
-                                            <input class="survey_form_checkbox" type="radio" name="answer_q-16-UpbV" data-oid="o-100-ABCD9" data-exclusive="0" id="fatherVision_4_1" value="&lt;p&gt;选项&lt;/p&gt;
-">
-                                            <label for="fatherVision_4_1">
-                                                <i class="survey_form_ui"></i>
-                                                <div class="option_text">
-                                                    <p>斜视</p>
-                                                </div>
-                                            </label>
-                                        </div>
-                                        <div class="option_item" style="width: 20%;" role="radio" tabindex="-1" aria-checked="false">
-                                            <input class="survey_form_checkbox" type="radio" name="answer_q-16-UpbV" data-oid="o-100-ABCD10" data-exclusive="0" id="fatherVision_5_1" value="&lt;p&gt;选项&lt;/p&gt;
-">
-                                            <label for="fatherVision_5_1">
-                                                <i class="survey_form_ui"></i>
-                                                <div class="option_text">
-                                                    <p>弱视</p>
-                                                </div>
-                                            </label>
-                                        </div>
-                                        <div class="option_item" style="width: 30%;" role="radio" tabindex="-1" aria-checked="false">
-                                            <input class="survey_form_checkbox" type="radio" name="answer_q-16-UpbV" data-oid="o-103-VAIO" data-exclusive="0" id="fatherVision_6_1" value="&lt;p&gt;其他眼病&lt;input type=&quot;text&quot; class=&quot;fill_blank needsclick&quot; role=&quot;textbox&quot; aria-labelledby=&quot;questionTitle_q-8-z7jX&quot; style=&quot;width: 56px;&quot; id=&quot;fillblank-7rG5&quot;&gt;&lt;/p&gt;
-                                            ">
-                                            <label for="fatherVision_6_1">
-                                                <i class="survey_form_ui"></i>
-                                                <div class="option_text">
-                                                    <p>其他眼病<input type="text" class="fill_blank needsclick" role="textbox" aria-labelledby="questionTitle_q-8-z7jX" style="width: 100px;" id="fatherVisonOther"></p>
-                                                </div>
-                                            </label>
-                                        </div>
-                                        <div class="option_item" style="width: 20%;" role="radio" tabindex="-1" aria-checked="false">
-                                            <input class="survey_form_checkbox" type="radio" name="answer_q-16-UpbV" data-oid="o-100-ABCD10" data-exclusive="0" id="fatherVision_7_1" value="&lt;p&gt;选项&lt;/p&gt;
-">
-                                            <label for="fatherVision_7_1">
-                                                <i class="survey_form_ui"></i>
-                                                <div class="option_text">
-                                                    <p>无</p>
-                                                </div>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="question question_radio" id="question_q-17-DLdK" data-type="radio" data-id="q-17-DLdK" role="group" data-role="radiogroup" style="display: block;">
-                                <div class="inner">
-                                    <div class="title" id="questionTitle_q-17-DLdK" aria-label="第8题： 母亲： &nbsp;
- ">
-                                        <div role="presetation"> <span class="title_index"> <span class="question_index" data-for="q-17-DLdK">8</span>. </span>
-                                            <h3 class="title_text">
-                                                <p>母亲： &nbsp;</p>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                    <div class="inputs">
-                                        <span style="font-size: 14px;margin-top: 8px;margin-right: 10px;display: inline-block;">近视(</span>
-                                        <div class="option_item" style="width: 8%;" role="radio" tabindex="0" aria-checked="false">
-                                            <input class="survey_form_checkbox" type="radio" name="answer_q-16-UpbV1" data-oid="o-100-ABCD12" data-exclusive="0" id="motherVision_1_1" value="&lt;p&gt;选项&lt;/p&gt;
-                                                                ">
-                                            <label for="motherVision_1_1">
-                                                <i class="survey_form_ui"></i>
-                                                <div class="option_text"><p>轻</p>
-                                                </div>
-                                            </label>
-                                        </div>
-                                        <div class="option_item" style="width: 8%;" role="radio" tabindex="0" aria-checked="false">
-                                            <input class="survey_form_checkbox" type="radio" name="answer_q-16-UpbV1" data-oid="o-100-ABCD13" data-exclusive="0" id="motherVision_1_2" value="&lt;p&gt;选项&lt;/p&gt;
-                                                                ">
-                                            <label for="motherVision_1_2">
-                                                <i class="survey_form_ui"></i>
-                                                <div class="option_text"><p>中</p>
-                                                </div>
-                                            </label>
-                                        </div>
-                                        <div class="option_item" style="width: 8%;" role="radio" tabindex="0" aria-checked="false">
-                                            <input class="survey_form_checkbox" type="radio" name="answer_q-16-UpbV1" data-oid="o-100-ABCD14" data-exclusive="0" id="motherVision_1_3" value="&lt;p&gt;选项&lt;/p&gt;
-                                                                ">
-                                            <label for="motherVision_1_3">
-                                                <i class="survey_form_ui"></i>
-                                                <div class="option_text"><p>重</p>
-                                                </div>
-                                            </label>
-                                        </div>
-                                        <span style="font-size: 14px; margin-left: -10px;margin-right: 5%;">)</span>
-                                        <span style="font-size: 14px;margin-top: 8px;margin-right: 10px;display: inline-block;">远视(</span>
-                                        <div class="option_item" style="width: 8%;" role="radio" tabindex="0" aria-checked="false">
-                                            <input class="survey_form_checkbox" type="radio" name="answer_q-16-UpbV1" data-oid="o-100-ABCD15" data-exclusive="0" id="motherVision_2_1" value="&lt;p&gt;选项&lt;/p&gt;
-                                                                ">
-                                            <label for="motherVision_2_1">
-                                                <i class="survey_form_ui"></i>
-                                                <div class="option_text"><p>轻</p>
-                                                </div>
-                                            </label>
-                                        </div>
-                                        <div class="option_item" style="width: 8%;" role="radio" tabindex="0" aria-checked="false">
-                                            <input class="survey_form_checkbox" type="radio" name="answer_q-16-UpbV1" data-oid="o-100-ABCD16" data-exclusive="0" id="motherVision_2_2" value="&lt;p&gt;选项&lt;/p&gt;
-                                                                ">
-                                            <label for="motherVision_2_2">
-                                                <i class="survey_form_ui"></i>
-                                                <div class="option_text"><p>中</p>
-                                                </div>
-                                            </label>
-                                        </div>
-                                        <div class="option_item" style="width: 8%;" role="radio" tabindex="0" aria-checked="false">
-                                            <input class="survey_form_checkbox" type="radio" name="answer_q-16-UpbV1" data-oid="o-100-ABCD17" data-exclusive="0" id="motherVision_2_3" value="&lt;p&gt;选项&lt;/p&gt;
-                                                                ">
-                                            <label for="motherVision_2_3">
-                                                <i class="survey_form_ui"></i>
-                                                <div class="option_text"><p>重</p>
-                                                </div>
-                                            </label>
-                                        </div>
-                                        <span style="font-size: 14px;margin-left: -10px;margin-right: 5%;">)</span>
-                                        <span style="font-size: 14px;margin-top: 8px;margin-right: 10px;display: inline-block;">散光(</span>
-                                        <div class="option_item" style="width: 8%;" role="radio" tabindex="0" aria-checked="false">
-                                            <input class="survey_form_checkbox" type="radio" name="answer_q-16-UpbV1" data-oid="o-100-ABCD18" data-exclusive="0" id="motherVision_3_1" value="&lt;p&gt;选项&lt;/p&gt;
-                                                                ">
-                                            <label for="motherVision_3_1">
-                                                <i class="survey_form_ui"></i>
-                                                <div class="option_text"><p>轻</p>
-                                                </div>
-                                            </label>
-                                        </div>
-                                        <div class="option_item" style="width: 8%;" role="radio" tabindex="0" aria-checked="false">
-                                            <input class="survey_form_checkbox" type="radio" name="answer_q-16-UpbV1" data-oid="o-100-ABCD19" data-exclusive="0" id="motherVision_3_2" value="&lt;p&gt;选项&lt;/p&gt;
-                                                                ">
-                                            <label for="motherVision_3_2">
-                                                <i class="survey_form_ui"></i>
-                                                <div class="option_text"><p>中</p>
-                                                </div>
-                                            </label>
-                                        </div>
-                                        <div class="option_item" style="width: 8%;" role="radio" tabindex="0" aria-checked="false">
-                                            <input class="survey_form_checkbox" type="radio" name="answer_q-16-UpbV1" data-oid="o-100-ABCD20" data-exclusive="0" id="motherVision_3_3" value="&lt;p&gt;选项&lt;/p&gt;
-                                                                ">
-                                            <label for="motherVision_3_3">
-                                                <i class="survey_form_ui"></i>
-                                                <div class="option_text"><p>重</p>
-                                                </div>
-                                            </label>
-                                        </div>
-                                        <span style="font-size: 14px;margin-left: -10px;">)</span>
-                                        <div class="option_item" style="width: 20%;" role="radio" tabindex="-1" aria-checked="false">
-                                            <input class="survey_form_checkbox" type="radio" name="answer_q-16-UpbV1" data-oid="o-100-ABCD21" data-exclusive="0" id="motherVision_4_1" value="&lt;p&gt;选项&lt;/p&gt;
-    ">
-                                            <label for="motherVision_4_1">
-                                                <i class="survey_form_ui"></i>
-                                                <div class="option_text">
-                                                    <p>斜视</p>
-                                                </div>
-                                            </label>
-                                        </div>
-                                        <div class="option_item" style="width: 20%;" role="radio" tabindex="-1" aria-checked="false">
-                                            <input class="survey_form_checkbox" type="radio" name="answer_q-16-UpbV1" data-oid="o-100-ABCD22" data-exclusive="0" id="motherVision_5_1" value="&lt;p&gt;选项&lt;/p&gt;
-    ">
-                                            <label for="motherVision_5_1">
-                                                <i class="survey_form_ui"></i>
-                                                <div class="option_text">
-                                                    <p>弱视</p>
-                                                </div>
-                                            </label>
-                                        </div>
-                                        <div class="option_item" style="width: 30%;" role="radio" tabindex="-1" aria-checked="false">
-                                            <input class="survey_form_checkbox" type="radio" name="answer_q-16-UpbV1" data-oid="o-103-VAIO" data-exclusive="0" id="motherVision_6_1" value="&lt;p&gt;其他眼病&lt;input type=&quot;text&quot; class=&quot;fill_blank needsclick&quot; role=&quot;textbox&quot; aria-labelledby=&quot;questionTitle_q-8-z7jX&quot; style=&quot;width: 56px;&quot; id=&quot;fillblank-7rG5&quot;&gt;&lt;/p&gt;
-                                                ">
-                                            <label for="motherVision_6_1">
-                                                <i class="survey_form_ui"></i>
-                                                <div class="option_text">
-                                                    <p>其他眼病<input type="text" class="fill_blank needsclick" role="textbox" aria-labelledby="questionTitle_q-8-z7jX" style="width: 100px;" id="motherVisionOther"></p>
-                                                </div>
-                                            </label>
-                                        </div>
-                                        <div class="option_item" style="width: 20%;" role="radio" tabindex="-1" aria-checked="false">
-                                            <input class="survey_form_checkbox" type="radio" name="answer_q-16-UpbV1" data-oid="o-100-ABCD10" data-exclusive="0" id="motherVision_7_1" value="&lt;p&gt;选项&lt;/p&gt;
-">
-                                            <label for="motherVision_7_1">
-                                                <i class="survey_form_ui"></i>
-                                                <div class="option_text">
-                                                    <p>无</p>
-                                                </div>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="question question_description" id="question_q-18-k96o" data-type="description" data-id="q-18-k96o" style="display: block;">
-                                <div class="inner">
-                                    <div class="description_content">
-                                        <p style="color: #00a2d4;"><strong>睡眠状况</strong></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="question question_radio" id="question_q-19-oJ9n" data-type="radio" data-id="q-19-oJ9n" role="group" data-role="radiogroup" style="display: block;">
-                                <div class="inner">
-                                    <div class="title" id="questionTitle_q-19-oJ9n" aria-label="第9题： 每天睡眠：
- ">
-                                        <div role="presetation"> <span class="title_index"> <span class="question_index" data-for="q-19-oJ9n">9</span>. </span>
-                                            <h3 class="title_text">
-                                                <p>每天睡眠：</p>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                    <div class="inputs">
-                                        <div class="option_item" style="width: 16.666666666666668%;" role="radio" tabindex="0" aria-checked="false"> <input class="survey_form_checkbox" type="radio" name="answer_q-19-oJ9n" data-oid="o-101-14lx" data-exclusive="0" id="dailySleep_1" value="&lt;p&gt;6小时&lt;/p&gt;
-"> <label for="dailySleep_1"> <i class="survey_form_ui"></i> <div class="option_text"><p>6小时</p>
-                                        </div>  </label> </div>
-                                        <div class="option_item" style="width: 16.666666666666668%;" role="radio" tabindex="-1" aria-checked="false"> <input class="survey_form_checkbox" type="radio" name="answer_q-19-oJ9n" data-oid="o-102-HVLs" data-exclusive="0" id="dailySleep_2" value="&lt;p&gt;7小时&lt;/p&gt;
-"> <label for="dailySleep_2"> <i class="survey_form_ui"></i> <div class="option_text"><p>7小时</p>
-                                        </div> </label> </div>
-                                        <div class="option_item" style="width: 16.666666666666668%;" role="radio" tabindex="-1" aria-checked="false"> <input class="survey_form_checkbox" type="radio" name="answer_q-19-oJ9n" data-oid="o-2-Zlhi" data-exclusive="0" id="dailySleep_3" value="&lt;p&gt;8小时&lt;/p&gt;
-"> <label for="dailySleep_3"> <i class="survey_form_ui"></i> <div class="option_text"><p>8小时</p>
-                                        </div> </label> </div>
-                                        <div class="option_item" style="width: 16.666666666666668%;" role="radio" tabindex="-1" aria-checked="false"> <input class="survey_form_checkbox" type="radio" name="answer_q-19-oJ9n" data-oid="o-3-AHQl" data-exclusive="0" id="dailySleep_4" value="&lt;p&gt;9小时&lt;/p&gt;
-"> <label for="dailySleep_4"> <i class="survey_form_ui"></i> <div class="option_text"><p>9小时</p>
-                                        </div> </label> </div>
-                                        <div class="option_item" style="width: 16.666666666666668%;" role="radio" tabindex="-1" aria-checked="false"> <input class="survey_form_checkbox" type="radio" name="answer_q-19-oJ9n" data-oid="o-4-BaGO" data-exclusive="0" id="dailySleep_5" value="&lt;p&gt;10小时&lt;/p&gt;
-"> <label for="dailySleep_5"> <i class="survey_form_ui"></i> <div class="option_text"><p>10小时</p>
-                                        </div>  </label> </div>
-                                        <div class="option_item" style="width: 16.666666666666668%;" role="radio" tabindex="-1" aria-checked="false"> <input class="survey_form_checkbox" type="radio" name="answer_q-19-oJ9n" data-oid="o-5-noJC" data-exclusive="0" id="dailySleep_6" value="&lt;p&gt;11小时&lt;/p&gt;
-"> <label for="dailySleep_6"> <i class="survey_form_ui"></i> <div class="option_text"><p>11小时</p>
-                                        </div>  </label> </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="question question_description" id="question_q-20-vrjI" data-type="description" data-id="q-20-vrjI" style="display: block;">
-                                <div class="inner">
-                                    <div class="description_content">
-                                        <p style="color: #00a2d4;"><strong>用眼习惯采集</strong></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="question question_checkbox" id="question_q-21-Gh4D" data-type="checkbox" data-id="q-21-Gh4D" role="group" data-role="checkboxgroup" style="display: block;">
-                                <div class="inner">
-                                    <div class="title" id="questionTitle_q-21-Gh4D" aria-label="第10题： 用眼项目:[Multiple choice]
- ">
-                                        <div role="presetation"> <span class="title_index"> <span class="question_index" data-for="q-21-Gh4D">10</span>. </span>
-                                            <h3 class="title_text">
-                                                <p>用眼项目:<span style="color:#53aaf3;margin-left:3px;" class="multiple_choice" title="[多选题]" aria-label="[多选题]">[多选题]</span></p>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                    <div class="inputs">
-                                        <div class="option_item" style="width: 20%;" role="checkbox" tabindex="0" aria-checked="false">
-                                            <input class="survey_form_checkbox" type="checkbox" name="answer_q-21-Gh4D" data-oid="o-100-ABCD" data-exclusive="0" id="useEyeProject_1" value="&lt;p&gt;看书&lt;/p&gt;
-"> <label for="useEyeProject_1"> <i class="survey_form_ui"></i> <div class="option_text"><p>看书</p>
-                                        </div> </label> </div>
-                                        <div class="option_item" style="width: 20%;" role="checkbox" tabindex="0" aria-checked="false"> <input class="survey_form_checkbox" type="checkbox" name="answer_q-21-Gh4D" data-oid="o-101-EFGH" data-exclusive="0" id="useEyeProject_2" value="&lt;p&gt;看电视&lt;/p&gt;
-"> <label for="useEyeProject_2"> <i class="survey_form_ui"></i> <div class="option_text"><p>看电视</p>
-                                        </div></label> </div>
-                                        <div class="option_item" style="width: 20%;" role="checkbox" tabindex="0" aria-checked="false"> <input class="survey_form_checkbox" type="checkbox" name="answer_q-21-Gh4D" data-oid="o-2-hgu9" data-exclusive="0" id="useEyeProject_3" value="&lt;p&gt;玩手机平板&lt;/p&gt;
-"> <label for="useEyeProject_3"> <i class="survey_form_ui"></i> <div class="option_text"><p>玩手机平板</p>
-                                        </div> </label> </div>
-                                        <div class="option_item" style="width: 40%;" role="checkbox" tabindex="0" aria-checked="false"> <input class="survey_form_checkbox" type="checkbox" name="answer_q-21-Gh4D" data-oid="98" data-exclusive="0" id="useEyeProject_4" value="&lt;p&gt;其他&lt;input type=&quot;text&quot; class=&quot;fill_blank needsclick&quot; role=&quot;textbox&quot; aria-labelledby=&quot;questionTitle_q-21-Gh4D&quot; style=&quot;width: 56px;&quot; id=&quot;fillblank-MneU&quot;&gt;&lt;/p&gt;
-"> <label for="useEyeProject_4"> <i class="survey_form_ui"></i> <div class="option_text"><p>其他<input type="text" class="fill_blank needsclick" role="textbox" aria-labelledby="questionTitle_q-21-Gh4D" style="width: 100px;" id="useEyeProjectOther"></p>
-                                        </div>  </label> </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="question question_radio" id="question_q-22-aGBL" data-type="radio" data-id="q-22-aGBL" role="group" data-role="radiogroup" style="display: block;">
-                                <div class="inner">
-                                    <div class="title" id="questionTitle_q-22-aGBL" aria-label="第11题： 每次看书、作业的时长：
- ">
-                                        <div role="presetation"> <span class="title_index"> <span class="question_index" data-for="q-22-aGBL">11</span>. </span>
-                                            <h3 class="title_text">
-                                                <p>每次看书、作业的时长：</p>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                    <div class="inputs">
-                                        <div class="option_item" style="width: 20%;" role="radio" tabindex="0" aria-checked="false"> <input class="survey_form_checkbox" type="radio" name="answer_q-22-aGBL" data-oid="o-100-ABCD" data-exclusive="0" id="useEyeTime_1" value="&lt;p&gt;1小时&lt;/p&gt;
-"> <label for="useEyeTime_1"> <i class="survey_form_ui"></i> <div class="option_text"><p>1小时</p>
-                                        </div> </label> </div>
-                                        <div class="option_item" style="width: 20%;" role="radio" tabindex="-1" aria-checked="false"> <input class="survey_form_checkbox" type="radio" name="answer_q-22-aGBL" data-oid="o-101-EFGH" data-exclusive="0" id="useEyeTime_2" value="&lt;p&gt;1-2小时&lt;/p&gt;
-"> <label for="useEyeTime_2"> <i class="survey_form_ui"></i> <div class="option_text"><p>1-2小时</p>
-                                        </div>  </label> </div>
-                                        <div class="option_item" style="width: 20%;" role="radio" tabindex="-1" aria-checked="false"> <input class="survey_form_checkbox" type="radio" name="answer_q-22-aGBL" data-oid="o-2-yeCe" data-exclusive="0" id="useEyeTime_3" value="&lt;p&gt;&nbsp;2-3小时&lt;/p&gt;
-"> <label for="useEyeTime_3"> <i class="survey_form_ui"></i> <div class="option_text"><p>&nbsp;2-3小时</p>
-                                        </div> </label> </div>
-                                        <div class="option_item" style="width: 20%;" role="radio" tabindex="-1" aria-checked="false"> <input class="survey_form_checkbox" type="radio" name="answer_q-22-aGBL" data-oid="o-3-If3e" data-exclusive="0" id="useEyeTime_4" value="&lt;p&gt;3-4小时&lt;/p&gt;
-"> <label for="useEyeTime_4"> <i class="survey_form_ui"></i> <div class="option_text"><p>3-4小时</p>
-                                        </div>  </label> </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="question question_radio" id="question_q-23-jwFS" data-type="radio" data-id="q-23-jwFS" role="group" data-role="radiogroup" style="display: block;">
-                                <div class="inner">
-                                    <div class="title" id="questionTitle_q-23-jwFS" aria-label="第12题： 看书距离：
- ">
-                                        <div role="presetation"> <span class="title_index"> <span class="question_index" data-for="q-23-jwFS">12</span>. </span>
-                                            <h3 class="title_text">
-                                                <p>看书距离：</p>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                    <div class="inputs">
-                                        <div class="option_item" style="width: 20%;" role="radio" tabindex="0" aria-checked="false"> <input class="survey_form_checkbox" type="radio" name="answer_q-23-jwFS" data-oid="o-100-ABCD" data-exclusive="0" id="useEyeDistance_1" value="&lt;p&gt;10厘米&lt;/p&gt;
-"> <label for="useEyeDistance_1"> <i class="survey_form_ui"></i> <div class="option_text"><p>10厘米</p>
-                                        </div>  </label> </div>
-                                        <div class="option_item" style="width: 20%;" role="radio" tabindex="-1" aria-checked="false"> <input class="survey_form_checkbox" type="radio" name="answer_q-23-jwFS" data-oid="o-101-EFGH" data-exclusive="0" id="useEyeDistance_2" value="&lt;p&gt;10-15厘米&lt;/p&gt;
-"> <label for="useEyeDistance_2"> <i class="survey_form_ui"></i> <div class="option_text"><p>10-15厘米</p>
-                                        </div> </label> </div>
-                                        <div class="option_item" style="width: 20%;" role="radio" tabindex="-1" aria-checked="false"> <input class="survey_form_checkbox" type="radio" name="answer_q-23-jwFS" data-oid="o-2-FmS5" data-exclusive="0" id="useEyeDistance_3" value="&lt;p&gt;15-20厘米&lt;/p&gt;
-"> <label for="useEyeDistance_3"> <i class="survey_form_ui"></i> <div class="option_text"><p>15-20厘米</p>
-                                        </div> </label> </div>
-                                        <div class="option_item" style="width: 20%;" role="radio" tabindex="-1" aria-checked="false"> <input class="survey_form_checkbox" type="radio" name="answer_q-23-jwFS" data-oid="o-3-9Kid" data-exclusive="0" id="useEyeDistance_4" value="&lt;p&gt;20-30厘米&lt;/p&gt;
-"> <label for="useEyeDistance_4"> <i class="survey_form_ui"></i> <div class="option_text"><p>20-30厘米</p>
-                                        </div> </label> </div>
-                                        <div class="option_item" style="width: 20%;" role="radio" tabindex="-1" aria-checked="false"> <input class="survey_form_checkbox" type="radio" name="answer_q-23-jwFS" data-oid="o-4-BnIK" data-exclusive="0" id="useEyeDistance_5" value="&lt;p&gt;30厘米&lt;/p&gt;
-"> <label for="useEyeDistance_5"> <i class="survey_form_ui"></i> <div class="option_text"><p>30厘米</p>
-                                        </div></label> </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="question question_radio" id="question_q-24-huXT" data-type="radio" data-id="q-24-huXT" role="group" data-role="radiogroup" style="display: block;">
-                                <div class="inner">
-                                    <div class="title" id="questionTitle_q-24-huXT" aria-label="第13题： 单次看电视时长：
- ">
-                                        <div role="presetation"> <span class="title_index"> <span class="question_index" data-for="q-24-huXT">13</span>. </span>
-                                            <h3 class="title_text">
-                                                <p>单次看电视时长：</p>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                    <div class="inputs">
-                                        <div class="option_item" style="width: 20%;" role="radio" tabindex="0" aria-checked="false"> <input class="survey_form_checkbox" type="radio" name="answer_q-24-huXT" data-oid="o-100-ABCD" data-exclusive="0" id="eyeTVTime_1" value="&lt;p&gt;1小时&lt;/p&gt;
-"> <label for="eyeTVTime_1"> <i class="survey_form_ui"></i> <div class="option_text"><p>1小时</p>
-                                        </div>  </label> </div>
-                                        <div class="option_item" style="width: 20%;" role="radio" tabindex="-1" aria-checked="false"> <input class="survey_form_checkbox" type="radio" name="answer_q-24-huXT" data-oid="o-101-EFGH" data-exclusive="0" id="eyeTVTime_2" value="&lt;p&gt;1-2小时&lt;/p&gt;
-"> <label for="eyeTVTime_2"> <i class="survey_form_ui"></i> <div class="option_text"><p>1-2小时</p>
-                                        </div> </label> </div>
-                                        <div class="option_item" style="width: 20%;" role="radio" tabindex="-1" aria-checked="false"> <input class="survey_form_checkbox" type="radio" name="answer_q-24-huXT" data-oid="o-2-XZJs" data-exclusive="0" id="eyeTVTime_3" value="&lt;p&gt;&nbsp;2-3小时&lt;/p&gt;
-"> <label for="eyeTVTime_3"> <i class="survey_form_ui"></i> <div class="option_text"><p>&nbsp;2-3小时</p>
-                                        </div> </label> </div>
-                                        <div class="option_item" style="width: 20%;" role="radio" tabindex="-1" aria-checked="false"> <input class="survey_form_checkbox" type="radio" name="answer_q-24-huXT" data-oid="o-3-tKAa" data-exclusive="0" id="eyeTVTime_4" value="&lt;p&gt;3-4小时&lt;/p&gt;
-"> <label for="eyeTVTime_4"> <i class="survey_form_ui"></i> <div class="option_text"><p>3-4小时</p>
-                                        </div> </label> </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="question question_radio" id="question_q-25-qY8j" data-type="radio" data-id="q-25-qY8j" role="group" data-role="radiogroup" style="display: block;">
-                                <div class="inner">
-                                    <div class="title" id="questionTitle_q-25-qY8j" aria-label="第14题： 看电视距离：
- ">
-                                        <div role="presetation"> <span class="title_index"> <span class="question_index" data-for="q-25-qY8j">14</span>. </span>
-                                            <h3 class="title_text">
-                                                <p>看电视距离：</p>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                    <div class="inputs">
-                                        <div class="option_item" style="width: 20%;" role="radio" tabindex="0" aria-checked="false"> <input class="survey_form_checkbox" type="radio" name="answer_q-25-qY8j" data-oid="o-100-ABCD" data-exclusive="0" id="eyeTVDistance_1" value="&lt;p&gt;2米&lt;/p&gt;
-"> <label for="eyeTVDistance_1"> <i class="survey_form_ui"></i> <div class="option_text"><p>2米</p>
-                                        </div> </label> </div>
-                                        <div class="option_item" style="width: 20%;" role="radio" tabindex="-1" aria-checked="false"> <input class="survey_form_checkbox" type="radio" name="answer_q-25-qY8j" data-oid="o-101-EFGH" data-exclusive="0" id="eyeTVDistance_2" value="&lt;p&gt;2-3米&lt;/p&gt;
-"> <label for="eyeTVDistance_2"> <i class="survey_form_ui"></i> <div class="option_text"><p>2-3米</p>
-                                        </div> </label> </div>
-                                        <div class="option_item" style="width: 20%;" role="radio" tabindex="-1" aria-checked="false"> <input class="survey_form_checkbox" type="radio" name="answer_q-25-qY8j" data-oid="o-2-g8bh" data-exclusive="0" id="eyeTVDistance_3" value="&lt;p&gt;3-4米&lt;/p&gt;
-"> <label for="eyeTVDistance_3"> <i class="survey_form_ui"></i> <div class="option_text"><p>3-4米</p>
-                                        </div>  </label> </div>
-                                        <div class="option_item" style="width: 20%;" role="radio" tabindex="-1" aria-checked="false"> <input class="survey_form_checkbox" type="radio" name="answer_q-25-qY8j" data-oid="o-3-mdiH" data-exclusive="0" id="eyeTVDistance_4" value="&lt;p&gt;4米&lt;/p&gt;
-"> <label for="eyeTVDistance_4"> <i class="survey_form_ui"></i> <div class="option_text"><p>4米</p>
-                                        </div></label> </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="question question_checkbox" id="question_q-26-frXa" data-type="checkbox" data-id="q-26-frXa" role="group" data-role="checkboxgroup" style="display: block;">
-                                <div class="inner">
-                                    <div class="title" id="questionTitle_q-26-frXa" aria-label="第15题： 用眼姿势（有无）：[Multiple choice]
- ">
-                                        <div role="presetation"> <span class="title_index"> <span class="question_index" data-for="q-26-frXa">15</span>. </span>
-                                            <h3 class="title_text">
-                                                <p>用眼姿势（有无）：<span style="color:#53aaf3;margin-left:3px;" class="multiple_choice" title="[多选题]" aria-label="[多选题]">[多选题]</span></p>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                    <div class="inputs">
-                                        <div class="option_item" style="width: 20%;" role="checkbox" tabindex="0" aria-checked="false"> <input class="survey_form_checkbox" type="checkbox" name="answer_q-26-frXa" data-oid="o-100-ABCD" data-exclusive="0" id="eyePose_1" value="&lt;p&gt;歪头&lt;/p&gt;
-"> <label for="eyePose_1"> <i class="survey_form_ui"></i> <div class="option_text"><p>歪头</p>
-                                        </div> </label> </div>
-                                        <div class="option_item" style="width: 20%;" role="checkbox" tabindex="0" aria-checked="false"> <input class="survey_form_checkbox" type="checkbox" name="answer_q-26-frXa" data-oid="o-101-EFGH" data-exclusive="0" id="eyePose_2" value="&lt;p&gt;斜眼&lt;/p&gt;
-"> <label for="eyePose_2"> <i class="survey_form_ui"></i> <div class="option_text"><p>斜眼</p>
-                                        </div>  </label> </div>
-                                        <div class="option_item" style="width: 20%;" role="checkbox" tabindex="0" aria-checked="false"> <input class="survey_form_checkbox" type="checkbox" name="answer_q-26-frXa" data-oid="o-2-hVyB" data-exclusive="0" id="eyePose_3" value="&lt;p&gt;躺着看&lt;/p&gt;
-"> <label for="eyePose_3"> <i class="survey_form_ui"></i> <div class="option_text"><p>躺着看</p>
-                                        </div></label> </div>
-                                        <div class="option_item" style="width: 20%;" role="checkbox" tabindex="0" aria-checked="false"> <input class="survey_form_checkbox" type="checkbox" name="answer_q-26-frXa" data-oid="o-3-TWTT" data-exclusive="0" id="eyePose_4" value="&lt;p&gt;在车上看&lt;/p&gt;
-"> <label for="eyePose_4"> <i class="survey_form_ui"></i> <div class="option_text"><p>在车上看</p>
-                                        </div></label> </div>
-                                        <div class="option_item" style="width: 20%;" role="checkbox" tabindex="0" aria-checked="false"> <input class="survey_form_checkbox" type="checkbox" name="answer_q-26-frXa" data-oid="o-4-rHcf" data-exclusive="0" id="eyePose_5" value="&lt;p&gt;走路看书&lt;/p&gt;
-"> <label for="eyePose_5"> <i class="survey_form_ui"></i> <div class="option_text"><p>走路看书</p>
-                                        </div> </label> </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="question question_description" id="question_q-29-QlzB" data-type="description" data-id="q-29-QlzB" style="display: block;">
-                                <div class="inner">
-                                    <div class="description_content">
-                                        <p style="color: #00a2d4;"><strong>用眼环境</strong></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="question question_radio" id="question_q-27-jS7u" data-type="radio" data-id="q-27-jS7u" role="group" data-role="radiogroup" style="display: block;">
-                                <div class="inner">
-                                    <div class="title" id="questionTitle_q-27-jS7u" aria-label="第16题： 家庭环境光线：
- ">
-                                        <div role="presetation"> <span class="title_index"> <span class="question_index" data-for="q-27-jS7u">16</span>. </span>
-                                            <h3 class="title_text">
-                                                <p>家庭环境光线：</p>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                    <div class="inputs">
-                                        <div class="option_item" style="width: 20%;" role="radio" tabindex="0" aria-checked="false"> <input class="survey_form_checkbox" type="radio" name="answer_q-27-jS7u" data-oid="o-100-ABCD" data-exclusive="0" id="homeLight_1" value="&lt;p&gt;强光&lt;/p&gt;
-"> <label for="homeLight_1"> <i class="survey_form_ui"></i> <div class="option_text"><p>强光</p>
-                                        </div></label> </div>
-                                        <div class="option_item" style="width: 20%;" role="radio" tabindex="-1" aria-checked="false"> <input class="survey_form_checkbox" type="radio" name="answer_q-27-jS7u" data-oid="o-101-EFGH" data-exclusive="0" id="homeLight_2" value="&lt;p&gt;适宜&lt;/p&gt;
-"> <label for="homeLight_2"> <i class="survey_form_ui"></i> <div class="option_text"><p>适宜</p>
-                                        </div></label> </div>
-                                        <div class="option_item" style="width: 20%;" role="radio" tabindex="-1" aria-checked="false"> <input class="survey_form_checkbox" type="radio" name="answer_q-27-jS7u" data-oid="o-2-9FB4" data-exclusive="0" id="homeLight_3" value="&lt;p&gt;偏暗&lt;/p&gt;
-"> <label for="homeLight_3"> <i class="survey_form_ui"></i> <div class="option_text"><p>偏暗</p>
-                                        </div></label> </div>
-                                        <div class="option_item" style="width: 20%;" role="radio" tabindex="-1" aria-checked="false"> <input class="survey_form_checkbox" type="radio" name="answer_q-27-jS7u" data-oid="o-3-y0LA" data-exclusive="0" id="homeLight_4" value="&lt;p&gt;暗&lt;/p&gt;
-"> <label for="homeLight_4"> <i class="survey_form_ui"></i> <div class="option_text"><p>暗</p>
-                                        </div></label> </div>
-                                        <div class="option_item" style="width: 20%;" role="radio" tabindex="-1" aria-checked="false"> <input class="survey_form_checkbox" type="radio" name="answer_q-27-jS7u" data-oid="o-4-zuJc" data-exclusive="0" id="homeLight_5" value="&lt;p&gt;光线闪烁&nbsp;&lt;/p&gt;
-"> <label for="homeLight_5"> <i class="survey_form_ui"></i> <div class="option_text"><p>光线闪烁&nbsp;</p>
-                                        </div></label> </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="question question_radio" id="question_q-28-CPI8" data-type="radio" data-id="q-28-CPI8" role="group" data-role="radiogroup" style="display: block;">
-                                <div class="inner">
-                                    <div class="title" id="questionTitle_q-28-CPI8" aria-label="第17题： 教室环境光线：
- ">
-                                        <div role="presetation"> <span class="title_index"> <span class="question_index" data-for="q-28-CPI8">17</span>. </span>
-                                            <h3 class="title_text">
-                                                <p>教室环境光线：</p>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                    <div class="inputs">
-                                        <div class="option_item" style="width: 16.666666666666668%;" role="radio" tabindex="0" aria-checked="false"> <input class="survey_form_checkbox" type="radio" name="answer_q-28-CPI8" data-oid="o-100-ABCD" data-exclusive="0" id="roomLight_1" value="&lt;p&gt;强光&lt;/p&gt;
-"> <label for="roomLight_1"> <i class="survey_form_ui"></i> <div class="option_text"><p>强光</p>
-                                        </div></label> </div>
-                                        <div class="option_item" style="width: 16.666666666666668%;" role="radio" tabindex="-1" aria-checked="false"> <input class="survey_form_checkbox" type="radio" name="answer_q-28-CPI8" data-oid="o-101-EFGH" data-exclusive="0" id="roomLight_2" value="&lt;p&gt;适宜&lt;/p&gt;
-"> <label for="roomLight_2"> <i class="survey_form_ui"></i> <div class="option_text"><p>适宜</p>
-                                        </div></label> </div>
-                                        <div class="option_item" style="width: 16.666666666666668%;" role="radio" tabindex="-1" aria-checked="false"> <input class="survey_form_checkbox" type="radio" name="answer_q-28-CPI8" data-oid="o-2-Pi6n" data-exclusive="0" id="roomLight_3" value="&lt;p&gt;偏暗&lt;/p&gt;
-"> <label for="roomLight_3"> <i class="survey_form_ui"></i> <div class="option_text"><p>偏暗</p>
-                                        </div></label> </div>
-                                        <div class="option_item" style="width: 16.666666666666668%;" role="radio" tabindex="-1" aria-checked="false"> <input class="survey_form_checkbox" type="radio" name="answer_q-28-CPI8" data-oid="o-3-ix0O" data-exclusive="0" id="roomLight_4" value="&lt;p&gt;暗&lt;/p&gt;
-"> <label for="roomLight_4"> <i class="survey_form_ui"></i> <div class="option_text"><p>暗</p>
-                                        </div></label> </div>
-                                        <div class="option_item" style="width: 16.666666666666668%;" role="radio" tabindex="-1" aria-checked="false"> <input class="survey_form_checkbox" type="radio" name="answer_q-28-CPI8" data-oid="o-4-I3pH" data-exclusive="0" id="roomLight_5" value="&lt;p&gt;光线闪烁&lt;/p&gt;
-"> <label for="roomLight_5"> <i class="survey_form_ui"></i> <div class="option_text"><p>光线闪烁</p>
-                                        </div></label> </div>
-                                        <div class="option_item" style="width: 16.666666666666668%;" role="radio" tabindex="-1" aria-checked="false"> <input class="survey_form_checkbox" type="radio" name="answer_q-28-CPI8" data-oid="o-5-ZagH" data-exclusive="0" id="roomLight_6" value="&lt;p&gt;黑板反光&lt;/p&gt;
-"> <label for="roomLight_6"> <i class="survey_form_ui"></i> <div class="option_text"><p>黑板反光</p>
-                                        </div></label> </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="question question_description" id="question_q-30-yGgM" data-type="description" data-id="q-30-yGgM" style="display: block;">
-                                <div class="inner">
-                                    <div class="description_content">
-                                        <p style="color: #00a2d4;"><strong>视力检查</strong></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="question question_text_multiple" data-type="text_multiple" id="question_q-32-WXdy" data-id="q-32-WXdy" style="display: block;">
-                                <div class="inner">
-                                    <div class="title" id="questionTitle_q-32-WXdy" aria-label="第18题： 裸眼远视力（5米）：&nbsp;右眼&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 左眼 &nbsp;&nbsp;
- ">
-                                        <div role="presetation"> <span class="title_index"> <span class="question_index" data-for="q-32-WXdy">18</span>. </span>
-                                            <h3 class="title_text">
-                                                <p>裸眼远视力（5米）：&nbsp;右眼&nbsp;<input type="text" class="fill_blank needsclick" role="textbox" aria-labelledby="questionTitle_q-32-WXdy" style="width: 112px;" id="naked_eye_long_r">&nbsp; &nbsp; &nbsp; &nbsp;
-                                                    &nbsp; &nbsp; 左眼<input type="text" class="fill_blank needsclick" role="textbox" aria-labelledby="questionTitle_q-32-WXdy" style="width: 112px;" id="naked_eye_long_l"> &nbsp;&nbsp;</p>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="question question_text_multiple" data-type="text_multiple" id="question_q-33-AlYW" data-id="q-33-AlYW" style="display: block;">
-                                <div class="inner">
-                                    <div class="title" id="questionTitle_q-33-AlYW" aria-label="第19题： 矫正远视力（5米）: 右眼&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 左眼
- ">
-                                        <div role="presetation"> <span class="title_index"> <span class="question_index" data-for="q-33-AlYW">19</span>. </span>
-                                            <h3 class="title_text">
-                                                <p>矫正远视力（5米）: 右眼&nbsp;<input type="text" class="fill_blank needsclick" role="textbox" aria-labelledby="questionTitle_q-33-AlYW" style="width: 112px;" id="correct_eye_long_r">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                                                    &nbsp; 左眼
-                                                    <input type="text" class="fill_blank needsclick" role="textbox" aria-labelledby="questionTitle_q-33-AlYW" style="width: 112px;" id="correct_eye_long_l"></p>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="question question_description" id="question_q-34-iyZk" data-type="description" data-id="q-34-iyZk" style="display: block;">
-                                <div class="inner">
-                                    <div class="description_content">
-                                        <span style="float: left;"><strong>训练导师</strong><input type="text" class="fill_blank needsclick" role="textbox" aria-labelledby="questionTitle_q-33-AlYW" style="width: 112px;" id="director"></span>
-                                        <span style="float: right;"><strong>时间</strong><input type="text" class="fill_blank needsclick" role="textbox" aria-labelledby="questionTitle_q-33-AlYW" style="width: 112px;" id="fillTime" value="2018-11-26"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="survey_control" style="margin-top: 50px;">
-                        <div class="inner">
-                            <a href="javascript:check();" title="提交" aria-label="提交" role="button" class="survey_btn survey_submit" style="display: inline-block;">提交</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-</div>
-
-
-
-
-
-<script>
-
-    $(function(){
-        bindInputChangeEvent();
-
-        $('#fillTime').val(getNowFormatDate());
-    });
-
-</script></body></html>

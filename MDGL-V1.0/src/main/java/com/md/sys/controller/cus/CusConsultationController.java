@@ -49,6 +49,7 @@ public class CusConsultationController {
 	@RequestMapping("doDeleteObject")
 	@ResponseBody
 	public JsonResult doDeleteObject(Integer id) {
+		
 		cusConsultationService.deleteObject(id);
 		return new JsonResult("Delete ok");
 	}

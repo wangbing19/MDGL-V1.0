@@ -21,10 +21,6 @@
 	href="bower_components/ztree/css/metroStyle/metroStyle.css" />
 <link rel="stylesheet"
 	href="bower_components/treegrid/jquery.treegrid.css" />
-  <link rel="stylesheet" href="mycss/my_buttom_delete.css"/> 
-  <link rel="stylesheet" href="mycss/my_buttom_insert.css"/>
-  <link rel="stylesheet" href="mycss/my_buttom_update.css"/>
-  <link rel="stylesheet" href="mycss/my_buttom_chufang.css"/>
 </head>
 <body class="hold-transition skin-blue-light sidebar-mini">
 	<div class="wrapper">
@@ -144,19 +140,20 @@
 							<li><a id="load-dept-id">预约管理</a></li>
 						</ul></li>
 					<!-- ************************************************** -->
-					    <li class="treeview">
-        				  <a href="#"><i class="fa fa-link"></i> <span>远程处方下载</span>
-          					 <span class="pull-right-container">
-               		   			 <i class="fa fa-angle-left pull-right"></i>
-             				 </span> </a>
-          				 <ul class="treeview-menu">
-           					 <li><a id="load-pre-diagnosis_id">症状处方</a></li>
-          				</ul></li>  
+					<li class="treeview"><a href="#"><i class="fa fa-link"></i>
+							<span>专家远程诊断</span> <span class="pull-right-container"> <i
+								class="fa fa-angle-left pull-right"></i>
+						</span> </a></li>
 					<!-- ************************************************** -->
+					<li class="treeview"><a href="#"><i class="fa fa-link"></i>
+							<span>远程处方下载</span> <span class="pull-right-container"> <i
+								class="fa fa-angle-left pull-right"></i>
+						</span> </a></li>
 				</ul>
 				<!-- ============================================================================================ -->
 
 				<!-- 很重要，不能删 -->
+				>
 			</section>
 		</aside>
 
@@ -229,7 +226,6 @@
 				doLoadUI("load-cus-customer-id", "customer/doCustomerListUI.do")
 				doLoadUI("load-appointment-id", "appointment/doAppointmentUI.do")
 				doLoadUI("load-cus-consultation-id", "cusConsultation/doCusConsultationListUI.do")
-				doLoadUI("load-pre-diagnosis_id","diagnosis/doDiagnosis.do")
 			});
 			function doLoadUI(id, url) {
 				$("#" + id).click(function() {

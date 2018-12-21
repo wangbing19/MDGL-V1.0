@@ -21,8 +21,10 @@ public class CusConsultation implements Serializable {
 	private String tel;
 	/**左右眼*/
 	private String eye;
-	/**视力下降时间*/
-	private String declineTime;
+	/**视力下降时间(年)*/
+	private String declineTimeYear;
+	/**视力下降时间(月)*/
+	private String declineTimeMonth;
 	/**诊断*/
 	private String diagnose;
 	/**眼病*/
@@ -42,17 +44,19 @@ public class CusConsultation implements Serializable {
 	/**母其他*/
 	private String mOther;
 	/**睡眠时间*/
-	private int sleepingTime;
+	private String sleepingTime;
 	/**用眼项目*/
 	private String eyeProject;
+	/**用眼项目其他*/
+	private String eyeProjectOther;
 	/**每次看书、作业的时长*/
-	private int readingTime;
+	private String readingTime;
 	/**看书距离*/
-	private int readingDistance;
+	private String readingDistance;
 	/**单次看电视时长*/
-	private int watchingTime;
+	private String watchingTime;
 	/**看电视距离*/
-	private int watchingDistance;
+	private String watchingDistance;
 	/**用眼姿势*/
 	private String eyePosition;
 	/**家庭环境光线*/
@@ -77,6 +81,8 @@ public class CusConsultation implements Serializable {
 	private String createdUser;
 	/**修改用户*/
 	private String modifiedUser;
+	
+	
 	public int getId() {
 		return id;
 	}
@@ -113,11 +119,17 @@ public class CusConsultation implements Serializable {
 	public void setEye(String eye) {
 		this.eye = eye;
 	}
-	public String getDeclineTime() {
-		return declineTime;
+	public String getDeclineTimeYear() {
+		return declineTimeYear;
 	}
-	public void setDeclineTime(String declineTime) {
-		this.declineTime = declineTime;
+	public void setDeclineTimeYear(String declineTimeYear) {
+		this.declineTimeYear = declineTimeYear;
+	}
+	public String getDeclineTimeMonth() {
+		return declineTimeMonth;
+	}
+	public void setDeclineTimeMonth(String declineTimeMonth) {
+		this.declineTimeMonth = declineTimeMonth;
 	}
 	public String getDiagnose() {
 		return diagnose;
@@ -173,10 +185,10 @@ public class CusConsultation implements Serializable {
 	public void setmOther(String mOther) {
 		this.mOther = mOther;
 	}
-	public int getSleepingTime() {
+	public String getSleepingTime() {
 		return sleepingTime;
 	}
-	public void setSleepingTime(int sleepingTime) {
+	public void setSleepingTime(String sleepingTime) {
 		this.sleepingTime = sleepingTime;
 	}
 	public String getEyeProject() {
@@ -185,28 +197,34 @@ public class CusConsultation implements Serializable {
 	public void setEyeProject(String eyeProject) {
 		this.eyeProject = eyeProject;
 	}
-	public int getReadingTime() {
+	public String getEyeProjectOther() {
+		return eyeProjectOther;
+	}
+	public void setEyeProjectOther(String eyeProjectOther) {
+		this.eyeProjectOther = eyeProjectOther;
+	}
+	public String getReadingTime() {
 		return readingTime;
 	}
-	public void setReadingTime(int readingTime) {
+	public void setReadingTime(String readingTime) {
 		this.readingTime = readingTime;
 	}
-	public int getReadingDistance() {
+	public String getReadingDistance() {
 		return readingDistance;
 	}
-	public void setReadingDistance(int readingDistance) {
+	public void setReadingDistance(String readingDistance) {
 		this.readingDistance = readingDistance;
 	}
-	public int getWatchingTime() {
+	public String getWatchingTime() {
 		return watchingTime;
 	}
-	public void setWatchingTime(int watchingTime) {
+	public void setWatchingTime(String watchingTime) {
 		this.watchingTime = watchingTime;
 	}
-	public int getWatchingDistance() {
+	public String getWatchingDistance() {
 		return watchingDistance;
 	}
-	public void setWatchingDistance(int watchingDistance) {
+	public void setWatchingDistance(String watchingDistance) {
 		this.watchingDistance = watchingDistance;
 	}
 	public String getEyePosition() {
@@ -281,6 +299,7 @@ public class CusConsultation implements Serializable {
 	public void setModifiedUser(String modifiedUser) {
 		this.modifiedUser = modifiedUser;
 	}
+	
 	
 	
 	
