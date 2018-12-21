@@ -299,6 +299,22 @@ public class CusConsultation implements Serializable {
 	public void setModifiedUser(String modifiedUser) {
 		this.modifiedUser = modifiedUser;
 	}
+	@Override
+	public String toString() {
+		return "CusConsultation [id=" + id + ", name=" + name + ", age=" + age + ", gender=" + gender + ", tel=" + tel
+				+ ", eye=" + eye + ", declineTimeYear=" + declineTimeYear + ", declineTimeMonth=" + declineTimeMonth
+				+ ", diagnose=" + diagnose + ", oculopathy=" + oculopathy + ", correctionMethod=" + correctionMethod
+				+ ", effect=" + effect + ", visualAcuity=" + visualAcuity + ", fVisionCondition=" + fVisionCondition
+				+ ", fOther=" + fOther + ", mVisionCondition=" + mVisionCondition + ", mOther=" + mOther
+				+ ", sleepingTime=" + sleepingTime + ", eyeProject=" + eyeProject + ", eyeProjectOther="
+				+ eyeProjectOther + ", readingTime=" + readingTime + ", readingDistance=" + readingDistance
+				+ ", watchingTime=" + watchingTime + ", watchingDistance=" + watchingDistance + ", eyePosition="
+				+ eyePosition + ", homeLightingEnvironment=" + homeLightingEnvironment
+				+ ", classroomLightingEnvironment=" + classroomLightingEnvironment + ", rD=" + rD + ", lD=" + lD
+				+ ", rCva=" + rCva + ", lCva=" + lCva + ", tutor=" + tutor + ", gmtCreate=" + gmtCreate
+				+ ", gmtModified=" + gmtModified + ", createdUser=" + createdUser + ", modifiedUser=" + modifiedUser
+				+ "]";
+	}
 	
 	
 	
