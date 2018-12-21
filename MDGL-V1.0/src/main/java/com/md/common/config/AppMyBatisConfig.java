@@ -35,6 +35,10 @@ public class AppMyBatisConfig {
 		 new SqlSessionFactoryBean();
 		 //2.配置数据源
 		 fBean.setDataSource(dataSource);
+		//配置驼峰规则
+		 org.apache.ibatis.session.Configuration configuration = new org.apache.ibatis.session.Configuration();
+		 configuration.setMapUnderscoreToCamelCase(true);
+		 fBean.setConfiguration(configuration);
 		 //3.设置映射文件
 		 Resource[] mapperLocations=
          new PathMatchingResourcePatternResolver()
