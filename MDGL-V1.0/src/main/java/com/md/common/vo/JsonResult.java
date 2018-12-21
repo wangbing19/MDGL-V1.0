@@ -45,6 +45,11 @@ public class JsonResult implements Serializable{
 	public void setData(Object data) {
 		this.data = data;
 	}
+	@Override
+	public String toString() {
+		return "JsonResult [state=" + state + ", message=" + message + ", data=" + data + "]";
+	}
+	
 }
 
 

@@ -26,7 +26,9 @@
 						<tr>
 							<th>ID</th>
 							<th>用户名</th>
-							<th>所属上级</th>
+							<th>上级用户</th>
+							<th>客户上限</th>
+							<th>门店上限</th>
 							<th>邮箱</th>
 							<th>手机号</th>
 							<th>地址</th>
@@ -151,6 +153,9 @@
    }
    function doHandleResponseResult(result){
 	   if(result.state==1){
+		   
+		   console.log(result.data.records);
+		   
 		  doSetPagination(result.data);
 		  doSetTableBodyRows(result.data.records);
 		}else{
@@ -174,13 +179,15 @@
    function doCreateTds(row){
 	   var tds="<td><input type='radio' name='radioId' value='"+row.id+"' ></td>"+
 	     "<td>"+row.username+"</td>"+
-	     "<td>"+row.sysDept.name+"</td>"+
+	     "<td>"+row.parent_username+"</td>"+
+	     "<td>"+row.customer_limit+"</td>"+
+	     "<td>"+row.dept_limit+"</td>"+
 	     "<td>"+row.email+"</td>"+
 	     "<td>"+row.mobile+"</td>"+
 	     "<td>"+row.address+"</td>"+
 	     "<td>"+(row.valid?"启用":"禁用")+"</td>"+
-	     "<td>"+new Date(row.createdTime).toLocaleString()+"</td>"+
-	     "<td>"+new Date(row.modifiedTime).toLocaleString()+"</td>"+
+	     "<td>"+new Date(row.created_time).toLocaleString()+"</td>"+
+	     "<td>"+new Date(row.modified_time).toLocaleString()+"</td>"+
 	     "<td><button type='button' class='btn btn-default btn-valid'>"+(row.valid?"禁用":"启用")+"</button></td>"; 
        return tds;
    }

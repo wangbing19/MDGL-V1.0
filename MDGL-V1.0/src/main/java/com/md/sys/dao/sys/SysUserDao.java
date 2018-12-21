@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.md.common.vo.Node;
 import com.md.sys.entity.sys.SysUser;
 import com.md.sys.vo.sys.SysUserDeptResult;
 
@@ -25,10 +26,19 @@ public interface SysUserDao {
 	  * @param pageSize 页面大小
 	  * @return 当前页记录
 	  */
-	 List<SysUserDeptResult> findPageObjects(
+	 List<SysUser> findPageObjects(
 			 @Param("username")String username,
 			 @Param("startIndex")Integer startIndex,
 			 @Param("pageSize")Integer pageSize);
+	 
+	 List<SysUser> findUserByUserName();
+	 
+	 int doValidById(
+			 @Param("id")Integer id,
+			 @Param("valid")Integer valid,
+			 @Param("modifiedUser")String modifiedUser
+			 );
+	 List<Node> findZTreeNodes();
 }
 
 

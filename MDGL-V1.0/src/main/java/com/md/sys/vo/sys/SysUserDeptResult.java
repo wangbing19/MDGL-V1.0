@@ -97,6 +97,14 @@ public class SysUserDeptResult implements Serializable{
 	public void setModifiedUser(String modifiedUser) {
 		this.modifiedUser = modifiedUser;
 	}
+	@Override
+	public String toString() {
+		return "SysUserDeptResult [id=" + id + ", username=" + username + ", password=" + password + ", salt=" + salt
+				+ ", email=" + email + ", mobile=" + mobile + ", valid=" + valid + ", sysDept=" + sysDept
+				+ ", createdTime=" + createdTime + ", modifiedTime=" + modifiedTime + ", createdUser=" + createdUser
+				+ ", modifiedUser=" + modifiedUser + "]";
+	}
+	
  
 	
 }

@@ -22,6 +22,20 @@
           </div>
           
           <div class="form-group">
+            <label for="deptLimitId" class="col-sm-2 control-label">门店数量上限</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control"  id="deptLimitId">
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="customerLimitId" class="col-sm-2 control-label">顾客数量上限</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control"  id="customerLimitId">
+            </div>
+          </div>
+          
+          <div class="form-group">
             <label for="deptId" class="col-sm-2 control-label">所属部门</label>
             <div class="col-sm-10">
               <input type="text" class="form-control load-sys-dept" readonly="readonly" id="deptId" placeholder="上级部门">
@@ -117,7 +131,7 @@
  }
  
  function doLoadZTreeNodes(){
-	  var url="dept/doFindZTreeNodes.do";
+	  var url="user/doFindZTreeNodes.do";
 	  $("#treeLayer").css("display","block");
 	  $.getJSON(url,function(result){
 		  if(result.state==1){
