@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.md.sys.dao.pre.DiagnosisResultDescDao">
+
+	<!-- 根据症状的id删除症状与症状描述的关系数据 -->
+	<delete id="deleteObjectByDiagnosisId">
+	delete from pre_diagnosis_desc where diagnosis_id=#{diagnosisId}
+	</delete> 
+	
+	
+	<!-- 根据症状id向症状描述表插入数据 -->
+	<insert id="insertObjectByDiagnosisId">
+	insert into pre_diagnosis_desc values(null,#{diagnosisId},null,now(),now())
+	</insert>
+	
+	<!-- 根据症状的id查询对应的症状描述 -->
+	<select id="findDescByDiagnosisId" resultType="com.md.sys.entity.pre.DiagnosisDesc">
+	select * from pre_diagnosis_desc where diagnosis_id=#{diagnosisId}
+	</select>
+	
+	<!-- 修改症状关系表中的数据 -->
+	<update id="updateObject" parameterType="com.md.sys.vo.pre.DiagnosisDate">
+	update pre_diagnosis_desc set diagnosis_desc=#{diagnosisDesc},gmt_modified=now() where diagnosis_id=#{id}
+	</update>
+
+</mapper>
+
+
+

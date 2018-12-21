@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.md.sys.dao.pre.DiagnosisResultDao">
+	
+	<!-- 根据症状id查询症状结果 -->
+	<select id="findObject" resultType="com.md.sys.entity.pre.Symptom">
+	select * from pre_diagnosis_result where id=#{id}
+	</select>
+	
+	<!-- 诊断结果查询，查询症状名称symptom_name及对应父级病症名称parentName -->
+	<select id="findObjects" resultType="map">
+		select c.*,(
+		select
+		p.symptom_name
+		from pre_diagnosis_result p
+		where c.parentId=p.id
+		)
+		parentName
+		from pre_diagnosis_result c
+	</select>
+
+	<!-- 子症状个数查询，查询症状的子症状的个数 -->
+	<select id="getChildNum" parameterType="int" resultType="int">
+		select
+		count(*) from pre_diagnosis_result where parentId=#{id}
+	</select>
+
+	<!-- 根据症状id删除对应的症状 -->
+	<delete id="deleteObjectById">
+		delete from pre_diagnosis_result
+		where id=#{id}
+	</delete>
+
+	<!--查询要显示的节点信息 -->
+	<select id="findZtreeMenuNodes"
+		resultType="com.md.common.vo.Node">
+		select id,symptom_name as name,parentId
+		from pre_diagnosis_result
+	</select>
+
+
+	<!-- 插入数据到症状表中 -->
+
+	<insert id="insertObject"
+		parameterType="com.md.sys.entity.pre.Symptom">
+		<selectKey order="AFTER" resultType="int" keyProperty="id">
+			select last_insert_id()
+		</selectKey>
+		insert into pre_diagnosis_result
+		values(null,#{parentId},#{disType},#{symptomName},now(),now())
+	</insert>
+
+	<!-- 修改症状表中的数据 -->
+	<update id="updateObject"
+		parameterType="com.md.sys.vo.pre.DiagnosisDate">
+		update pre_diagnosis_result set
+		parentId=#{parentId},dis_type=#{disType},symptom_name=#{symptomName},gmt_modified=now()
+		where id=#{id}
+	</update>
+	
+	<!-- 根据症状id修改是否显示症状描述 -->
+	<update id="updateDisTypeByid">
+	update pre_diagnosis_result set dis_type=#{disType} where id=#{id}
+	</update>
+
+</mapper>
+
+
+
