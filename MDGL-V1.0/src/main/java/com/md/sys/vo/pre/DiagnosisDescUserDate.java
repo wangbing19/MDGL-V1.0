@@ -3,16 +3,14 @@ package com.md.sys.vo.pre;
 import java.io.Serializable;
 import java.util.Date;
 
-public class DiagnosisDate implements Serializable{
+public class DiagnosisDescUserDate implements Serializable{
 	private static final long serialVersionUID = 1L;
-	/**症状id*/
+	/**用户症状描述关系表主键id*/
 	private Integer id;
-	/**症状名称*/
-	private String symptomName;
-	/**父级症状id*/
-	private Integer parentId;
-	/**显示类型 1显示症状描述 0不显示症状描述*/
-	private Integer disType;
+	/**用户id*/
+	private Integer userId;
+	/**症状id*/
+	private Integer diagnosisId;
 	/**症状描述*/
 	private String diagnosisDesc;
 	/**创建时间*/
@@ -25,23 +23,17 @@ public class DiagnosisDate implements Serializable{
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public String getSymptomName() {
-		return symptomName;
+	public Integer getUserId() {
+		return userId;
 	}
-	public void setSymptomName(String symptomName) {
-		this.symptomName = symptomName;
+	public void setUserId(Integer userId) {
+		this.userId = userId;
 	}
-	public Integer getParentId() {
-		return parentId;
+	public Integer getDiagnosisId() {
+		return diagnosisId;
 	}
-	public void setParentId(Integer parentId) {
-		this.parentId = parentId;
-	}
-	public Integer getDisType() {
-		return disType;
-	}
-	public void setDisType(Integer disType) {
-		this.disType = disType;
+	public void setDiagnosisId(Integer diagnosisId) {
+		this.diagnosisId = diagnosisId;
 	}
 	public String getDiagnosisDesc() {
 		return diagnosisDesc;
@@ -63,9 +55,9 @@ public class DiagnosisDate implements Serializable{
 	}
 	@Override
 	public String toString() {
-		return "DiagnosisDate [id=" + id + ", symptomName=" + symptomName + ", parentId=" + parentId + ", disType="
-				+ disType + ", diagnosisDesc=" + diagnosisDesc + ", gmtCreate=" + gmtCreate + ", gmtModified="
-				+ gmtModified + "]";
+		return "DianosisDescUserDate [id=" + id + ", userId=" + userId + ", diagnosisId=" + diagnosisId
+				+ ", diagnosisDesc=" + diagnosisDesc + ", gmtCreate=" + gmtCreate + ", gmtModified=" + gmtModified
+				+ "]";
 	}
 	
 	

@@ -6,6 +6,35 @@
 	<delete id="deleteObjectByDiagnosisId">
 	delete from pre_diagnosis_user where diagnosis_id=#{diagnosisId}
 	</delete> 
+	
+	<!-- 根据用户的id查询对应的症状信息 -->
+	<select id="findDescObjectByUserId" resultType="com.md.sys.vo.pre.DiagnosisDescUserDate">
+	select u.*,d.diagnosis_desc from pre_diagnosis_user u,pre_diagnosis_desc d where u.diagnosis_id=d.diagnosis_id and u.user_id=#{userId}
+	</select>
+	<!-- 根据用户id删除症状信息用户关系表数据 -->
+	<delete id="deleteDescObjectByUserId">
+	delete from pre_diagnosis_user where user_id=#{userId}
+	</delete>
+	
+	<!-- 给指定用户写入症状信息（数据更新） -->
+	<update id="updateDescObjectByUserId">
+	update pre_diagnosis_user set diagnosis_id=#{diagnosisId},gmt_modified=now() where user_id=#{userId}
+	</update>
+	
+	<!-- 向用户插入用户与症状的关系 -->
+	<insert id="insertDescObject">
+	insert into pre_diagnosis_user values(null,#{userId},#{diagnosisId},now(),now())
+	</insert>
+	
+	<!-- 根据用户查询该用户是否绑定有症状 -->
+	<select id="findIsHaveDescObjectByUserId" resultType="java.lang.Integer">
+	select diagnosis_id from pre_diagnosis_user where user_id=#{userId}
+	</select>
+	
+	<select id="findUserIdIsExiste" resultType="java.lang.Integer">
+	select user_id from pre_diagnosis_user where user_id=#{userId}
+	</select>
+	
 </mapper>
 
 
