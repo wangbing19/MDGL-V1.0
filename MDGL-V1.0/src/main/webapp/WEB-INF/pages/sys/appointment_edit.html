@@ -7,6 +7,14 @@
       <!-- form start -->
       <form class="form-horizontal">
         <div class="box-body">
+        
+        <div class="form-group">
+            <label for="dopetnameId" class="col-sm-2 control-label">门店</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="dopetnameId">
+            </div>
+          </div>
+          
           <div class="form-group">
             <label for="usernameId" class="col-sm-2 control-label">训练师</label>
             <div class="col-sm-10">
@@ -15,16 +23,16 @@
           </div>
           
           <div class="form-group" id="pwdDiv">
-            <label for="passwordId" class="col-sm-2 control-label">性别</label>
+            <label for="genderId" class="col-sm-2 control-label">性别</label>
             <div class="col-sm-10">
-              <input type="password" class="form-control"  id="passwordId">
+              <input type="text" class="form-control"  id="genderId">
             </div>
           </div>
            
           <div class="form-group" id="pwdDiv">
-            <label for="passwordId" class="col-sm-2 control-label">电话</label>
+            <label for="telId" class="col-sm-2 control-label">电话</label>
             <div class="col-sm-10">
-              <input type="password" class="form-control"  id="passwordId">
+              <input type="text" class="form-control"  id="telId">
             </div>
           </div>
         <!--   
@@ -36,23 +44,23 @@
           </div> -->
           
           <div class="form-group">
-            <label for="emailId" class="col-sm-2 control-label">职位</label>
+            <label for="postId" class="col-sm-2 control-label">职位</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control"  id="emailId">
+              <input type="text" class="form-control"  id="postId">
             </div>
           </div>
           
           <div class="form-group">
-            <label for="emailId" class="col-sm-2 control-label">描述</label>
+            <label for="descriptionId" class="col-sm-2 control-label">描述</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control"  id="emailId">
+              <input type="text" class="form-control"  id="descriptionId">
             </div>
           </div>
          
          <div class="form-group">
-            <label for="phoneId" class="col-sm-2 control-label">简历</label>
+            <label for="resumeId" class="col-sm-2 control-label">简历</label>
               <div class="col-sm-10">
-              <input type="text" class="form-control"  id="phoneId">
+              <input type="text" class="form-control"  id="resumeId">
             </div>
           </div>
 			
@@ -106,7 +114,8 @@
  }//json 格式的javascript对象
  $(document).ready(function(){
 	 //页面加载完成以后加载角色信息并初始化页面
-	  doLoadRoles();
+	 doInitFormData();
+	/*   doLoadRoles(); */
 	 //事件注册
 	 $(".box-footer")
 	 .on("click",".btn-cancel",doCancel)
@@ -155,12 +164,12 @@
 	 var rowData=$("#mainContentId").data("rowData");
 	 //1.获取表单数据
 	 var params=doGetEditFormData();
-	 if(rowData)params.id=rowData.user.id;
+	 if(rowData)params.id=rowData.id;
 	 //2.发起异步请求
-	 var insertUrl="user/doSaveObject.do";
-	 var updateUrl="user/doUpdateObject.do";
+	 var insertUrl="appointment/doinsertAppointment.do";
+	 var updateUrl="appointment/doupdateAppointment.do";
 	 var url=rowData?updateUrl:insertUrl;
-	 console.log(params);
+	 //console.log(params);
 	 $.post(url,params,function(result){
 		 
 		 if(result.state==1){
@@ -174,10 +183,13 @@
  function doGetEditFormData(){
 	 //获取用户输入的数据
 	 var params={
-	    username:$("#usernameId").val(),
-	    password:$("#passwordId").val(),
-	    email:$("#emailId").val(),
-	    mobile:$("#phoneId").val(),
+			 user_name:$("#dopetnameId").val(),
+			 trainername:$("#usernameId").val(),
+			 gender:$("#genderId").val(),
+			 tel:$("#telId").val(),
+			 post:$("#postId").val(),
+			 description:$("#descriptionId").val(),
+			 resume:$("#resumeId").val(),
 	    deptId:$("#deptId").data("deptId")
 	 }
 	 //获取选择的角色
@@ -191,7 +203,7 @@
 	 params.roleIds=roleIds.toString();
 	 return params;
  }
- function doLoadRoles(){
+ /* function doLoadRoles(){
 	 var url="role/doFindRoles.do"
 	 $.getJSON(url,function(result){
 		 if(result.state==1){
@@ -201,19 +213,22 @@
 		  alert(result.message);
 		 }
 	 })
- }
+ } */
  function doInitFormData(){
      var data=$("#mainContentId").data("rowData");
+
      if(!data)return;
      $("#pwdDiv").remove();
 	 console.log(data);
 	 //初始化用户信息 
-	 $("#usernameId").val(data.user.username);
-	 $("#deptId").val(data.user.sysDept.name);
-	 console.log("data.user.sysDept.idss="+data.user.sysDept.id);
-	 $("#deptId").data("deptId",data.user.sysDept.id);
-	 $("#emailId").val(data.user.email);
-	 $("#phoneId").val(data.user.mobile);
+	 $("#dopetnameId").val(data.user_name);
+	 $("#usernameId").val(data.trainername);
+	 //console.log("data.user.sysDept.idss="+data.user.sysDept.id);
+	 $("#genderId").data(data.gender);
+	 $("#telId").val(data.tel);
+	 $("#postId").val(data.post);
+	 $("#descriptionId").val(data.description);
+	 $("#resumeId").val(data.resume);
 	 //初始化用户角色信息
 	 var ids=data.roleIds;
 	 for(var i in ids){
