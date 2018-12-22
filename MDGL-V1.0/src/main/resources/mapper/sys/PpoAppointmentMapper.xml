@@ -16,6 +16,10 @@ forenoonStartTime,forenoonEndTime,afternoonStartTime,afternoonEndTime,creationTi
 		<select id="findTrainernameByname" resultType="com.md.sys.entity.ppo.PpoAppointment">
 			SELECT * FROM ppo_appointment WHERE trainername=#{trainername}
 		</select>
+		<!-- 基于姓名搜索训练师 -->
+		<select id="findTrainernameById" resultType="com.md.sys.entity.ppo.PpoAppointment">
+			SELECT * FROM ppo_appointment WHERE id=#{id}
+		</select>
 		<!-- 查询所有训练师 -->
 		<select id="findAppointment" resultType="com.md.sys.entity.ppo.PpoAppointment">
 			SELECT * FROM ppo_appointment 
@@ -35,6 +39,33 @@ forenoonStartTime,forenoonEndTime,afternoonStartTime,afternoonEndTime,creationTi
 			</if>
 		</where>
 		</sql>
+		<!-- 新增训练师 -->
+		<insert id="insertAppointment" useGeneratedKeys="true" keyProperty="id">
+		insert into ppo_appointment 
+		(trainername,gender,tel,post,description,resume,id,user_name,gmt_create,gmt_modified)
+		values
+		(#{trainername},#{gender},#{tel},#{post},#{description},#{resume},null,#{user_name},now(),now())  
+		</insert>
+		
+		<!-- 删除训练师 -->
+		<delete id="deleteAppointment" >
+			delete from ppo_appointment where id=#{AppointmentId}
+		</delete>
+		
+		<!-- 修改训练师 -->
+		<update id="updateAppointment" parameterType="com.md.sys.entity.ppo.PpoAppointment">
+			update ppo_appointment
+			set
+			user_name=#{user_name},
+			trainername=#{trainername},
+			gender=#{gender},
+			tel=#{tel},
+			post=#{post},
+			description=#{description},
+			resume=#{resume},
+			gmt_modified=now()
+			where id=#{id}
+		</update> 
 		
 </mapper>
 

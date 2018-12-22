@@ -11,10 +11,13 @@
 
 						<div class="input-group-btn">
 							<button type="button" class="btn btn-default btn-search">
-                                <i class="fa fa-search"></i>
+								<i class="fa fa-search"></i>
 							</button>
 							<button type="button" class="btn btn-default btn-add">添加</button>
 							<button type="button" class="btn btn-default btn-update">修改</button>
+							<button type="button" class="btn btn-default btn-delete">删除</button>
+							<button type="button" class="btn btn-default btn-time_set">预约时间设值</button>
+							<button type="button" class="btn btn-default btn-time_update">预约时间修改</button>
 						</div>
 					</div>
 				</div>
@@ -31,6 +34,7 @@
 							<th>职位</th>
 							<th>描述</th>
 							<th>简历</th>
+							<th>状态</th>
 							<th>创建时间</th>
 							<th>修改时间</th>
 							<th>操作</th>
@@ -39,8 +43,7 @@
 					<tbody id="tbodyId"></tbody>
 				</table>
 			</div>
-			<div id="pageId" class="box-footer clearfix">
-			</div>
+			<div id="pageId" class="box-footer clearfix"></div>
 			<!-- /.box-body -->
 		</div>
 		<!-- /.box -->
@@ -53,10 +56,60 @@
 	   });
 	   $(".input-group-btn")
 	   .on("click",".btn-search",doQueryObjects)
-	   .on("click",".btn-add,.btn-update",doLoadEditUI);
+	   .on("click",".btn-delete",doDeleteObjects)
+	   .on("click",".btn-add,.btn-update",doLoadEditUI)
+	   .on("click",".btn-time_set,btn-time_update",doTimeEditUI);
 	   $("tbody").on("click",".btn-valid",doValidById);
    });
    
+   
+   
+   function doTimeEditUI(){
+	   //1.判定点击的对象
+	   var title;
+	   if($(this).hasClass("btn-time_set")){
+		   title="添加训练师预约时间";
+		   
+		   var id=doGetCheckedId();
+		   if(!id){
+					alert("请先选择");
+				  return;
+			   } 
+	   $("#mainContentId").data("appointmentTimeId",id);
+	   doTimePage(title);
+		   
+	   }else if($(this).hasClass("btn-time_update")){
+		   title="修改训练师预约时间";
+		   var id=doGetCheckedId();
+		   console.log("id="+id)
+		   if(!id){
+			  alert("请先选择");
+			  return;
+		   }
+		   //基于id进行查询并加载编辑页面
+		   doAppointmentTimeById(id,title);
+	   }
+	   
+	   }
+	   
+   
+   function doAppointmentTimeById(id,title){
+	   
+   }
+		
+   function doTimePage(title){
+	   var url="appointment/doappointmentTimeUI.do";
+	   $("#mainContentId").load(url,function(){
+		   $(".box-title").html(title);
+	   }) 
+   }
+   function doDeleteObjects(){
+	   var id=doGetCheckedId();
+	   var url="appointment/dodeleteAppointment.do";
+	   $.getJSON(url,params,function(result){//JsonResult 
+			  alert(result.message);
+	   }); 
+   }
    function doLoadEditUI(){
 	   //1.判定点击的对象
 	   var title;
@@ -75,15 +128,17 @@
 		   doFindObjectById(id,title);
 	   }
    }
+   
    function doFindObjectById(id,title){
 	   //1.params
 	   var params={"id":id};
 	   //2.url
-	   var url="user/doFindObjectById.do";
+	   var url="appointment/findAppointmentById.do";
 	   //3.ajax request
 	   $.getJSON(url,params,function(result){//JsonResult
 		   if(result.state==1){
 			  $("#mainContentId").data("rowData",result.data); 
+			  
 	          doLoadPage(title);
 		   }else{
 			  alert(result.message);
@@ -94,8 +149,9 @@
    function doGetCheckedId(){
 	 return $("tbody input[name='radioId']:checked").val();
    }
+   
    function doLoadPage(title){
-	   var url="appointment/saveObject.do"
+	   var url="appointment/saveObjectUI.do"
 	   $("#mainContentId").load(url,function(){
 		   $(".box-title").html(title);
 	   }) 
