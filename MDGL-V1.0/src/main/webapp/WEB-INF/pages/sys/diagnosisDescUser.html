@@ -57,12 +57,6 @@
 	<script type="text/javascript" src="bower_components/layer/layer.js"> </script>	
 	<script type="text/javascript">
 			$(function(){
-				var userDescDate={
-						"userId":6,
-						"userName":"杜健华",
-						"userPhone":"12345789"
-				}
-				$("#mainContentId").data("userDescDate",userDescDate);
 				initUserDescDate();//初始化页面属性 用户id，姓名，电话，症状，症状处方
 			})
 			
@@ -100,7 +94,7 @@
 			}
 			
 			function downloadDesc(){
-				var userDesc = $("#mainContentId").data("userDescDate");//获取用户的信息
+				var userDesc = $("#mainContentId").data("rowUserDate");//获取用户的信息
 				var params0 = {"userId":userDesc.userId};               //封装用户的id
 				alert("用户的id:"+userDesc.userId)
 				$.post("diagnosisDescuser/doFindUserIdIsExiste.do",params0,function(result){  //异步加载查询数据库中是否存在该用户
@@ -133,7 +127,7 @@
 			
 			function deleteDesc(){
 				
-				var params={"userId":$("#mainContentId").data("userDescDate").userId};
+				var params={"userId":$("#mainContentId").data("rowUserDate").userId};
 				$.post("diagnosisDescuser/doDeleteDescObjectByUserId.do",params,function(result){
 					if(result.state==1){
 						alert("删除成功");
@@ -145,7 +139,7 @@
 				})
 			}		
 			function initUserDescDate(){
-				var userDesc = $("#mainContentId").data("userDescDate");
+				var userDesc = $("#mainContentId").data("rowUserDate");
 				$("#userId").val(userDesc.userId);
 				$("#userName").val(userDesc.userName);
 				$("#userPhone").val(userDesc.userPhone);
