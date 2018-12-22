@@ -93,10 +93,10 @@ public class PpoAppointmentController {
 	@RequestMapping("dosaveAppointmentTime")
 	@ResponseBody
 	public JsonResult appointmentTime(String sTime,String eTime,Integer appointmentId) {
-		System.out.println("1:"+sTime+   eTime+    appointmentId);	
+		//System.out.println("1:"+sTime+   eTime+    appointmentId);	
 		Date startTime=dateFormat(sTime);
 		Date endTime=dateFormat(eTime);
-		System.out.println("appointmentId"+appointmentId);
+		//System.out.println("appointmentId"+appointmentId);
 		ppoAppointmentTimeService.insertAppointment(startTime, endTime, appointmentId);
 		return new JsonResult("保存成功！");
 	}

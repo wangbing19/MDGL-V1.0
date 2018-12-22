@@ -73,6 +73,12 @@
 			$("#mainContentId").data("timeAll",timeAll);
 			doSaveOrUpdate();
 		})
+		
+		$(".btn-cancel").click(function(){
+			$("#mainContentId").removeData("rowData");
+			$("#mainContentId").load("appointment/doAppointmentUI.do");
+		})
+		
 	})
 
 	function doSaveOrUpdate() {
@@ -86,8 +92,6 @@
 		var SaveUrl = "appointment/dosaveAppointmentTime.do";
 									
 		//为添加时执行循环
-		var fghj;
-		var uhfsdf;
 		for(var i=0;i<timeAll.length;i+=2){
 			var startTime=timeAll[i];
 			var endTime = timeAll[i+1];
@@ -97,22 +101,14 @@
 					"eTime":endTime,
 					"appointmentId":id
 			}
-			$.post(SaveUrl,params1,function(result){
-				if(result.sate==1){
-					fghj="1";
-					uhfsdf="Save Ok";
-					//doCancel();
-				}else{
-					fghj="0";
-					uhfsdf="错误";
-				}
+				if(result.state==1){
+				 alert(result.message);
+				 doCancel();
+			 }else{
+				alert(result.message);
+			 }
 			})
 		}
-		if(fghj=="1"){
-			alert(uhfsdf);
-		//	doCancel();
-		}else{
-			alert(uhfsdf);
-		}
+		
 	}
 </script>

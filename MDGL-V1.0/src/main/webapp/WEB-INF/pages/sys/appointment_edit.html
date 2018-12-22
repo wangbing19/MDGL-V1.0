@@ -121,9 +121,9 @@
 	 .on("click",".btn-cancel",doCancel)
 	 .on("click",".btn-save",doSaveOrUpdate);
 	 
-	  $("#treeLayer")
+	  /* $("#treeLayer")
 	  .on("click",".btn-cancel",doHideTree)
-	  .on("click",".btn-confirm",doConfirm);
+	  .on("click",".btn-confirm",doConfirm); */
 	 
 	 $(".form-horizontal")
 	 .on("click",".load-sys-dept",doLoadZTreeNodes);
@@ -158,7 +158,7 @@
  }
  function doCancel(){
 	$("#mainContentId").removeData("rowData");
-	$("#mainContentId").load("user/doUserListUI.do");
+	$("#mainContentId").load("appointment/doAppointmentUI.do");
  }
  function doSaveOrUpdate(){
 	 var rowData=$("#mainContentId").data("rowData");
