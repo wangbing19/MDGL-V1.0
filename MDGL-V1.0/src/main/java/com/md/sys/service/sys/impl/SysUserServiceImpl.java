@@ -90,7 +90,7 @@ public class SysUserServiceImpl implements SysUserService {
 		if (valid != 0 && valid != 1)
 			throw new IllegalArgumentException("状态值不正确");
 		SysUser user = ShiroUtils.getUser();
-		System.out.println(user.getParentId());
+		System.out.println("doValidById "+user.getParentId());
 		String username = user.getUsername();
 		int rows = sysUserDao.doValidById(id, valid, username);
 		if (rows == 0)
@@ -149,18 +149,11 @@ public class SysUserServiceImpl implements SysUserService {
 			throw new IllegalArgumentException("保存对象不能为空");
 		if (StringUtils.isEmpty(entity.getUsername()))
 			throw new IllegalArgumentException("用户名不能为空");
-		if (StringUtils.isEmpty(entity.getPassword()))
-			throw new IllegalArgumentException("密码不能为空");
 		if (entity.getRole() == null)
 			throw new IllegalArgumentException("必须指定其角色");
 		
-		String salt = UUID.randomUUID().toString();
-		entity.setSalt(salt);
-		SimpleHash hash = new SimpleHash("MD5", entity.getPassword(), salt, 1);
-		entity.setPassword(hash.toHex());
 		// 保存用户自身信息
 		SysUser user = ShiroUtils.getUser();
-		entity.setCreatedUser(user.getUsername());
 		entity.setModifiedUser(user.getUsername());
 		
 		// 保存用户自身信息
