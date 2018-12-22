@@ -53,6 +53,7 @@
 <script type="text/javascript">
    $(document).ready(function(){
 	   $("#pageId").load("doPageUI.do",function(){
+		   $("#mainContentId").removeData("rowData");
 		   doGetObjects();
 	   });
 	   $(".input-group-btn")
@@ -61,6 +62,7 @@
 	   $("tbody").on("click",".btn-valid",doValidById);
 	   $("tbody").on("click",".btn-all",userProfile);
 	   $("tbody").on("click",".btn-delete",doDeleteObject);
+	   $("tbody").on("click",".btn-cf",doPrescription);
    });
    
    function doLoadEditUI(){
@@ -81,6 +83,7 @@
 		   doFindObjectById(id,title);
 	   }
    }
+   
    function doFindObjectById(id,title){
 	   //1.params
 	   var params={"id":id};
@@ -223,6 +226,32 @@
 	     "<td><button type='button' class='btn btn-default btn-delete'>"+"删除"+"</button></td>"+
 	     "<td><button type='button' class='btn btn-default btn-valid'>"+(row.valid?"禁用":"启用")+"</button></td>"; 
        return tds;
+   }
+   
+   
+   function doPrescription(){
+	   var id=doGetCheckedId();
+	   if(!id){
+			  alert("请先选择");
+			  return;
+	   }
+	   var params={"id":id};
+	   var url="customer/doFindObjectById.do";
+	   $.post(url,params,function(result){
+		   if(result.state==1){
+			   console.log(result);
+			   var descObject={
+					   "userId":result.data.id,
+					   "userName":result.data.name,
+					   "userPhone":result.data.tel};
+			   console.log(descObject);
+			  $("#mainContentId").data("rowUserData",descObject); 
+			  /* alert($("#mainContentId").data("rowUserData")); */
+			  $("#mainContentId").load("diagnosisDescuser/doDiagnosisDescUserUI.do");
+		   }else{
+			  alert(result.message);
+		   }
+	   })
    }
 </script>
 

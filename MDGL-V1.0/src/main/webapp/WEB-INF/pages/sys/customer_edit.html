@@ -165,7 +165,7 @@
 	 //初始化用户信息 
 	 $("#ageId").val(data.age);//.cusCustomer
 	 $("#nameId").val(data.name);
-	 $("#birthdayId").val(data.birthday);
+	 $("#birthdayId").val(new Date(data.birthday).toLocaleString());
 	 $("#genderId").val(data.gender);
 	 $("#homeId").val(data.home);
 	 $("#schoolId").val(data.school);

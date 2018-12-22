@@ -572,15 +572,18 @@
 		/**矫正方法*/
 		var correctionMethod = data.correctionMethod;
 		var ids = new Array();
-		ids = correctionMethod.split(",");
-		console.log(ids);
-		for(var i in ids){
-			$("input[name='correctionMethod']").each(function(index) {
-			    if ($("input[name='correctionMethod']").get(index).value == ids[i]) {
-			        $("input[name='correctionMethod']").get(index).checked = true;
-			    }
-			});
+		if(correctionMethod!=null){
+			ids = correctionMethod.split(",");
+			console.log(ids);
+			for(var i in ids){
+				$("input[name='correctionMethod']").each(function(index) {
+				    if ($("input[name='correctionMethod']").get(index).value == ids[i]) {
+				        $("input[name='correctionMethod']").get(index).checked = true;
+				    }
+				});
+			}
 		}
+		
 		
 		/**效果*/
 		var effect = data.effect; // 1,2 把你拿到的值赋给youVal
@@ -627,15 +630,18 @@
 		/**用眼项目*/
 		var eyeProject = data.eyeProject;
 		var eyeProjectIds = new Array();
-		eyeProjectIds = eyeProject.split(",");
-		console.log(ids);
-		for(var i in eyeProjectIds){
-			$("input[name='eyeProject']").each(function(index) {
-			    if ($("input[name='eyeProject']").get(index).value == eyeProjectIds[i]) {
-			        $("input[name='eyeProject']").get(index).checked = true;
-			    }
-			});
+		if(eyeProject!=null){
+			eyeProjectIds = eyeProject.split(",");
+			console.log(ids);
+			for(var i in eyeProjectIds){
+				$("input[name='eyeProject']").each(function(index) {
+				    if ($("input[name='eyeProject']").get(index).value == eyeProjectIds[i]) {
+				        $("input[name='eyeProject']").get(index).checked = true;
+				    }
+				});
+			}
 		}
+		
 		$("#eyeProjectOtherId").val(data.eyeProjectOther);
 		
 		/**每次看书、作业的时长readingTime*/
@@ -673,14 +679,16 @@
 		//15.用眼姿势（有无）
 		var eyePosition = data.eyePosition;
 		var eyePositionIds = new Array();
-		eyePositionIds = eyePosition.split(",");
-		console.log(ids);
-		for(var i in eyePositionIds){
-			$("input[name='eyePosition']").each(function(index) {
-			    if ($("input[name='eyePosition']").get(index).value == eyePositionIds[i]) {
-			        $("input[name='eyePosition']").get(index).checked = true;
-			    }
-			});
+		if(eyePosition!=null){
+			eyePositionIds = eyePosition.split(",");
+			console.log(ids);
+			for(var i in eyePositionIds){
+				$("input[name='eyePosition']").each(function(index) {
+				    if ($("input[name='eyePosition']").get(index).value == eyePositionIds[i]) {
+				        $("input[name='eyePosition']").get(index).checked = true;
+				    }
+				});
+			}
 		}
 		$("#eyePositionOtherId").val(data.eyePositionOther);
 		
