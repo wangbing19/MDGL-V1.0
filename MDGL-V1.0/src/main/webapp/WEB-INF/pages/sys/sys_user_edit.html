@@ -212,7 +212,7 @@
  function doInitFormData(){
      var data=$("#mainContentId").data("rowData");
      if(!data)return;
-	 console.log(data);
+     $("#pwdDiv").remove();
 	 //初始化用户信息 
 	  $("#usernameId").val(data.username),
 	  $("#passwordId").val(data.password),
