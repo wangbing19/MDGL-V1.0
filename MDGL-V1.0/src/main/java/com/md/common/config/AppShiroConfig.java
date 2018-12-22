@@ -15,7 +15,7 @@ import org.springframework.context.annotation.DependsOn;
  * 此类为shiro配置类对象
  * @author ta
  */
-//@Configuration
+@Configuration
 public class AppShiroConfig {
 
 	@Bean("securityManager")
@@ -40,7 +40,7 @@ public class AppShiroConfig {
 		fcMap.put("/dist/**","anon");
 		fcMap.put("/plugins/**","anon");
 		fcMap.put("/user/doLogin.do","anon");
-		fcMap.put("/user/doLogout.do ","anon");//logout给的
+		fcMap.put("/user/doLogout.do ","logout");//logout给的
 		fcMap.put("/**", "authc");//必须授权才能访问
 		bean.setFilterChainDefinitionMap(fcMap);
 		return bean;

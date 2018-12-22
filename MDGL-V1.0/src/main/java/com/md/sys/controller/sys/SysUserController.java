@@ -77,4 +77,20 @@ public class SysUserController {
 		return new JsonResult("update ok");
 	}
 	
+	private AtomicInteger counter=new AtomicInteger(0);
+    //private int count;
+    @RequestMapping("doLogin")
+    @ResponseBody
+    public JsonResult doLogin(String username,String password){
+   	 //1.封装用户信息
+   	 UsernamePasswordToken token=
+   	 new UsernamePasswordToken(username,password);
+   	 //2.提交用户信息
+   	 Subject subject=SecurityUtils.getSubject();
+   	 subject.login(token);//提交给SecurityManager
+   	 int count=counter.incrementAndGet();//count+1;
+   	 System.out.println("在线人数:"+count);
+   	 return new JsonResult("login ok");
+    }
+	
 }

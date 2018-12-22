@@ -15,7 +15,7 @@ public class AppWebInitializer extends
     AbstractAnnotationConfigDispatcherServletInitializer {
 	//此类对象在执行时首先会执行onStartup方法完成一些初始化操作
 	//并且会注册spring mvc前端控制器
-  /*  @Override
+    @Override
 	public void onStartup(ServletContext servletContext) throws ServletException {
 		System.out.println("onStartup()");
 		//super.onStartup(servletContext);
@@ -35,7 +35,7 @@ public class AppWebInitializer extends
 		dy.addMappingForUrlPatterns(
 				null,//EnumSet<DispatcherType>
 				false,"/*");//url-pattern
-	}*/
+	}
 
 	//官方建议在此方法中加载model(service,respository)
 	@Override

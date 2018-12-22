@@ -36,6 +36,7 @@ public interface SysUserDao {
 			 @Param("pageSize")Integer pageSize);
 	 
 	 List<SysUser> findUserByUserName();
+	 SysUser findUserByUserName(String username);
 	 
 	 int doValidById(
 			 @Param("id")Integer id,

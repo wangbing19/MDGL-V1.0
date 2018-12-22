@@ -20,10 +20,6 @@ import com.md.sys.dao.sys.SysLogDao;
 import com.md.sys.entity.sys.SysLog;
 
 
-/**
- * 使用@Aspect注解修饰的类为一个切面类型 切面对象：封装扩展功能 切面构成：
- * 1)切入点(Pointcut):切入扩展功能的点，连接点(一个具体方法)结合 2)通知(Advice) 本质为一个实现了扩展功能的一个方法
- */
 @Aspect
 @Service
 public class SysLogAspect {
@@ -34,34 +30,22 @@ public class SysLogAspect {
 	@Autowired
 	private SysLogDao sysLogDao;
 
-	/**
-	 * 1)@Pointcut 注解用于定义切入点 2)bean(...) 为一种切入点表达式(值为bean的id)
-	 */
 	@Pointcut("@annotation(com.md.common.annotation.sys.RequiresLog)")
 	public void logPointCut() {
-	}// 空方法(相当于为切入点起了个别名)
-
-	/**
-	 * 说明: 1)@Around 描述方法为一个环绕通知
-	 * 
-	 * @param jp 为一个连接点(切入点中的某个方法信息对象)
-	 * @return 目标方法的执行结果
-	 * @throws Throwable
-	 */
+	}
+	
 	@Around("logPointCut()")
 	public Object around(ProceedingJoinPoint jp) throws Throwable {
 		long start = System.currentTimeMillis();
 		Object result = jp.proceed();// 执行目标方法
 		long end = System.currentTimeMillis();
-		System.out.println("execute time :"+(end-start));
 		saveObject(jp, end - start);
 		return result;
 	}
 
 	private void saveObject(ProceedingJoinPoint jp, long totalTime) throws NoSuchMethodException, SecurityException {
 		// 1.获取日志信息
-		//String username = ShiroUtils.getUser().getUsername();
-		String username="admin测试";
+		String username = ShiroUtils.getUser().getUsername();
 		String ip = IPUtils.getIpAddr();
 		// 获取方法签名信息(包含了方法名以及参数列表信息)
 		Signature s = jp.getSignature();

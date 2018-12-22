@@ -218,11 +218,11 @@
 	  $("#passwordId").val(data.password),
 	  $("#addressId").val(data.address),
 	  $("#emailId").val(data.email),
-	  $("#deptId").data("deptId",data.parent_id);
-	  $("#deptId").val(data.parent_username);
+	  $("#deptId").data("deptId",data.parentId);
+	  $("#deptId").val(data.parentUsername);
 	  $("#phoneId").val(data.mobile),
-	  $("#customerLimitId").val(data.customer_limit),
-	  $("#deptLimitId").val(data.dept_limit),
+	  $("#customerLimitId").val(data.customerLimit),
+	  $("#deptLimitId").val(data.deptLimit),
 	 //初始化用户角色信息
 	  $("#rolesId input[value='"+data.role+"']")
 	  .prop("checked",true);
