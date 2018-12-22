@@ -101,7 +101,7 @@
 											value="3">斜视
 										<input type="radio" name="oculopathy" id="oculopathyId"
 											value="4">其他
-										<input type="text" name="oculopathy" id="oculopathyOther">
+										<input type="text" name="oculopathyOther" id="oculopathyOtherId">
 									</tr>
 								</div>
 							</div>
@@ -111,12 +111,9 @@
 									<tr>
 										4.发现症状后采用何种矫正方法:
 										<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-										<input type="checkbox" name="correctionMethod"
-											id="correctionMethodId" value="0">训练
-										<input type="checkbox" name="correctionMethod"
-											id="correctionMethodId" value="1">配镜
-										<input type="checkbox" name="correctionMethod"
-											id="correctionMethodId" value="2">手术
+										<input type="checkbox" name="correctionMethod" id="correctionMethodId" value="0">训练
+										<input type="checkbox" name="correctionMethod" id="correctionMethodId" value="1">配镜
+										<input type="checkbox" name="correctionMethod" id="correctionMethodId" value="2">手术
 									</tr>
 								</div>
 							</div>
@@ -500,6 +497,7 @@
 		$("#mainContentId").removeData("rowData");
 		$("#mainContentId").load("cusConsultation/doCusConsultationListUI.do");
 	}
+	
 	function doSaveOrUpdate() {
 		var rowData = $("#mainContentId").data("rowData");
 		//1.获取表单数据
@@ -507,7 +505,7 @@
 		var params = check();
 		console.log(params);
 		if (rowData)
-			params.id = rowData.user.id;
+			params.id = rowData.id;
 		//2.发起异步请求
 		var insertUrl = "cusConsultation/doSaveObject.do";
 		var updateUrl = "cusConsultation/doUpdateObject.do";
@@ -522,7 +520,8 @@
 			}
 		})
 	}
-	function doGetEditFormData() {
+	
+	/* function doGetEditFormData() {
 		//获取用户输入的数据
 		var params = {
 			username : $("#usernameId").val(),
@@ -532,25 +531,181 @@
 			deptId : $("#deptId").data("deptId")
 		}
 		return params;
-	}
+	} */
+	
 	function doLoadRoles() {
 		doInitFormData();//修改时
 	}
+	
 	function doInitFormData() {
 		$("#gmtCreateId").val(getNowFormatDate());
 		var data = $("#mainContentId").data("rowData");
-		
+		console.log("一次测试");
 		if (!data)
 			return;
 		// $("#pwdDiv").remove();
 		console.log(data);
 		//初始化用户信息 
-		$("#usernameId").val(data.user.username);
-		$("#deptId").val(data.user.sysDept.name);
-		console.log("data.user.sysDept.idss=" + data.user.sysDept.id);
-		$("#deptId").data("deptId", data.user.sysDept.id);
-		$("#emailId").val(data.user.email);
-		$("#phoneId").val(data.user.mobile);
+		$("#nameID").val(data.name);
+		$("#ageID").val(data.age);
+		$("#sexID").val(data.gender);
+		$("#phoneID").val(data.tel);
+		$("#whitchEyeID").val(data.eye);
+		$("#yearID").val(data.declineTimeYear);
+		$("#declineTimeMonth").val(data.monthID);
+		/**是否诊断*/
+		var diagnose = data.diagnose; // 1,2 把你拿到的值赋给youVal
+		$("input[name='diagnose']").each(function(index) {
+		    if ($("input[name='diagnose']").get(index).value == diagnose) {
+		        $("input[name='diagnose']").get(index).checked = true;
+		    }
+		});
+		/**眼病*/
+		var oculopathy = data.oculopathy; // 1,2 把你拿到的值赋给youVal
+		$("input[name='oculopathy']").each(function(index) {
+		    if ($("input[name='oculopathy']").get(index).value == oculopathy) {
+		        $("input[name='oculopathy']").get(index).checked = true;
+		    }
+		});
+		$("#oculopathyOtherId").val(data.oculopathyOther);
+		
+		/**矫正方法*/
+		var correctionMethod = data.correctionMethod;
+		var ids = new Array();
+		ids = correctionMethod.split(",");
+		console.log(ids);
+		for(var i in ids){
+			$("input[name='correctionMethod']").each(function(index) {
+			    if ($("input[name='correctionMethod']").get(index).value == ids[i]) {
+			        $("input[name='correctionMethod']").get(index).checked = true;
+			    }
+			});
+		}
+		
+		/**效果*/
+		var effect = data.effect; // 1,2 把你拿到的值赋给youVal
+		$("input[name='effect']").each(function(index) {
+		    if ($("input[name='effect']").get(index).value == effect) {
+		        $("input[name='effect']").get(index).checked = true;
+		    }
+		});
+		
+		/**现视力情况*/
+		var visualAcuity = data.visualAcuity; // 1,2 把你拿到的值赋给youVal
+		$("input[name='visualAcuity']").each(function(index) {
+		    if ($("input[name='visualAcuity']").get(index).value == visualAcuity) {
+		        $("input[name='visualAcuity']").get(index).checked = true;
+		    }
+		});
+		
+		/**父视力情况*/
+		var fVisionCondition = data.fVisionCondition; // 1,2 把你拿到的值赋给youVal
+		$("input[name='fVisionCondition']").each(function(index) {
+		    if ($("input[name='fVisionCondition']").get(index).value == fVisionCondition) {
+		        $("input[name='fVisionCondition']").get(index).checked = true;
+		    }
+		});
+		$("#fVisionConditionOther").val(data.fOther);
+		
+		/**母视力情况*/
+		var mVisionCondition = data.mVisionCondition; // 1,2 把你拿到的值赋给youVal
+		$("input[name='mVisionCondition']").each(function(index) {
+		    if ($("input[name='mVisionCondition']").get(index).value == mVisionCondition) {
+		        $("input[name='mVisionCondition']").get(index).checked = true;
+		    }
+		});
+		$("#mVisionConditionOther").val(data.mOther);
+		
+		/**睡眠时间*/
+		var sleepingTime = data.sleepingTime; // 1,2 把你拿到的值赋给youVal
+		$("input[name='sleepingTime']").each(function(index) {
+		    if ($("input[name='sleepingTime']").get(index).value == sleepingTime) {
+		        $("input[name='sleepingTime']").get(index).checked = true;
+		    }
+		});
+		
+		/**用眼项目*/
+		var eyeProject = data.eyeProject;
+		var eyeProjectIds = new Array();
+		eyeProjectIds = eyeProject.split(",");
+		console.log(ids);
+		for(var i in eyeProjectIds){
+			$("input[name='eyeProject']").each(function(index) {
+			    if ($("input[name='eyeProject']").get(index).value == eyeProjectIds[i]) {
+			        $("input[name='eyeProject']").get(index).checked = true;
+			    }
+			});
+		}
+		$("#eyeProjectOtherId").val(data.eyeProjectOther);
+		
+		/**每次看书、作业的时长readingTime*/
+		var readingTime = data.readingTime; 
+		$("input[name='readingTime']").each(function(index) {
+		    if ($("input[name='readingTime']").get(index).value == readingTime) {
+		        $("input[name='readingTime']").get(index).checked = true;
+		    }
+		});
+		
+		/**看书距离readingDistance*/
+		var readingDistance = data.readingDistance; 
+		$("input[name='readingDistance']").each(function(index) {
+		    if ($("input[name='readingDistance']").get(index).value == readingDistance) {
+		        $("input[name='readingDistance']").get(index).checked = true;
+		    }
+		});
+		
+		/**单次看电视时长watchingTime*/
+		var watchingTime = data.watchingTime; 
+		$("input[name='watchingTime']").each(function(index) {
+		    if ($("input[name='watchingTime']").get(index).value == watchingTime) {
+		        $("input[name='watchingTime']").get(index).checked = true;
+		    }
+		});
+		
+		/**看电视距离*/
+		var watchingDistance = data.watchingDistance; 
+		$("input[name='watchingDistance']").each(function(index) {
+		    if ($("input[name='watchingDistance']").get(index).value == watchingDistance) {
+		        $("input[name='watchingDistance']").get(index).checked = true;
+		    }
+		});
+		
+		//15.用眼姿势（有无）
+		var eyePosition = data.eyePosition;
+		var eyePositionIds = new Array();
+		eyePositionIds = eyePosition.split(",");
+		console.log(ids);
+		for(var i in eyePositionIds){
+			$("input[name='eyePosition']").each(function(index) {
+			    if ($("input[name='eyePosition']").get(index).value == eyePositionIds[i]) {
+			        $("input[name='eyePosition']").get(index).checked = true;
+			    }
+			});
+		}
+		$("#eyePositionOtherId").val(data.eyePositionOther);
+		
+		/**家庭环境光线*/
+		var homeLightingEnvironment = data.homeLightingEnvironment; 
+		$("input[name='homeLightingEnvironment']").each(function(index) {
+		    if ($("input[name='homeLightingEnvironment']").get(index).value == homeLightingEnvironment) {
+		        $("input[name='homeLightingEnvironment']").get(index).checked = true;
+		    }
+		});
+		
+		/**教室环境光线*/
+		var classroomLightingEnvironment = data.classroomLightingEnvironment; 
+		$("input[name='classroomLightingEnvironment']").each(function(index) {
+		    if ($("input[name='classroomLightingEnvironment']").get(index).value == classroomLightingEnvironment) {
+		        $("input[name='classroomLightingEnvironment']").get(index).checked = true;
+		    }
+		});
+		
+		$("#rDId").val(data.rD);
+		$("#lDId").val(data.lD);
+		$("#rCvaId").val(data.rCva);
+		$("#lCvaId").val(data.lCva);
+		$("#tutorId").val(data.tutor);
+		
 		
 	}
 	
@@ -576,9 +731,8 @@
 		}
 		return false;
 	}
+	
 	function check() {
-
-		// if(is_enable == false) return;
 
 		var params = {};
 		var name = $('#nameID').val();
@@ -587,8 +741,7 @@
 			return;
 		}
 		params.name = name;
-		alert(name)
-		console.log(params.name)
+		
 
 		var tel = $('#phoneID').val();
 		if (checkField(tel)) {
@@ -600,15 +753,6 @@
 		}
 		var gender = $('#sexID').val();
 		if (checkField(gender)) {
-			/*   if(sex == '男'){
-			      params.gender = 1;
-			  }else  if(gender == '女'){
-			      params.gender = 2;
-			  }else{
-			      alert('性别填写有误!');
-			      return;
-			  }
-			}else{ */
 			params.gender = gender;
 		}
 
@@ -634,13 +778,12 @@
 		var oculopathy = $("input[name='oculopathy']:checked").val();
 		if (checkField(oculopathy)) {
 			if (oculopathy == "4") {
-				var oculopathy = $('#oculopathyOther').val();
-				params.oculopathy = oculopathy;
-			} else {
-				params.oculopathy = oculopathy;
-			}
-
+				var oculopathyOther = $('#oculopathyOtherId').val();
+				params.oculopathyOther = oculopathyOther;
+			} 
+			params.oculopathy = oculopathy;
 		}
+		
 		/**矫正方法*/
 		var correctionMethod = new Array();
 		$("input[name='correctionMethod']:checked").each(function() {
@@ -686,27 +829,20 @@
 			params.sleepingTime = sleepingTime;
 		}
 		
-		
-		
-		
 		 /**用眼项目*/
 		var eyeProject = new Array();
-		$("input[name='eyeProject']:checked").each(function() {
+		$("input[name='eyeProject']").each(function() {
 			if ($(this).prop("checked")) {
 				eyeProject.push($(this).val());
+				 if($(this).val()=="3"){
+					var eyeProjectOther = $("#eyeProjectOtherId").val();
+					params.eyeProjectOther = eyeProjectOther;
+					console.log(params.eyeProjectOther);
+				} 
 			}
 		});
 		params.eyeProject = eyeProject.toString();
-
-		/* if(eyeProject[eyeProject.length-1]=="3"){
-			eyeProjectOther = $('#eyeProjectOtherId').val();
-			//params.eyeProject = params.eyeProject.append(eyeProjectOther);
-		}
-		alert("10")
-		console.log(eyeProjectOther);
-		console.log(eyeProject); */
-	
-
+		
 		
 		/**每次看书、作业的时长*/
 		var readingTime = $("input[name='readingTime']:checked").val();
@@ -732,7 +868,6 @@
 			params.watchingDistance = watchingDistance;
 		}
 		
-		
  
 		//多选
 		//15.用眼姿势（有无）： 
@@ -740,26 +875,14 @@
 		$("input[name='eyePosition']:checked").each(function() {
 			if ($(this).prop("checked")) {
 				eyePosition.push($(this).val());
+				if($(this).val()=="5"){
+					var eyePositionOther = $("#eyePositionOtherId").val();
+					params.eyePositionOther = eyePositionOther;
+				}
 			}
 		});
 		params.eyePosition = eyePosition.toString();
 
-	/* 	var eyePosition = new Array();
-		$("input[name='eyePosition']:checked").each(function() {
-			if ($(this).prop("checked")) {
-				eyePosition.push($(this).val());
-			}
-		});
-		params.eyePosition = eyePosition.toString; */
-
-		/* if(eyePosition[eyePosition.length-1]=="5"){
-			eyePositionOther = $('#eyePositionOtherId').val();
-			//params.eyeProject = params.eyeProject.append(eyeProjectOther);
-		}
-		alert("15")
-		console.log(eyePositionOther);
-		console.log(eyePosition); */
-		
 		
 		/**家庭环境光线*/
 		var homeLightingEnvironment = $("input[name='homeLightingEnvironment']:checked").val();
@@ -798,26 +921,10 @@
 			params.tutor = tutor;
 		}
 		/**修改时间*/
-		var gmtModified = $("#gmtModifiedId").val();
-		if (checkField(gmtModified)) {
-			params.gmtModified = gmtModified;
-		}
-		
-		
-		var gmtModifiedValue = new Array();
-		String[] gmtModifiedValue = gmtModified.split("-");
-		String gmtModified = "";
-		for (int i=0;i<gmtModifiedValue.length;i++) {
-			String obj = gmtModifiedValue[i]; 
-			if(i==0) {
-				gmtModified = obj;
-			}else {
-				gmtModified = gmtModified+"/"+obj;
-			}
-		}
-		console.log("fbjkl;sad")
-		console.log("gmtModified")
-		
+//		var gmtModified = $("#gmtModifiedId").val();
+//		if (checkField(gmtModified)) {
+//			params.gmtModified = gmtModified;
+//		}
 		
 		return params;
 		

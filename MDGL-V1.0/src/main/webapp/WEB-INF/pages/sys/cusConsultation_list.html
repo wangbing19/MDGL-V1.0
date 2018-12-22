@@ -47,6 +47,7 @@
 <script type="text/javascript">
    $(document).ready(function(){
 	   $("#pageId").load("doPageUI.do",function(){
+		   $("#mainContentId").removeData("rowData");
 		   doGetObjects();
 	   });
 	   $(".input-group-btn")
@@ -62,7 +63,7 @@
 		}else if($(this).hasClass("btn-update")){
 			var rowData=$(this).parents("tr").data("rowData");
 			var id=rowData.id;
-		//	console.log("id="+id)
+			console.log("id="+id)
 		   //基于id进行查询并加载编辑页面
 		   doFindObjectById(id);
 	   }
@@ -137,7 +138,6 @@
 		//1.params
 		var rowData=$(this).parents("tr").data("rowData");
 		var id=rowData.id;
-		console.log(id)
 		var params={"id":id};
 		//2.url
 		var url="cusConsultation/doDeleteObject.do"

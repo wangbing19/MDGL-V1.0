@@ -36,14 +36,14 @@
 	<!-- 将CusCustomer类型数据添加到数据库 -->
 	<insert id="insertObject" parameterType="com.md.sys.entity.cus.CusConsultation">
 		insert into cus_consultation
-		(name,age,gender,tel,eye,decline_time_year,decline_time_month,diagnose,oculopathy,correction_method,effect,visual_acuity,f_vision_condition,
+		(name,age,gender,tel,eye,decline_time_year,decline_time_month,diagnose,oculopathy,oculopathy_other,correction_method,effect,visual_acuity,f_vision_condition,
 		f_other,m_vision_condition,m_other,sleeping_time,eye_project,eye_project_other,reading_time,reading_distance,watching_time,watching_distance,
-		eye_position,home_lighting_environment,classroom_lighting_environment,r_d,l_d,r_cva,l_cva,tutor,
+		eye_position,eye_position_other,home_lighting_environment,classroom_lighting_environment,r_d,l_d,r_cva,l_cva,tutor,
 		gmt_create,gmt_modified,created_user,modified_user)
 		values
-		(#{name},#{age},#{gender},#{tel},#{eye},#{declineTimeYear},#{declineTimeMonth},#{diagnose},#{oculopathy},#{correctionMethod},#{effect},
+		(#{name},#{age},#{gender},#{tel},#{eye},#{declineTimeYear},#{declineTimeMonth},#{diagnose},#{oculopathy},#{oculopathyOther},#{correctionMethod},#{effect},
 		#{visualAcuity},#{fVisionCondition},#{fOther},#{mVisionCondition},#{mOther},#{sleepingTime},#{eyeProject},#{eyeProjectOther},#{readingTime},
-		#{readingDistance},#{watchingTime},#{watchingDistance},#{eyePosition},#{homeLightingEnvironment},
+		#{readingDistance},#{watchingTime},#{watchingDistance},#{eyePosition},#{eyePositionOther},#{homeLightingEnvironment},
 		#{classroomLightingEnvironment},#{rD},#{lD},#{rCva},#{lCva},#{tutor},now(),now(),#{createdUser},
 		#{modifiedUser})
 	</insert>
@@ -62,10 +62,11 @@
 			<if test="gender!=null and gender!=''">gender=#{gender},</if>
 			<if test="tel!=null and tel!=''">tel=#{tel},</if>
 			<if test="eye!=null and eye!=''">eye=#{eye},</if>
-			<if test="declineTime!=null and declineTime!=''">decline_time_year=#{declineTimeYear},</if>
-			<if test="declineTime!=null and declineTime!=''">decline_time_month=#{declineTimeMonth},</if>
+			<if test="declineTimeYear!=null and declineTimeYear!=''">decline_time_year=#{declineTimeYear},</if>
+			<if test="declineTimeMonth!=null and declineTimeMonth!=''">decline_time_month=#{declineTimeMonth},</if>
 			<if test="diagnose!=null and diagnose!=''">diagnose=#{diagnose},</if>
 			<if test="oculopathy!=null and oculopathy!=''">oculopathy=#{oculopathy},</if>
+			<if test="oculopathyOther!=null and oculopathyOther!=''">oculopathy_other=#{oculopathyOther},</if>
 			<if test="correctionMethod!=null and correctionMethod!=''">correction_method=#{correctionMethod},</if>
 			<if test="effect!=null and effect!=''">effect=#{effect},</if>
 			<if test="visualAcuity!=null and visualAcuity!=''">visual_acuity=#{visualAcuity},</if>
@@ -75,12 +76,13 @@
 			<if test="mOther!=null and mOther!=''">m_other=#{mOther},</if>
 			<if test="sleepingTime!=null and sleepingTime!=''">sleeping_time=#{sleepingTime},</if>
 			<if test="eyeProject!=null and eyeProject!=''">eye_project=#{eyeProject},</if>
-			<if test="eyeProject!=null and eyeProject!=''">eye_project_other=#{eyeProjectOther},</if>
+			<if test="eyeProjectOther!=null and eyeProjectOther!=''">eye_project_other=#{eyeProjectOther},</if>
 			<if test="readingTime!=null and readingTime!=''">reading_time=#{readingTime},</if>
 			<if test="readingDistance!=null and readingDistance!=''">reading_distance=#{readingDistance},</if>
 			<if test="watchingTime!=null and watchingTime!=''">watching_time=#{watchingTime},</if>
 			<if test="watchingDistance!=null and watchingDistance!=''">watching_distance=#{watchingDistance},</if>
 			<if test="eyePosition!=null and eyePosition!=''">eye_position=#{eyePosition},</if>
+			<if test="eyePositionOther!=null and eyePositionOther!=''">eye_position_other=#{eyePositionOther},</if>
 			<if test="homeLightingEnvironment!=null and homeLightingEnvironment!=''">home_lighting_environment=#{homeLightingEnvironment},</if>
 			<if test="classroomLightingEnvironment!=null and classroomLightingEnvironment!=''">classroom_lighting_environment=#{classroomLightingEnvironment},</if>
 			<if test="rD!=null and rD!=''">r_d=#{rD},</if>
@@ -96,10 +98,10 @@
 	
 	<select id="findObjectById" parameterType="int" resultType="com.md.sys.entity.cus.CusConsultation">
 		select 
-		name,age,gender,tel,eye,decline_time_year declineTimeYear,decline_time_month declineTimeMonth,diagnose,oculopathy,
+		id,name,age,gender,tel,eye,decline_time_year declineTimeYear,decline_time_month declineTimeMonth,diagnose,oculopathy,oculopathy_other oculopathyOther,
 		correction_method correctionMethod,effect,visual_acuity visualAcuity,f_vision_condition fVisionCondition,f_other fOther,
 		m_vision_condition mVisionCondition,m_other mOther,sleeping_time sleepingTime,eye_project eyeProject,eye_project_other eyeProjectOther,reading_time readingTime,
-		reading_distance readingDistance,watching_time watchingTime,watching_distance watchingDistance,eye_position eyePosition,
+		reading_distance readingDistance,watching_time watchingTime,watching_distance watchingDistance,eye_position eyePosition,eye_position_other eyePositionOther,
 		home_lighting_environment homeLightingEnvironment,classroom_lighting_environment classroomLightingEnvironment,r_d rD,l_d lD,
 		r_cva rCva,l_cva lCva,tutor,gmt_create gmtCreate,gmt_modified gmtModified,created_user createdUser,modified_user modifiedUser 
 		from cus_consultation 

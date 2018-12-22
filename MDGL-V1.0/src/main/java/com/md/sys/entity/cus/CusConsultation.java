@@ -29,6 +29,8 @@ public class CusConsultation implements Serializable {
 	private String diagnose;
 	/**眼病*/
 	private String oculopathy;
+	/**其他眼病*/
+	private String oculopathyOther;
 	/**矫正方法*/
 	private String correctionMethod;
 	/**效果*/
@@ -59,6 +61,8 @@ public class CusConsultation implements Serializable {
 	private String watchingDistance;
 	/**用眼姿势*/
 	private String eyePosition;
+	/**用眼姿势其他*/
+	private String eyePositionOther;
 	/**家庭环境光线*/
 	private String homeLightingEnvironment;
 	/**教室环境光线*/
@@ -142,6 +146,12 @@ public class CusConsultation implements Serializable {
 	}
 	public void setOculopathy(String oculopathy) {
 		this.oculopathy = oculopathy;
+	}
+	public String getOculopathyOther() {
+		return oculopathyOther;
+	}
+	public void setOculopathyOther(String oculopathyOther) {
+		this.oculopathyOther = oculopathyOther;
 	}
 	public String getCorrectionMethod() {
 		return correctionMethod;
@@ -232,6 +242,12 @@ public class CusConsultation implements Serializable {
 	}
 	public void setEyePosition(String eyePosition) {
 		this.eyePosition = eyePosition;
+	}
+	public String getEyePositionOther() {
+		return eyePositionOther;
+	}
+	public void setEyePositionOther(String eyePositionOther) {
+		this.eyePositionOther = eyePositionOther;
 	}
 	public String getHomeLightingEnvironment() {
 		return homeLightingEnvironment;

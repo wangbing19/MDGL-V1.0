@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.md.common.vo.JsonResult;
+
 /**
  * @ControllerAdvice 此注解描述的类
  * 称之为全局异常处理类
