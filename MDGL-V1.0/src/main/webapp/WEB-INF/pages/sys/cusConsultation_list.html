@@ -53,22 +53,27 @@
 	   $(".input-group-btn")
 	   .on("click",".btn-search",doQueryObjects)
 	   .on("click",".btn-add",doLoadEditUI);
-	   $("tbody").on("click",".btn-delete",doDeleteObject).on("click",".btn-update",doLoadEditUI);;
+	   $("tbody").on("click",".btn-delete",doDeleteObject).on("click",".btn-update",doLoadEditUI).on("click",".btn-insert",doSaveCustomer);
    });
 	//判定修改/删除并返回页面
 	function doLoadEditUI(){
 		//1.判定点击的对象
+		var title;
 		if($(this).hasClass("btn-add")){
-			doLoadPage();
+			title="添加";
+			doLoadPage(title);
 		}else if($(this).hasClass("btn-update")){
 			var rowData=$(this).parents("tr").data("rowData");
 			var id=rowData.id;
+			 title="修改";
 			console.log("id="+id)
 		   //基于id进行查询并加载编辑页面
-		   doFindObjectById(id);
+		   doFindObjectById(id,title);
 	   }
    }
-   function doFindObjectById(id){
+	
+  
+   function doFindObjectById(id,title){
 	   //1.params绑定id
 	   var params={"id":id};
 	   //2.url
@@ -77,17 +82,17 @@
 	   $.getJSON(url,params,function(result){//JsonResult
 		   if(result.state==1){
 			  $("#mainContentId").data("rowData",result.data); 
-	          doLoadPage();
+	          doLoadPage(title);
 		   }else{
 			  alert(result.message);
 		   }
 	   });
    }
    
-   function doLoadPage(){
+   function doLoadPage(title){
 	   var url="cusConsultation/doCusConsultationEditUI.do"
 	   $("#mainContentId").load(url,function(){
-		   $(".box-title").html();
+		   $(".box-title").html(title);
 	   }) 
    }
 
@@ -98,6 +103,7 @@
    }
    //页面加载完成异步加载当前页数据
    function doGetObjects(){
+	   //debugger
 	   var url="cusConsultation/doFindPageObjects.do";
 	   var pageCurrent=$("#pageId").data("pageCurrent");
 	   if(!pageCurrent)pageCurrent=1;
@@ -106,6 +112,7 @@
 	   console.log(params);
 	   $.getJSON(url,params,function(result){
 		   console.log(result);
+		   //debugger
 		   doHandleResponseResult(result);
 	   });
    }
@@ -113,7 +120,7 @@
    function doHandleResponseResult(result){
 	   if(result.state==1){
 		  doSetTableBodyRows(result.data.records);
-		 // doSetPagination(result.data);
+		  doSetPagination(result.data);
 		}else{
 		  alert(result.message);
 	   }
@@ -127,7 +134,7 @@
 	  for(var i in data){
 		  var tr=$("<tr></tr>");
 		  tr.data("rowData",data[i]);
-		  var tds=doCreateTds(data[i]);
+		  var tds=doCreateTds(data[i],i);
 		  tr.append(tds);
 		  tBody.append(tr);
 	  }
@@ -154,18 +161,59 @@
 	}
    
    //获取返回的值
-   function doCreateTds(row){
+   function doCreateTds(row,i){
 	   console.log(row);
-	   var tds="<td><input type='radio' name='radioId' value='"+row.id+"' ></td>"+
+	   var tds=
+	   "<td>"+(parseInt(i)+1)+"</td>"+
+	//   "<td><input type='radio' name='radioId' value='"+row.id+"' ></td>"+
 	   "<td>"+row.name+"</td>"+
        "<td>"+row.tel+"</td>"+
        "<td>"+"L:"+row.lD+"<br/>"+"R:"+row.rD+"</td>"+
        "<td>"+"L:"+row.lCva+"<br/>"+"R:"+row.rCva+"</td>"+
        "<td>"+row.tutor+"</td>"+
        "<td>"+new Date(row.gmtModified).toLocaleString()+"</td>"+
-       "<td><a class='btn-delete'>delete</a>"+
-       "&nbsp;<a class='btn-update'>update</a></td>";
+       "<td><button type='button' class='btn-delete'>"+"删除"+"</button>"+
+       "<button type='button' class='btn-update'>"+"修改"+"</button>"+
+       "<button type='button' class='btn-insert'>"+"客户添加"+"</button></td>";
+/*        "<td><button type='button' class='btn-delete'>"+"删除"+"</button></td>"+
+       "<td><button type='button' class='btn-update'>"+"修改"+"</button></td>"+
+       "<td><button type='button' class='btn-insert'>"+"客户添加"+"</button></td>"; */
+       /* "<td><a class='btn-delete'>delete</a>"+
+       "&nbsp;<a class='btn-update'>update</a>"+
+       "&nbsp;<a class='btn-insert'>用户添加</a></td>"; */
        return tds;
+   }
+   
+   /**获取信息转向SaveCustomer*/
+   function doSaveCustomer(){
+		var rowData=$(this).parents("tr").data("rowData");
+		var id=rowData.id;
+		var params={"id":id};
+		//2.url
+		var url="cusConsultation/doFindObjectById.do";
+		//3.ajax request
+		$.getJSON(url,params,function(result){//JsonResult
+		if(result.state==1){
+			var customerData = {
+					"consultationId":result.data.id,
+					"name":result.data.name,
+					"age":result.data.age,
+					"gender":result.data.gender,
+					"tel":result.data.tel
+					
+			}
+			$("#mainContentId").data("customerData",customerData);
+			
+			console.log($("#mainContentId").data("customerData"));
+			var title = "添加用户";
+			$("#mainContentId").load("customer/doCustomerEditUI.do",function(){
+				$(".box-title").html(title);
+			   });
+			}else{
+				alert(result.message);
+			}
+		   });
+		
    }
 </script>
 
