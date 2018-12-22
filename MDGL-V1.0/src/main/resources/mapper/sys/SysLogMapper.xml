@@ -5,10 +5,10 @@
 
 	<insert id="insertObject">
 		insert into sys_logs
-       (username,operation,method,params,time,ip,created_time)
-       values
+		(username,operation,method,params,time,ip,created_time)
+		values
 		(#{username},#{operation},#{method},#{params},#{time},#{ip},#{createdTime})
-		
+
 
 	</insert>
 
@@ -40,10 +40,17 @@
 	</select>
 	<select id="findPageObjects"
 		resultType="com.md.sys.entity.sys.SysLog">
-		select *
+		select id,
+		username,
+		operation,
+		method,
+		params,
+		time,
+		ip,
+		created_time createdTime
 		from sys_logs
 		<include refid="queryWhereId" />
-		order by createdTime desc
+		order by created_time desc
 		limit #{startIndex},#{pageSize}
 		<!--limit 子句为分页查询子句 ，第一个参数代码起始位置 -->
 	</select>

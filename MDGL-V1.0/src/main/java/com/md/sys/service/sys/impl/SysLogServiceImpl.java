@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import com.md.common.annotation.sys.RequiresLog;
 import com.md.common.exception.ServiceException;
 import com.md.common.vo.PageObject;
 import com.md.sys.dao.sys.SysLogDao;
@@ -24,6 +25,7 @@ public class SysLogServiceImpl implements SysLogService {
     @Qualifier("sysLogDao")
 	private SysLogDao sysLogDao;
 	
+	@RequiresLog("删除日志")
 	@Override
 	public int deleteObjects(Integer... ids) {
 		//1.对参数进行校验
@@ -45,6 +47,7 @@ public class SysLogServiceImpl implements SysLogService {
 		return rows;
 	}
 	
+	@RequiresLog("查询日志")
 	@Override
 	public PageObject<SysLog> findPageObjects(
 			String username, 
@@ -61,7 +64,7 @@ public class SysLogServiceImpl implements SysLogService {
 		//NoRecordsFoundException
 	    throw new ServiceException("记录不存在");
 		//4.依据条件查询当前页要显示的记录
-		int pageSize=3;//页面大小
+		int pageSize=10;//页面大小
 		int startIndex=(pageCurrent-1)*pageSize;//起始位置
 		List<SysLog> records=
 		sysLogDao.findPageObjects(username,

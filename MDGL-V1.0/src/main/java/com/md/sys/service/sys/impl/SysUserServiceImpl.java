@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import com.md.common.annotation.sys.RequiresLog;
 import com.md.common.exception.ServiceException;
 import com.md.common.vo.Node;
 import com.md.common.vo.PageObject;
@@ -24,7 +25,8 @@ public class SysUserServiceImpl implements SysUserService {
 	private SysUserDao sysUserDao;
 	@Autowired
 	private SysUserRoleDao sysUserRoleDao;
-
+	
+	@RequiresLog("直接分页查询用户列表")
 	@Override
 	public PageObject<SysUser> findPageObjects(String username, Integer pageCurrent) {
 		// 1.验证参数有效性
@@ -48,6 +50,8 @@ public class SysUserServiceImpl implements SysUserService {
 		pageObject.setPageCount((rowCount - 1) / pageSize + 1);
 		return pageObject;
 	}
+	
+	@RequiresLog("用过用户名查询用户列表")
 	public PageObject<SysUser> searchPageObjects(String username, Integer pageCurrent) {
 		// 1.验证参数有效性
 		if (pageCurrent == null || pageCurrent < 1)
@@ -70,14 +74,14 @@ public class SysUserServiceImpl implements SysUserService {
 		pageObject.setPageCount((rowCount - 1) / pageSize + 1);
 		return pageObject;
 	}
-
+	
+	@RequiresLog("查询用户列表")
 	@Override
 	public List<SysUser> findUserByUserName() {
 		List<SysUser> users = sysUserDao.findUserByUserName();
-		System.out.println(users);
 		return users;
 	}
-
+	@RequiresLog("更改账户状态")
 	@Override
 	public int doValidById(Integer id, Integer valid) {
 		if (id == null || id < 1)
@@ -98,7 +102,8 @@ public class SysUserServiceImpl implements SysUserService {
 
 		return findZTreeNodes;
 	}
-
+	
+	@RequiresLog("添加用户")
 	@Override
 	public int doSaveObject(SysUser entity) {
 		if (entity == null)
@@ -122,7 +127,8 @@ public class SysUserServiceImpl implements SysUserService {
 		
 		return doSaveObject;
 	}
-
+	
+	@RequiresLog("通过用户id查询指定用户信息")
 	@Override
 	public SysUser doFindObjectById(Integer id) {
 		if(id==null)
@@ -131,7 +137,9 @@ public class SysUserServiceImpl implements SysUserService {
 			SysUser result= sysUserDao.doFindObjectById(id);
 		return result;
 	}
-
+	
+	
+	@RequiresLog("用户数据更新")
 	@Override
 	public int doUpdateObject(SysUser entity) {
 		if (entity == null)

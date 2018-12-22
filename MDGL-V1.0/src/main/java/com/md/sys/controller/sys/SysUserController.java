@@ -42,7 +42,6 @@ public class SysUserController {
 	@RequestMapping("doSearchPageObjects")
 	@ResponseBody
 	public JsonResult searchPageObjects(String username, Integer pageCurrent) {
-		System.out.println(username);
 		System.out.println("find.service=" + sysUserService.getClass().getName());
 		return new JsonResult(sysUserService.searchPageObjects(username, pageCurrent));
 	}
