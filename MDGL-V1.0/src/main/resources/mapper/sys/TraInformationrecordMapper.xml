@@ -82,4 +82,11 @@
               </if>
        </where>
      </sql>
+     
+     
+     <!-- 根据客户id(customer_id)查询总数 -->
+	<select id="findByCustomerId" parameterType="int" resultType="Date">
+		select gmt_create from tra_informationrecord
+		where customer_id=#{id}
+	</select>
 </mapper>
