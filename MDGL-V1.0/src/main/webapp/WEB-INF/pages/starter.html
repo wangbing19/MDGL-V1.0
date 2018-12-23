@@ -14,7 +14,7 @@
 <link rel="stylesheet"
 	href="bower_components/Ionicons/css/ionicons.min.css">
 <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
-<link rel="stylesheet" href="dist/css/skins/skin-blue-light.min.css">
+<link rel="stylesheet" href="dist/css/skins/skin-purple-light.min.css">
 <link rel="stylesheet"
 	href="bower_components/layer/skin/default/layer.css">
 <link rel="stylesheet"
@@ -31,7 +31,7 @@
 <link rel="stylesheet" href="mycss/diagnosisApolo.css">
 <link rel="stylesheet" href="mycss/diagnosisDownload.css">
 </head>
-<body class="hold-transition skin-blue-light sidebar-mini">
+<body class="hold-transition skin-purple-light sidebar-mini">
 	<div class="wrapper">
 		<header class="main-header">
 			<!-- ============================================================================================ -->
@@ -45,6 +45,63 @@
 				<a href="#" class="sidebar-toggle" data-toggle="push-menu"
 					role="button"> <span class="sr-only">Toggle navigation</span>
 				</a>
+				 <!-- Navbar Right Menu -->
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+         
+          
+        
+         
+          
+          <!-- User Account Menu -->
+          <li class="dropdown user user-menu">
+            <!-- Menu Toggle Button -->
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <!-- The user image in the navbar-->
+              <img src="dist/img/user7-128x128.jpg" class="user-image" alt="User Image">
+              <!-- hidden-xs hides the username on small devices so only the image appears. -->
+              <span class="hidden-xs">CGB</span>
+            </a>
+            <ul class="dropdown-menu">
+              <!-- The user image in the menu -->
+              <li class="user-header">
+                <img src="dist/img/user7-128x128.jpg" class="img-circle" alt="User Image">
+
+                <p>
+                  CGB1809 视觉管理系统
+                  <small>2018-12-23</small>
+                </p>
+              </li>
+              <!-- Menu Body -->
+              <li class="user-body">
+                <div class="row">
+                  <div class="col-xs-4 text-center">
+                 
+                  </div>
+                  <div class="col-xs-4 text-center">
+                  
+                  </div>
+                  <div class="col-xs-4 text-center">
+                   
+                  </div>
+                </div>
+                <!-- /.row -->
+              </li>
+              <!-- Menu Footer-->
+              <li class="user-footer">
+                
+                <div class="pull-right">
+                  <a href="user/doLogout.do" class="btn btn-default btn-sign-out">退出</a>
+                </div>
+              </li>
+            </ul>
+          </li>
+          <!-- Control Sidebar Toggle Button -->
+          <li>
+            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+          </li>
+        </ul>
+      </div>
 			</nav>
 		</header>
 		<!-- ============================================================================================ -->
@@ -72,7 +129,7 @@
 				<!-- ============================================================================================ -->
 				<!-- 菜单管理 -->
 				<ul class="sidebar-menu" data-widget="tree">
-					<li class="header">HEADER</li>
+					
 					<li class="treeview"><a href="#"><i class="fa fa-link"></i>
 							<span>系统权限管理</span> <span class="pull-right-container"> <i
 								class="fa fa-angle-left pull-right"></i>
@@ -180,10 +237,7 @@
 				<h1>
 					<small>Optional description</small>
 				</h1>
-				<ol class="breadcrumb">
-					<li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-					<li class="active">Here</li>
-				</ol>
+				
 			</section>
 			<!-- ============================================================================================ -->
 
@@ -249,6 +303,7 @@
 				doLoadUI("load-cus-consultation-id",
 						"cusConsultation/doCusConsultationListUI.do")
 				doLoadUI("load-pre-diagnosis_id", "diagnosis/doDiagnosis.do")
+				doLoadUI("")
 			});
 			function doLoadUI(id, url) {
 				$("#" + id).click(function() {

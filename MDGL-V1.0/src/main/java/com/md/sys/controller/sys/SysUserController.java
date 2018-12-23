@@ -13,14 +13,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.md.common.vo.JsonResult;
 import com.md.sys.entity.sys.SysUser;
 import com.md.sys.service.sys.SysUserService;
+import com.md.sys.service.sys.realm.ShiroUserRealm;
 
 @Controller
 @RequestMapping("/user/")
 public class SysUserController {
 	@Autowired
 	private SysUserService sysUserService;
-//	 @Autowired
-//	 private ShiroUserRealm shiroUserRealm;
+	
+	@Autowired
+	private ShiroUserRealm shiroUserRealm;
+	//	 @Autowired
+	//	 private ShiroUserRealm shiroUserRealm;
 
 	@RequestMapping("doUserListUI")
 	public String doUserListUI() {
@@ -30,6 +34,16 @@ public class SysUserController {
 	@RequestMapping("doUserEditUI")
 	public String doUserEditUI() {
 		return "sys/sys_user_edit";
+	}
+
+	
+	
+	@RequestMapping("doLogout")
+	public String doLogout(){
+		System.out.println("dologout");
+		shiroUserRealm.logout();
+		counter.decrementAndGet();
+		return "redirect:../doLoginUI.do";
 	}
 
 	@RequestMapping("doFindPageObjects")
@@ -45,7 +59,7 @@ public class SysUserController {
 		System.out.println("find.service=" + sysUserService.getClass().getName());
 		return new JsonResult(sysUserService.searchPageObjects(username, pageCurrent));
 	}
-	
+
 	@RequestMapping("doValidById")
 	@ResponseBody
 	public JsonResult doValidById(Integer id,Integer valid) {
@@ -76,21 +90,21 @@ public class SysUserController {
 		int doUpdateObject = sysUserService.doUpdateObject(sysUser);
 		return new JsonResult("update ok");
 	}
-	
+
 	private AtomicInteger counter=new AtomicInteger(0);
-    //private int count;
-    @RequestMapping("doLogin")
-    @ResponseBody
-    public JsonResult doLogin(String username,String password){
-   	 //1.封装用户信息
-   	 UsernamePasswordToken token=
-   	 new UsernamePasswordToken(username,password);
-   	 //2.提交用户信息
-   	 Subject subject=SecurityUtils.getSubject();
-   	 subject.login(token);//提交给SecurityManager
-   	 int count=counter.incrementAndGet();//count+1;
-   	 System.out.println("在线人数:"+count);
-   	 return new JsonResult("login ok");
-    }
-	
+	//private int count;
+	@RequestMapping("doLogin")
+	@ResponseBody
+	public JsonResult doLogin(String username,String password){
+		//1.封装用户信息
+		UsernamePasswordToken token=
+				new UsernamePasswordToken(username,password);
+		//2.提交用户信息
+		Subject subject=SecurityUtils.getSubject();
+		subject.login(token);//提交给SecurityManager
+		int count=counter.incrementAndGet();//count+1;
+		System.out.println("在线人数:"+count);
+		return new JsonResult("login ok");
+	}
+
 }
