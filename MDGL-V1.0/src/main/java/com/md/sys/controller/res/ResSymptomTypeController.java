@@ -32,19 +32,19 @@ public class ResSymptomTypeController {
 	@ResponseBody
 	public JsonResult doSaveObject(ResSymptomType entity){
 		resSymptomTypeService.saveObject(entity);
-		return new JsonResult("Save ok");
+		return new JsonResult("保存成功");
 	}
 	@RequestMapping("doDeleteObject")
 	@ResponseBody
 	public JsonResult dodeleteObject(Integer id){
 		resSymptomTypeService.deleteObject(id);
-		return new JsonResult("delete Ok");
+		return new JsonResult("删除成功");
 	}
 	@RequestMapping("doupdateObject")
 	@ResponseBody
 	public JsonResult doupdateObject(ResSymptomType entity){
 		resSymptomTypeService.updateObject(entity);
-		return new JsonResult("update ok");
+		return new JsonResult("修改成功");
 	}
 	@RequestMapping("doResSymptomTypeList")
 	public String doResSymptomTypeList() {

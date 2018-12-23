@@ -10,7 +10,7 @@ import com.md.common.vo.PageObject;
 import com.md.sys.entity.res.ResProjectConfig;
 import com.md.sys.service.res.ResProjectConfigService;
 @Controller
-@RequestMapping("ResProjectConfig")
+@RequestMapping("ResProjectConfig") 
 public class ResProjectConfigController {
 	@Autowired
 	private ResProjectConfigService resProjectConfigService;
@@ -39,27 +39,27 @@ public class ResProjectConfigController {
 	public JsonResult doprojectStateById(Integer id,Integer projectState) {
 		
 		resProjectConfigService.projectStateById(id, projectState);
-		return new JsonResult("update ok");
+		return new JsonResult("修改成功");
 	}
 	@RequestMapping("dosaveObject")
 	@ResponseBody
 	public JsonResult dosaveObject(ResProjectConfig entity){
 		System.out.println("entity:"+entity);
 		resProjectConfigService.saveObject(entity);
-		return new JsonResult("save ok");
+		return new JsonResult("保存成功");
 	}
 	@RequestMapping("dodeleteObjects")
 	@ResponseBody
 	public JsonResult dodeleteObjects(Integer...ids){
 		resProjectConfigService.deleteObjects(ids);
-		return new JsonResult("delete ok");
+		return new JsonResult("删除成功");
 	}
-	@RequestMapping("doupdateObject")
+	@RequestMapping("doUpdateObject")
 	@ResponseBody
-	public JsonResult doupdateObject(ResProjectConfig entity){
+	public JsonResult doUpdateObject(ResProjectConfig entity){
 		System.out.println("entity:"+entity);
 		resProjectConfigService.updateObject(entity);
-		return new JsonResult("update ok");
+		return new JsonResult("修改成功");
 	}
 	
 }

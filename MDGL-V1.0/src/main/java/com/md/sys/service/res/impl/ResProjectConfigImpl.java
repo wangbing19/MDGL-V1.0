@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.druid.util.StringUtils;
+import com.md.common.annotation.sys.RequiresLog;
 import com.md.common.exception.ServiceException;
 import com.md.common.vo.PageObject;
 import com.md.sys.dao.res.ResProjectConfigDao;
@@ -44,6 +45,7 @@ public class ResProjectConfigImpl implements ResProjectConfigService {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	@RequiresLog("资源配置-症状类型-是否生效更改")
 	@Override
 	public int projectStateById(Integer id, Integer projectState) {
 		if(id==null||id<=0)
@@ -64,6 +66,7 @@ public class ResProjectConfigImpl implements ResProjectConfigService {
 			throw new ServiceException("此记录可能已经不存在");
 		return rows;
 	}
+	@RequiresLog("资源配置-症状类型-数据保存")
 	@Override
 	public int saveObject(ResProjectConfig entity) {
 		//验证数据合法性
@@ -75,6 +78,7 @@ public class ResProjectConfigImpl implements ResProjectConfigService {
 		int rows=resProjectConfigDao.insertObject(entity);
 		return rows;
 	}
+	@RequiresLog("资源配置-症状类型-数据删除")
 	@Override
 	public int deleteObjects(Integer... ids) {
 

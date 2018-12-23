@@ -9,7 +9,7 @@
 id="ProjectConfigMap">
 </resultMap>
 	<update id="updateObject"
-	parameterType="com.md.sys.entity.tra.TraInformationrecord">
+	parameterType="com.md.sys.entity.res.ResProjectConfig">
 		update  res_project_config
 		<set>
 			<if test="projectName!=null and projectName!=''">

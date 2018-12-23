@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.druid.util.StringUtils;
+import com.md.common.annotation.sys.RequiresLog;
 import com.md.common.exception.ServiceException;
 import com.md.sys.dao.res.ResSymptomTypeDao;
 import com.md.sys.entity.res.ResSymptomType;
@@ -30,6 +31,7 @@ public class ResSymptomTypeImpl implements ResSymptomTypeService{
 		}
 		return TypeDao;
 	}
+	@RequiresLog("资源配置-项目配置-数据保存")
 	@Override
 	public int saveObject(ResSymptomType entity) {
 		//1.合法验证
@@ -48,6 +50,7 @@ public class ResSymptomTypeImpl implements ResSymptomTypeService{
 				//3.返回数据
 				return rows;
 	}
+	@RequiresLog("资源配置-项目配置-数据删除")
 	@Override
 	public int deleteObject(Integer id){
 		//验证数据
@@ -63,6 +66,7 @@ public class ResSymptomTypeImpl implements ResSymptomTypeService{
 		}
 		return rows;
 	}
+	@RequiresLog("资源配置-项目配置-数据修改")
 	@Override
 	public int updateObject(ResSymptomType entity) {
 		//验证数据

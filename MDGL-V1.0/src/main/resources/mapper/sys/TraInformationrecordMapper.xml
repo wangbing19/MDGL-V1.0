@@ -51,7 +51,7 @@
 		(username,l_vision,r_vision,grade,evaluate,content,tutor,end_time,
 		gmt_create,gmt_modified,customer_id)
 		values
-		(#{username},#{lVision},#{rVision},#{grade},#{evaluate},#{content},#{tutor},#{endTime},
+		(#{username},#{lVision},#{rVision},#{grade},#{evaluate},#{content},#{tutor},now(),
 		now(),now(),#{customerId})
 	</insert>
 	<select id="findObjects" resultType="map">

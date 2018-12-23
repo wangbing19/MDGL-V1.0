@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.druid.util.StringUtils;
+import com.md.common.annotation.sys.RequiresLog;
 import com.md.common.exception.ServiceException;
 import com.md.common.vo.PageObject;
 import com.md.sys.dao.tra.TraInformationrecordDao;
@@ -60,7 +61,7 @@ public class TraInformationrecordServiceImpl implements TraInformationrecordServ
 				
 		return pageObject;
 	}
-
+	@RequiresLog("训练管理-训练记录-数据保存")
 	@Override
 	public int saveObject(TraInformationrecord entity) {
 		//验证数据合法性
@@ -76,7 +77,7 @@ public class TraInformationrecordServiceImpl implements TraInformationrecordServ
 		
 		return rows;	
 	}
-	
+	@RequiresLog("训练管理-训练记录-数据修改")
 	@Override
 	public int update(TraInformationrecord entity) {
 		//System.out.println(entity);
@@ -89,7 +90,7 @@ public class TraInformationrecordServiceImpl implements TraInformationrecordServ
 		
 		return rows;
 	}
-
+	@RequiresLog("训练管理-训练记录-数据删除")
 	@Override
 	public int deleteObejcts(Integer... ids) {
 		//1.判定参数合法性

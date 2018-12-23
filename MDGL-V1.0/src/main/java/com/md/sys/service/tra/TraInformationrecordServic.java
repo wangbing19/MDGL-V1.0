@@ -22,6 +22,7 @@ public interface TraInformationrecordServic {
 	int update(TraInformationrecord entity);
 	
 	TraInformationrecord findObjectById(Integer id);
+	
 }
 
 

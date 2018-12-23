@@ -51,7 +51,7 @@ public class TraInformationrecordController {
 	public JsonResult doSaveObject(TraInformationrecord entity){
 		
 		traInformationrecordService.saveObject(entity);
-		return new JsonResult("save ok");
+		return new JsonResult("保存成功");
 	}
 	@RequestMapping("doFindObjectById")
 	@ResponseBody
@@ -64,7 +64,7 @@ public class TraInformationrecordController {
 	public JsonResult doUpdate(TraInformationrecord entity){
 		System.out.println(entity);
 		traInformationrecordService.update(entity);
-		return new JsonResult("Update ok");
+		return new JsonResult("修改成功");
 	}
 	/**删除*/
 	@RequestMapping("doDeleteObject")
@@ -72,6 +72,6 @@ public class TraInformationrecordController {
 	public JsonResult doDeleteObject(Integer id) {
 		System.out.println(id);
 		traInformationrecordService.deleteObejcts(id);
-		return new JsonResult("delete ok");
+		return new JsonResult("删除成功");
 	}
 }
