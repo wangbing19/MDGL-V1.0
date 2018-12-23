@@ -51,6 +51,7 @@ public class SysUserServiceImpl implements SysUserService {
 		return pageObject;
 	}
 
+	@Override
 	@RequiresLog("用过用户名查询用户列表")
 	public PageObject<SysUser> searchPageObjects(String username, Integer pageCurrent) {
 		// 1.验证参数有效性
