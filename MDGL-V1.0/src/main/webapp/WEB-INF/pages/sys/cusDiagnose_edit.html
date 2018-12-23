@@ -17,38 +17,40 @@
 					<h1 style="display: block;">
 						<div>
 							<div>
-								<p>基本信息咨询表</p>
+								<p>诊断表</p>
 							</div>
 						</div>
 					</h1>
 					<div style="font-size: 100%;">
 						<div>
 							<!-- style="text-align: center" -->
-							<div data-type="description" data-id="q-34-iyZk"
+							<!-- <div data-type="description" data-id="q-34-iyZk"
 								style="display: block;">
 								<div>
 									<div class="description_content">
-										<span> <strong>姓名：</strong>
-											<input type="text"
-											role="textbox" placeholder="(必填)" maxlength="10"
+										<span> <strong>姓名：</strong> <input type="text"
+											class="fill_blank needsclick" role="textbox"
+											aria-labelledby="questionTitle_q-33-AlYW"
 											style="width: 112px;" id="nameID"></span> <span> <strong>年龄：</strong>
-											<input type="text" role="textbox" maxlength="3"
+											<input type="text" class="fill_blank needsclick "
+											role="textbox" aria-labelledby="questionTitle_q-33-AlYW"
 											style="width: 112px;" id="ageID"></span> <span> <strong>性别：</strong>
-											<input type="text" role="textbox" maxlength="1"
+											<input type="text" class="fill_blank needsclick"
+											role="textbox" aria-labelledby="questionTitle_q-33-AlYW"
 											style="width: 112px;" id="sexID"></span> <span> <strong>联系方式：</strong>
-											<input type="text"
-											role="textbox" placeholder="(必填)" maxlength="11"
+											<input type="number" class="fill_blank needsclick numbInput"
+											role="textbox" aria-labelledby="questionTitle_q-33-AlYW"
 											style="width: 112px;" id="phoneID"></span>
 									</div>
 								</div>
-							</div>
-							<br />
+							</div> -->
+							
 							<div class="survey_prefix"
 								style="display: block; margin-top: 40px;">
 								<div class="inner">
 									<h2 class="prefix_content">
 										<p style="color: #00a2d4;">
-											<strong>主要信息采集</strong>
+											<strong>验光</strong>
 										</p>
 									</h2>
 								</div>
@@ -476,7 +478,8 @@
 		</div>
 	</form>
 </div>
-
+<!-- <script type="text/javascript"src="bower_components/ztree/jquery.ztree.all.min.js"></script> -->
+<!-- <script type="text/javascript" src="bower_components/layer/layer.js"></script> -->
 <script type="text/javascript">
 
 	//json 格式的javascript对象
@@ -498,25 +501,37 @@
 	function doSaveOrUpdate() {
 		var rowData = $("#mainContentId").data("rowData");
 		//1.获取表单数据
-		
+		// var params=doGetEditFormData();
 		var params = check();
-	//	console.log(params);
+		console.log(params);
 		if (rowData)
 			params.id = rowData.id;
 		//2.发起异步请求
 		var insertUrl = "cusConsultation/doSaveObject.do";
 		var updateUrl = "cusConsultation/doUpdateObject.do";
 		var url = rowData ? updateUrl : insertUrl;
-	//	console.log(params);
+		console.log(params);
 		$.post(url, params, function(result) {
 			if (result.state == 1) {
-			//	alert(result.message);
+				alert(result.message);
 				doCancel();
 			} else {
 				alert(result.message);
 			}
 		})
 	}
+	
+	/* function doGetEditFormData() {
+		//获取用户输入的数据
+		var params = {
+			username : $("#usernameId").val(),
+			password : $("#passwordId").val(),
+			email : $("#emailId").val(),
+			mobile : $("#phoneId").val(),
+			deptId : $("#deptId").data("deptId")
+		}
+		return params;
+	} */
 	
 	function doLoadRoles() {
 		doInitFormData();//修改时
@@ -525,16 +540,16 @@
 	function doInitFormData() {
 		$("#gmtCreateId").val(getNowFormatDate());
 		var data = $("#mainContentId").data("rowData");
-	//	console.log("一次测试");
+		console.log("一次测试");
 		if (!data)
 			return;
 		// $("#pwdDiv").remove();
-	//	console.log(data);
+		console.log(data);
 		//初始化用户信息 
-		$("#nameID").val(data.name);
+		/* $("#nameID").val(data.name);
 		$("#ageID").val(data.age);
 		$("#sexID").val(data.gender);
-		$("#phoneID").val(data.tel);
+		$("#phoneID").val(data.tel); */
 		$("#whitchEyeID").val(data.eye);
 		$("#yearID").val(data.declineTimeYear);
 		$("#declineTimeMonth").val(data.monthID);
@@ -559,7 +574,7 @@
 		var ids = new Array();
 		if(correctionMethod!=null){
 			ids = correctionMethod.split(",");
-		//	console.log(ids);
+			console.log(ids);
 			for(var i in ids){
 				$("input[name='correctionMethod']").each(function(index) {
 				    if ($("input[name='correctionMethod']").get(index).value == ids[i]) {
@@ -617,7 +632,7 @@
 		var eyeProjectIds = new Array();
 		if(eyeProject!=null){
 			eyeProjectIds = eyeProject.split(",");
-		//	console.log(ids);
+			console.log(ids);
 			for(var i in eyeProjectIds){
 				$("input[name='eyeProject']").each(function(index) {
 				    if ($("input[name='eyeProject']").get(index).value == eyeProjectIds[i]) {
@@ -666,7 +681,7 @@
 		var eyePositionIds = new Array();
 		if(eyePosition!=null){
 			eyePositionIds = eyePosition.split(",");
-		//	console.log(ids);
+			console.log(ids);
 			for(var i in eyePositionIds){
 				$("input[name='eyePosition']").each(function(index) {
 				    if ($("input[name='eyePosition']").get(index).value == eyePositionIds[i]) {
@@ -728,7 +743,7 @@
 	function check() {
 
 		var params = {};
-		var name = $('#nameID').val();
+		/* var name = $('#nameID').val();
 		if (name == null) {
 			alert('姓名不可以为空哦!');
 			return;
@@ -747,7 +762,7 @@
 		var gender = $('#sexID').val();
 		if (checkField(gender)) {
 			params.gender = gender;
-		}
+		} */
 
 		var eye = $('#whitchEyeID').val();
 		if (checkField(eye)) {
@@ -830,7 +845,7 @@
 				 if($(this).val()=="3"){
 					var eyeProjectOther = $("#eyeProjectOtherId").val();
 					params.eyeProjectOther = eyeProjectOther;
-				//	console.log(params.eyeProjectOther);
+					console.log(params.eyeProjectOther);
 				} 
 			}
 		});
@@ -913,7 +928,12 @@
 		if (checkField(tutor)) {
 			params.tutor = tutor;
 		}
-	
+		/**修改时间*/
+//		var gmtModified = $("#gmtModifiedId").val();
+//		if (checkField(gmtModified)) {
+//			params.gmtModified = gmtModified;
+//		}
+		
 		return params;
 		
 	}

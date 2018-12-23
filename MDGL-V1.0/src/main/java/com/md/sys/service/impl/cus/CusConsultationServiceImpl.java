@@ -17,7 +17,7 @@ import com.md.sys.service.cus.CusConsultationService;
 public class CusConsultationServiceImpl implements CusConsultationService {
 
 	@Autowired
-	private CusConsultationDao CusConsultationDao;
+	private CusConsultationDao cusConsultationDao;
 
 	/**基于用户/电话及当前页码值条件查询用户信息*/
 	@Override
@@ -26,7 +26,7 @@ public class CusConsultationServiceImpl implements CusConsultationService {
 		if(pageCurrent==null||pageCurrent<=0)
 			throw new ServiceException("页码值不正确");
 		//2.依据条件获取总记录数并进行验证
-		int rowCount = CusConsultationDao.getRowCount(name,tel);
+		int rowCount = cusConsultationDao.getRowCount(name,tel);
 	//	System.out.println(rowCount);
 		if(rowCount==0)
 			throw new ServiceException("记录不存在");
@@ -34,7 +34,7 @@ public class CusConsultationServiceImpl implements CusConsultationService {
 		int pageSize=10;
 		int startIndex = (pageCurrent-1)*pageSize;
 		List<CusConsultation> records =
-				CusConsultationDao.findPageObjects(name, tel, startIndex, pageSize);
+				cusConsultationDao.findPageObjects(name, tel, startIndex, pageSize);
 		//4.对查询结果进行封装并返回
 		PageObject<CusConsultation> pageObject = 
 				new PageObject<>();
@@ -61,7 +61,7 @@ public class CusConsultationServiceImpl implements CusConsultationService {
 		if(StringUtils.isEmpty(entity.getTel()))
 			throw new ServiceException("电话不能为空");
 		//保存数据
-		int rows = CusConsultationDao.insertObject(entity);
+		int rows = cusConsultationDao.insertObject(entity);
 		
 		//返回结果
 		return rows;
@@ -77,7 +77,7 @@ public class CusConsultationServiceImpl implements CusConsultationService {
 		if(id==null||id<=0)
 			throw new ServiceException("请选择一条数据");
 		//执行删除
-		int rows = CusConsultationDao.deleteObject(id);
+		int rows = cusConsultationDao.deleteObject(id);
 		//判断数据有无
 		if(rows==0)
 			throw new ServiceException("数据可能已删除");
@@ -99,7 +99,7 @@ public class CusConsultationServiceImpl implements CusConsultationService {
 		if(StringUtils.isEmpty(entity.getTel()))
 			throw new ServiceException("电话不能为空");
 		//执行
-		int rows = CusConsultationDao.updateObject(entity);
+		int rows = cusConsultationDao.updateObject(entity);
 		if(rows==0)
 			throw new ServiceException("修改失败");
 		return rows;
@@ -113,7 +113,7 @@ public class CusConsultationServiceImpl implements CusConsultationService {
 		if(id==null||id<=0)
 			throw new ServiceException("id错误");
 		//执行删除
-		CusConsultation cusConsultation = CusConsultationDao.findObjectById(id);
+		CusConsultation cusConsultation = cusConsultationDao.findObjectById(id);
 		return cusConsultation;
 	}
 

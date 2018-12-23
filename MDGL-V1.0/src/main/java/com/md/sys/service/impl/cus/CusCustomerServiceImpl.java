@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 import com.alibaba.druid.util.StringUtils;
 import com.md.common.exception.ServiceException;
 import com.md.common.vo.PageObject;
+import com.md.sys.dao.cus.CusConsultationDao;
 import com.md.sys.dao.cus.CusCustomerDao;
+import com.md.sys.entity.cus.CusConsultation;
 import com.md.sys.entity.cus.CusCustomer;
 import com.md.sys.service.cus.CusCustomerService;
 import com.md.sys.vo.cus.CusCustomerResult;
@@ -17,6 +19,8 @@ public class CusCustomerServiceImpl implements CusCustomerService {
 
 	@Autowired
 	private CusCustomerDao cusCustomerDao;
+	@Autowired
+	private CusConsultationDao cusConsultationDao;
 	
 
 	/**
@@ -69,6 +73,15 @@ public class CusCustomerServiceImpl implements CusCustomerService {
 		//保存数据
 		/**设置状态*/
 		entity.setState(1);
+		//建立咨询表对象并赋值
+		CusConsultation consultation = new CusConsultation();
+		consultation.setId(entity.getConsultationId());
+		consultation.setName(entity.getName());
+		consultation.setAge(entity.getAge());
+		consultation.setGender(entity.getGender());
+		consultation.setTel(entity.getTel());
+		/**修改咨询表部分信息*/
+		cusConsultationDao.updateObjectByCustomerId(consultation);
 		int rows = cusCustomerDao.insertObject(entity);
 		//返回结果
 		return rows;

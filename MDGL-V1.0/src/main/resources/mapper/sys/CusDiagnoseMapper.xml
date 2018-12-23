@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 命名空间：映射文件所在目录.名称 -->
+<mapper namespace="com.md.sys.dao.cus.CusDiagnoseDao">
+
+	<!-- 基于用户id的查询条件sql引用语句 -->
+	<sql id="queryWhereId">
+       <where>
+       		<if test="userId!=null and userId!=''">
+				user_id=#{userId}
+			</if>
+		</where>
+	</sql>
+	
+	<!-- 基于用户id名及分页条件查询 -->
+	<select id="findPageObjects" resultMap="cusDiagnoseMap">
+		select  id,r_ds,r_dc,l_ds,l_dc,diagnostics,gmt_modified
+		from cus_diagnose 
+        <include refid="queryWhereId"/>
+		limit #{startIndex},#{pageSize}
+	</select>
+	
+	<!-- 关联查询 -->
+	<resultMap id="cusDiagnoseMap"
+		type="com.md.sys.vo.cus.CusDiagnoseResult">
+		<id column="id" property="id"/>
+		<!-- 关联查询充值记录数 -->
+		<association property="customerName"
+					 column="id"
+					 select="com.md.sys.dao.cus.CusCustomerDao.findNameByDiagnoseId">
+		</association>
+		<!-- 关联查询充值记录数 -->
+		<association property="customerTel"
+					 column="id"
+					 select="com.md.sys.dao.cus.CusCustomerDao.findTelByDiagnoseId">
+		</association>
+	</resultMap>
+	
+	<!-- 基于用户名查询该用户总数,无用户名输入查询所有用户总数 -->
+	<select id="getRowCount" resultType="int">
+		select count(*) from cus_diagnose
+		<include refid="queryWhereId"/>
+	</select>
+	
+	
+
+	<!-- 将CusCustomer类型数据添加到数据库 -->
+	<insert id="insertObject" parameterType="com.md.sys.entity.cus.CusDiagnose" >
+		insert into cus_diagnose
+		(r_ds,r_dc,r_x,r_d,l_ds,l_dc,l_x,l_d,pupil_distance,r_glasses_d,r_glasses_dc,l_glasses_d,l_glasses_dc,
+		eye_position_examination,synoptophore,fusionvision,stereopsis,ametropia,amblyopia_degree,amblyopia,
+		amblyopia_prognosis,strabismus,vision_other,parent_cooperation_during_training,diagnostics,
+		user_id,customer_id,gmt_create,gmt_modified,created_user,modified_user)
+		values
+		(#{rDs},#{rDc},#{rX},#{rD},#{lDs},#{lDc},#{lX},#{lD},#{pupilDistance},#{rGlassesD},#{rGlassesDc},#{lGlassesD},#{lGlassesDc},
+		#{eyePositionExamination},#{synoptophore},#{fusionvision},#{stereopsis},#{ametropia},#{amblyopiaDegree},#{amblyopia},
+		#{amblyopiaPrognosis},#{strabismus},#{visionOther},#{parentCooperationDuringTraining},#{diagnostics},
+		#{userId},#{customerId},now(),now(),#{createdUser},#{modifiedUser})
+	</insert>
+	
+	
+	
+	<!-- 基于咨询表客户id删除咨询表信息 -->
+	<delete id="deleteObject">
+		delete from cus_diagnose where id=#{id}
+	</delete>
+	
+	<!--  基于咨询表id更改用户信息 -->
+	<update id="updateObject">
+		update cus_diagnose
+		<set>
+			<if test="rDs!=null and rDs!=''">r_ds=#{rDs},</if>
+			<if test="rDc!=null and rDc!=''">r_dc=#{rDc},</if>
+			<if test="rX!=null and rX!=''">r_x=#{rX},</if>
+			<if test="rD!=null and rD!=''">r_d=#{rD},</if>
+			<if test="lDs!=null and lDs!=''">l_ds=#{lDs},</if>
+			<if test="lDc!=null and lDc!=''">l_dc=#{lDc},</if>
+			<if test="lX!=null and lX!=''">l_x=#{lX},</if>
+			<if test="lD!=null and lD!=''">l_d=#{lD},</if>
+			<if test="pupilDistance!=null and pupilDistance!=''">pupil_distance=#{pupilDistance},</if>
+			<if test="rGlassesD!=null and rGlassesD!=''">r_glasses_d=#{rGlassesD},</if>
+			<if test="rGlassesDc!=null and rGlassesDc!=''">r_glasses_dc=#{rGlassesDc},</if>
+			<if test="lGlassesD!=null and lGlassesD!=''">l_glasses_d=#{lGlassesD},</if>
+			<if test="lGlassesDc!=null and lGlassesDc!=''">l_glasses_dc=#{lGlassesDc},</if>
+			<if test="eyePositionExamination!=null and eyePositionExamination!=''">
+				eye_position_examination=#{eyePositionExamination},
+			</if>
+			<if test="synoptophore!=null and synoptophore!=''">synoptophore=#{synoptophore},</if>
+			<if test="fusionvision!=null and fusionvision!=''">fusionvision=#{fusionvision},</if>
+			<if test="stereopsis!=null and stereopsis!=''">stereopsis=#{stereopsis},</if>
+			<if test="ametropia!=null and ametropia!=''">ametropia=#{ametropia},</if>
+			<if test="amblyopiaDegree!=null and amblyopiaDegree!=''">amblyopia_degree=#{amblyopiaDegree},</if>
+			<if test="amblyopia!=null and amblyopia!=''">amblyopia=#{amblyopia},</if>
+			<if test="amblyopiaPrognosis!=null and amblyopiaPrognosis!=''">amblyopia_prognosis=#{amblyopiaPrognosis},</if>
+			<if test="strabismus!=null and strabismus!=''">strabismus=#{strabismus},</if>
+			<if test="visionOther!=null and visionOther!=''">vision_other=#{visionOther},</if>
+			<if test="parentCooperationDuringTraining!=null and parentCooperationDuringTraining!=''">
+				parent_cooperation_during_training=#{parentCooperationDuringTraining},
+			</if>
+			<if test="diagnostics!=null and diagnostics!=''">diagnostics=#{diagnostics},</if>
+			<if test="userId!=null and userId!=''">user_id=#{userId},</if>
+			<if test="customerId!=null and customerId!=''">customer_id=#{customerId},</if>
+			<if test="modifiedUser!=null and modifiedUser!=''">modified_user=#{modifiedUser},</if>
+			gmt_modified=now()
+		</set>
+		where id=#{id}
+	</update>
+	
+	
+	<!-- 基于id查询诊断信息 -->
+	<select id="findObjectById" parameterType="int" resultType="com.md.sys.entity.cus.CusDiagnose">
+		select 
+		r_ds,r_dc,r_x,r_d,l_ds,l_dc,l_x,l_d,pupil_distance,r_glasses_d,r_glasses_dc,l_glasses_d,l_glasses_dc,
+		eye_position_examination,synoptophore,fusionvision,stereopsis,ametropia,amblyopia_degree,amblyopia,
+		amblyopia_prognosis,strabismus,vision_other,parent_cooperation_during_training,diagnostics,
+		user_id,customer_id,gmt_create,gmt_modified,created_user,modified_user
+		from cus_diagnose 
+		where id=#{id}
+	</select>
+	
+</mapper>

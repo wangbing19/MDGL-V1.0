@@ -61,6 +61,10 @@ public class CusDiagnose implements Serializable {
 	private String parentCooperationDuringTraining;
 	/**诊断师*/
 	private String diagnostics;
+	/**门店/用户id*/
+	private int userId;
+	/**客户表id*/
+	private int customerId;
 	/**建表时间*/
 	private Date gmtCreate;
 	/**修改时间*/
@@ -224,6 +228,18 @@ public class CusDiagnose implements Serializable {
 	}
 	public void setDiagnostics(String diagnostics) {
 		this.diagnostics = diagnostics;
+	}
+	public int getUserId() {
+		return userId;
+	}
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+	public int getCustomerId() {
+		return customerId;
+	}
+	public void setCustomerId(int customerId) {
+		this.customerId = customerId;
 	}
 	public Date getGmtCreate() {
 		return gmtCreate;

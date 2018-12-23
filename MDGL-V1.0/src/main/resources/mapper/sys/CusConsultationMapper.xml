@@ -108,4 +108,17 @@
 		where id=#{id}
 	</select>
 	
+	<update id="updateObjectByCustomerId" parameterType="com.md.sys.entity.cus.CusConsultation">
+		update cus_consultation
+		<set>
+			<if test="name!=null and name!=''">name=#{name},</if>
+			<if test="age!=null and age!=''">age=#{age},</if>
+			<if test="gender!=null and gender!=''">gender=#{gender},</if>
+			<if test="tel!=null and tel!=''">tel=#{tel},</if>
+			<if test="modifiedUser!=null and modifiedUser!=''">modified_user=#{modifiedUser},</if>
+			gmt_modified=now()
+		</set>
+		where id=#{id}
+	</update>
+	
 </mapper>

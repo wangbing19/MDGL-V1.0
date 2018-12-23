@@ -167,7 +167,7 @@
 						<ul class="treeview-menu">
 							<li><a id="load-cus-customer-id">客户信息</a></li>
 							<li><a id="load-cus-consultation-id">咨询表</a></li>
-							<li><a id="load-dept-id">诊断表</a></li>
+							<li><a id="load-cus-diagnose-id">诊断表</a></li>
 						</ul></li>
 					<!-- ************************************************** -->
 					<li class="treeview"><a href="#"><i class="fa fa-link"></i>
@@ -303,7 +303,7 @@
 				doLoadUI("load-cus-consultation-id",
 						"cusConsultation/doCusConsultationListUI.do")
 				doLoadUI("load-pre-diagnosis_id", "diagnosis/doDiagnosis.do")
-				doLoadUI("")
+				doLoadUI("load-cus-diagnose-id","cusDiagnose/doCusDiagnoseListUI.do")
 			});
 			function doLoadUI(id, url) {
 				$("#" + id).click(function() {

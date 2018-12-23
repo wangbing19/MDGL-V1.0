@@ -61,4 +61,6 @@ public interface CusConsultationDao {
 	 * @return
 	 */
 	CusConsultation findObjectById(@Param("id")Integer id);
+	
+	int updateObjectByCustomerId(CusConsultation cusConsultation);
 }

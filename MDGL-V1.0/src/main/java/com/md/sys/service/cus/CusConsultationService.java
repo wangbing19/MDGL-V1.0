@@ -1,7 +1,5 @@
 package com.md.sys.service.cus;
 
-import org.apache.ibatis.annotations.Param;
-
 import com.md.common.vo.PageObject;
 import com.md.sys.entity.cus.CusConsultation;
 
@@ -41,5 +39,12 @@ public interface CusConsultationService {
 	 * @param id
 	 * @return
 	 */
-	CusConsultation findObjectById(@Param("id")Integer id);
+	CusConsultation findObjectById(Integer id);
+	
+	/**
+	 * 基于Customer传回id修改部分信息
+	 * @param cusConsultation
+	 * @return
+	 */
+//	int updateObjectByCustomerId(CusConsultation cusConsultation);
 }
