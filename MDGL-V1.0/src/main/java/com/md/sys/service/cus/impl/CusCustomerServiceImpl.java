@@ -1,4 +1,4 @@
-package com.md.sys.service.impl.cus;
+package com.md.sys.service.cus.impl;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;

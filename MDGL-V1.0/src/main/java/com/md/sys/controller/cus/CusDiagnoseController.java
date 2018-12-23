@@ -7,9 +7,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.md.common.vo.JsonResult;
 import com.md.common.vo.PageObject;
-import com.md.sys.entity.cus.CusConsultation;
 import com.md.sys.entity.cus.CusDiagnose;
-import com.md.sys.service.cus.CusConsultationService;
 import com.md.sys.service.cus.CusDiagnoseService;
 import com.md.sys.vo.cus.CusDiagnoseResult;
 
