@@ -112,12 +112,24 @@
 	<!-- 基于id查询诊断信息 -->
 	<select id="findObjectById" parameterType="int" resultType="com.md.sys.entity.cus.CusDiagnose">
 		select 
-		r_ds,r_dc,r_x,r_d,l_ds,l_dc,l_x,l_d,pupil_distance,r_glasses_d,r_glasses_dc,l_glasses_d,l_glasses_dc,
+		id,r_ds,r_dc,r_x,r_d,l_ds,l_dc,l_x,l_d,pupil_distance,r_glasses_d,r_glasses_dc,l_glasses_d,l_glasses_dc,
 		eye_position_examination,synoptophore,fusionvision,stereopsis,ametropia,amblyopia_degree,amblyopia,
 		amblyopia_prognosis,strabismus,vision_other,parent_cooperation_during_training,diagnostics,
 		user_id,customer_id,gmt_create,gmt_modified,created_user,modified_user
 		from cus_diagnose 
 		where id=#{id}
+	</select>
+	
+	
+	<!-- 基于customerId查询诊断信息 -->
+	<select id="findObjectByCustomerId" parameterType="int" resultType="com.md.sys.entity.cus.CusDiagnose">
+		select 
+		id,r_ds,r_dc,r_x,r_d,l_ds,l_dc,l_x,l_d,pupil_distance,r_glasses_d,r_glasses_dc,l_glasses_d,l_glasses_dc,
+		eye_position_examination,synoptophore,fusionvision,stereopsis,ametropia,amblyopia_degree,amblyopia,
+		amblyopia_prognosis,strabismus,vision_other,parent_cooperation_during_training,diagnostics,
+		user_id,customer_id,gmt_create,gmt_modified,created_user,modified_user
+		from cus_diagnose 
+		where customer_id=#{customerId}
 	</select>
 	
 </mapper>

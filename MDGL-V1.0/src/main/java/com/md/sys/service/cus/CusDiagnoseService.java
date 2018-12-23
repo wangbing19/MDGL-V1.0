@@ -1,4 +1,6 @@
 package com.md.sys.service.cus;
+import org.apache.ibatis.annotations.Param;
+
 import com.md.common.vo.PageObject;
 import com.md.sys.entity.cus.CusDiagnose;
 import com.md.sys.vo.cus.CusDiagnoseResult;
@@ -40,4 +42,11 @@ public interface CusDiagnoseService {
 	 * @return
 	 */
 	CusDiagnose findObjectById(Integer id);
+	
+	/**
+	 * 根据customerId查找客户信息
+	 * @param id
+	 * @return
+	 */
+	CusDiagnose findObjectByCustomerId(Integer customerId);
 }

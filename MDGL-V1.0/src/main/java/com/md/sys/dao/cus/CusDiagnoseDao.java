@@ -59,4 +59,13 @@ public interface CusDiagnoseDao {
 	 */
 	CusDiagnose findObjectById(@Param("id")Integer id);
 	
+	/**
+	 * 根据customerId查找客户信息
+	 * @param id
+	 * @return
+	 */
+	CusDiagnose findObjectByCustomerId(@Param("customerId")Integer customerId);
+	
+	
+	
 }

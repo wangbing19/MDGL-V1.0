@@ -6,14 +6,14 @@
 
 				<div class="box-tools">
 					<div class="input-group input-group-sm" style="width: 350px;">
-						<input type="text" name="table_search" id="searchNameId"
+					<!-- 	<input type="text" name="table_search" id="searchNameId"
 							class="form-control pull-right" placeholder="用户名">
-
+ -->
 						<div class="input-group-btn">
-							<button type="button" class="btn btn-default btn-search">
+							<!-- <button type="button" class="btn btn-default btn-search">
                                 <i class="fa fa-search"></i>
-							</button>
-							<button type="button" class="btn btn-default btn-add">添加</button>
+							</button> -->
+							<!-- <button type="button" class="btn btn-default btn-add">添加</button> -->
 							<!-- <button type="button" class="btn btn-default btn-update">修改</button> -->
 						</div>
 					</div>
@@ -51,25 +51,25 @@
 		   doGetObjects();
 	   });
 	   $(".input-group-btn")
-	   .on("click",".btn-search",doQueryObjects)
-	   .on("click",".btn-add",doLoadEditUI);
+	   .on("click",".btn-search",doQueryObjects);
+	  // .on("click",".btn-add",doLoadEditUI)
 	   $("tbody").on("click",".btn-delete",doDeleteObject).on("click",".btn-update",doLoadEditUI);
    });
 	//判定修改/删除并返回页面
 	function doLoadEditUI(){
 		//1.判定点击的对象
 		var title;
-		if($(this).hasClass("btn-add")){
-			title="添加诊断表";
-			doLoadPage(title);
-		}else if($(this).hasClass("btn-update")){
+	//	if($(this).hasClass("btn-add")){
+	//		title="添加诊断表";
+	//		doLoadPage(title);
+	//	}else if($(this).hasClass("btn-update")){
 			var rowData=$(this).parents("tr").data("rowData");
 			var id=rowData.id;
 			 title="修改诊断表";
 		//	console.log("id="+id)
 		   //基于id进行查询并加载编辑页面
 		   doFindObjectById(id,title);
-	   }
+	  // }
    }
 	
   
@@ -108,7 +108,7 @@
 	   var pageCurrent=$("#pageId").data("pageCurrent");
 	   if(!pageCurrent)pageCurrent=1;
 	   var params={"pageCurrent":pageCurrent}
-	   params.name=$("#searchNameId").val().trim();
+	//   params.name=$("#searchNameId").val().trim();
 	//   console.log(params);
 	   $.getJSON(url,params,function(result){
 		//   console.log(result);

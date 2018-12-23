@@ -13,7 +13,6 @@
 							<button type="button" class="btn btn-default btn-search">
 								<i class="fa fa-search"></i>
 							</button>
-							<!-- <button type="button" class="btn btn-default btn-add">添加</button> -->
 							<button type="button" class="btn btn-default btn-update">修改</button>
 						</div>
 					</div>
@@ -63,7 +62,9 @@
 	   .on("click",".btn-all",userProfile)
 	   .on("click",".btn-delete",doDeleteObject)
 	   .on("click",".btn-cf",doPrescription)
-	   .on("click",".btn-doConsultationUpdate",doConsultationUpdate);
+	   .on("click",".btn-doConsultationUpdate",doConsultationUpdate)
+	   .on("click",".btn-doDiagnoseInsert",doDiagnoseInsert)
+	   .on("click",".btn-doDiagnoseUpdate",doDiagnoseUpdate);
 	 //  .on("click",".btn-doDiagnoseUpdate",doDiagnoseUpdate);
    });
 
@@ -222,6 +223,7 @@
 	     "<td>"+new Date(row.lastTrain).toLocaleString()+"</td>"+
 	     "<td>"+new Date(row.gmtCreate).toLocaleString()+"</td>"+
 	     "<td><button type='button' class='btn btn-default btn-cf'>"+"处方"+"</button></td>"+
+	     "<td><button type='button' class='btn btn-default btn-doDiagnoseInsert'>"+"添加咨询表"+"</button></td>"+
 	 //    "<td><button type='button' class='btn btn-default btn-all'>"+"查看"+"</button></td>"+
 	     "<td><button type='button' class='btn btn-default btn-delete'>"+"删除"+"</button></td>"+
 	     "<td><button type='button' class='btn btn-default btn-valid'>"+(row.state?"禁用":"启用")+"</button></td>"; 
@@ -278,6 +280,35 @@
 	   })
    }
    
+   function doDiagnoseInsert(){
+	   var rowData=$(this).parents("tr").data("rowData");
+	   var id=rowData.id;
+	   $("#mainContentId").data("customerId",id); 
+	   var url="cusDiagnose/doCusDiagnoseEditUI.do";
+	   $("#mainContentId").load(url,function(){
+			  $(".box-title").html("新建咨询表");
+		  })
+   }
+   
+   function doDiagnoseUpdate(){
+	   var rowData=$(this).parents("tr").data("rowData");
+	   var customerId=rowData.id;
+	   console.log(customerId);
+	   var params={"customerId":customerId};
+	   console.log(params);
+	   var url="cusDiagnose/doFindObjectByCustomerId.do";
+	   $.getJSON(url,params,function(result){//JsonResult
+		   if(result.state==1){
+			  $("#mainContentId").data("rowData",result.data); 
+			  var url="cusDiagnose/doCusDiagnoseEditUI.do";
+			   $("#mainContentId").load(url,function(){
+				   $(".box-title").html("查看/修改 诊断表");
+			   }) 
+		   }else{
+			  alert(result.message);
+		   }
+	   });
+   }
    
 </script>
 
