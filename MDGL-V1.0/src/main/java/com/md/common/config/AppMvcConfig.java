@@ -1,9 +1,11 @@
 package com.md.common.config;
 
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.ComponentScan.Filter;
 import org.springframework.context.annotation.FilterType;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistration;
@@ -18,10 +20,9 @@ import com.md.common.web.AccessInterCeptor;
  * 
  * @author ta
  */
-@ComponentScan(value = "com.md", useDefaultFilters = false, // 取消默认过滤器
-		includeFilters = { // 只加载有指定注解修饰的类
-				@Filter(type = FilterType.ANNOTATION, classes = { Controller.class, ControllerAdvice.class }) })
-@EnableWebMvc // 启用mvc默认配置(内置很多类型转换器bean对象)3
+@ComponentScan(value = "com.md", useDefaultFilters = false, includeFilters = {
+		@Filter(type = FilterType.ANNOTATION, classes = { Controller.class, ControllerAdvice.class }) })
+@EnableWebMvc
 public class AppMvcConfig extends WebMvcConfigurerAdapter {
 	@Override
 	public void configureViewResolvers(ViewResolverRegistry registry) {

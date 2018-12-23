@@ -14,15 +14,8 @@ import com.alibaba.druid.pool.DruidDataSource;
 @PropertySource("classpath:configs.properties")
 /**在此类中进行相关数据源的配置*/
 @Lazy
-@Configuration //等效于@Controller,@Service,@Component
+@Configuration
 public class AppDataSourceConfig {
-  /*static{
-		System.out.println("static{}");
-	}
-	public AppDataSourceConfig() {
-		System.out.println("AppDataSourceConfig() ");
-	}
-	*/
 	 /**系统底层会将@Bean注解修饰的方法创建的对象交给
 	  * spring框架管理*/
 	 @Lazy(false)
@@ -38,7 +31,6 @@ public class AppDataSourceConfig {
 	   return ds;
 	 }//何时使用bean标签描述bean对象呢?第三方API对象
 
-	 /**整合c3p0连接池*/
 
 
 

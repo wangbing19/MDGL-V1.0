@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 import com.md.common.exception.ServiceException;
+import com.md.common.utils.ShiroUtils;
 import com.md.common.vo.Node;
 import com.md.sys.dao.sys.SysMenuDao;
 import com.md.sys.dao.sys.SysRoleMenuDao;
@@ -37,15 +38,11 @@ public class SysMenuServiceImpl implements SysMenuService {
 	@Transactional(timeout=3)
 	@Override
 	public int updateObject(SysMenu entity) {
-		//1.验证参数合法性
 		if(entity==null)
 			throw new IllegalArgumentException("参数异常");
-		//2.验证对象属性
 		if(StringUtils.isEmpty(entity.getName()))
 			throw new IllegalArgumentException("菜单名不能为空");
-		//.....
-		//3.保存菜单信息到数据
-		//entity.setModifiedUser(ShiroUtils.getUser().getUsername());
+		entity.setModifiedUser(ShiroUtils.getUser().getUsername());
 		int rows=sysMenuDao.updateObject(entity);
 		//4.返回结果
 		return rows;
@@ -53,18 +50,13 @@ public class SysMenuServiceImpl implements SysMenuService {
 	
 	@Override
 	public int saveObject(SysMenu entity) {
-		//1.验证参数合法性
 		if(entity==null)
 		throw new IllegalArgumentException("参数异常");
-		//2.验证对象属性
 		if(StringUtils.isEmpty(entity.getName()))
 		throw new IllegalArgumentException("菜单名不能为空");
-		//.....
-		//3.保存菜单信息到数据
-		//entity.setCreatedUser(ShiroUtils.getUser().getUsername());
-		//entity.setModifiedUser(ShiroUtils.getUser().getUsername());
+		entity.setCreatedUser(ShiroUtils.getUser().getUsername());
+		entity.setModifiedUser(ShiroUtils.getUser().getUsername());
 		int rows=sysMenuDao.insertObject(entity);
-		//4.返回结果
 		return rows;
 	}
 	/**

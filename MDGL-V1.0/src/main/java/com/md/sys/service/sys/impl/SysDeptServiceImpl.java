@@ -2,6 +2,7 @@ package com.md.sys.service.sys.impl;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -29,6 +30,7 @@ public class SysDeptServiceImpl implements SysDeptService {
 	//@Autowired
 	//private SysUserDao sysUserDao;
 	
+	@RequiresPermissions("sys:dept:edit")
 	@Transactional(rollbackFor=Throwable.class)
 	@Override
 	public int updateObject(SysDept entity) {

@@ -1,10 +1,12 @@
 package com.md.sys.controller.sys;
 
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.md.common.annotation.sys.RequiresLog;
 import com.md.common.vo.JsonResult;
 import com.md.sys.entity.sys.SysDept;
 import com.md.sys.service.sys.SysDeptService;
@@ -17,6 +19,8 @@ public class SysDeptController {
 	 * 
 	 * @return 组织管理--加载页面
 	 */
+	@RequiresPermissions("sys:dept:add")
+	@RequiresLog("增加部门")
 	@RequestMapping("doDeptListUI")
 	public String doDeptListUI() {
 		return "sys/sys_dept_list";
@@ -35,6 +39,7 @@ public class SysDeptController {
 	 * 加载编辑页面
 	 * @return
 	 */
+	@RequiresPermissions("sys:dept:edit")
 	@RequestMapping("doDeptEditUI")
 	public String doDeptEditUI() {
 		return "sys/sys_dept_edit";
