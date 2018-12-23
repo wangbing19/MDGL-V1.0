@@ -48,7 +48,7 @@
 	<insert id="insertObject"
 		parameterType="com.md.sys.entity.tra.TraInformationrecord">
 		insert into tra_informationrecord
-		(username,l_vision,r_vision,grade,evaluate,content,tutor,endTime,
+		(username,l_vision,r_vision,grade,evaluate,content,tutor,end_time,
 		gmt_create,gmt_modified,customer_id)
 		values
 		(#{username},#{lVision},#{rVision},#{grade},#{evaluate},#{content},#{tutor},#{endTime},
