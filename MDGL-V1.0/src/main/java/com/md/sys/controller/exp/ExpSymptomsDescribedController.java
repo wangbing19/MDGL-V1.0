@@ -62,7 +62,7 @@ public class ExpSymptomsDescribedController {
 	@RequestMapping("doSelectSym")
 	@ResponseBody
 	public JsonResult doSelectSym(Integer id) {
-		System.out.println("id="+id);
+		//System.out.println("id="+id);
 		ExpSymptomsDescribed selectSym = 
 				ExpSymptomsDescribedService.selectSym(id);
 		return new JsonResult(selectSym);

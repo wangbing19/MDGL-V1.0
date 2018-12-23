@@ -68,7 +68,7 @@ public class ExpertReplyController {
 	@RequestMapping("doSelectRep")
 	@ResponseBody
 	public JsonResult doSelectRep(Integer id) {
-		System.out.println("id="+id);
+		//System.out.println("id="+id);
 		ExpertReply selectRep = 
 				ExpertReplyService.selectRep(id);
 		return new JsonResult(selectRep);

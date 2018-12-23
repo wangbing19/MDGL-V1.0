@@ -65,7 +65,7 @@ public class ExpDiagnoseController {
 	@ResponseBody
 	public JsonResult doSaveObject(
 			ExpRemoteDiagnose entity){
-		System.out.println("ExpRemoteDiagnose="+entity);
+		//System.out.println("ExpRemoteDiagnose="+entity);
 		expDiagnoseService.saveObject(entity);
 		return new JsonResult("添加成功");
 	}
@@ -83,8 +83,8 @@ public class ExpDiagnoseController {
 	@ResponseBody
 	public JsonResult doFindPageObjects(
 			String customerName,Integer pageCurrent){
-		System.out.println("username="+customerName);
-		System.out.println("pageCurrent="+pageCurrent);
+		//System.out.println("username="+customerName);
+		//System.out.println("pageCurrent="+pageCurrent);
 		PageObject<ExpRemoteDiagnoseVo> pageObject=
 				expDiagnoseService.findPageObjects(customerName,
 						pageCurrent);
@@ -99,7 +99,7 @@ public class ExpDiagnoseController {
 	@RequestMapping("doDelete")
 	@ResponseBody
 	public JsonResult doDelete(Integer... ids) {
-		System.out.println("id234="+ids);
+		//System.out.println("id234="+ids);
 		expDiagnoseService.delete(ids);
 		return new JsonResult("删除成功");
 	}

@@ -55,7 +55,7 @@ public class ExpertController {
 	@RequestMapping("doInsertExp")
 	@ResponseBody
 	public JsonResult doInsertExp(Expert entity) {
-		System.out.println("专家表添加="+entity);
+		//System.out.println("专家表添加="+entity);
 		expertService.insertExp(entity);
 		return new JsonResult("添加成功");
 	}
@@ -93,7 +93,7 @@ public class ExpertController {
 	@RequestMapping("doLimitExp")
 	@ResponseBody
 	public JsonResult doLimitExp(String expertName,Integer pageCurrent) {
-		System.out.println("expertName="+expertName);
+		//System.out.println("expertName="+expertName);
 		PageObject<Expert> pageObject = expertService.limitExp(expertName, pageCurrent);
 		return new JsonResult(pageObject);
 	}
@@ -105,7 +105,7 @@ public class ExpertController {
 	@RequestMapping("doFindZTreeNodes")
 	@ResponseBody
 	public JsonResult doFindZTreeNodes(){
-		System.out.println("aaa="+expertService.selectExpName());
+		//System.out.println("aaa="+expertService.selectExpName());
 		return new JsonResult(
 		expertService.selectExpName());
 	}

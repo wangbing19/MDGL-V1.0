@@ -67,7 +67,7 @@ public class ExpDiagnoseServiceImpl implements ExpDiagnoseService {
 		entity.setRegisterUser(loginuser);
 		entity.setModifiedUser(loginuser);
 		entity.setRegisterParentid(parentId);
-		System.out.println("添加="+entity);
+		//System.out.println("添加="+entity);
 		
 		// 保存用户自身信息
 		int rows = remoteDiagnoseDao.insertObject(entity);
@@ -94,7 +94,7 @@ public class ExpDiagnoseServiceImpl implements ExpDiagnoseService {
 		// 2.依据条件获取总记录数
 
 		int rowCount = remoteDiagnoseDao.getRowCount(customerName,parentId);
-		System.out.println("rowCount" + rowCount);
+		//System.out.println("rowCount" + rowCount);
 		// 3.判断记录是否存在
 		if (rowCount == 0)
 			throw new ServiceException("您要查询记录不存在");
@@ -108,7 +108,7 @@ public class ExpDiagnoseServiceImpl implements ExpDiagnoseService {
 		// 5.依据条件获取当前页数据
 		List<ExpRemoteDiagnoseVo> records = remoteDiagnoseDao.findPageObjects(customerName, startIndex, pageSize,//1);
 		parentId);// 获取父级id
-		System.out.println("records=" + records);
+		//System.out.println("records=" + records);
 
 		// 6.封装数据
 		PageObject<ExpRemoteDiagnoseVo> pageObject = new PageObject<>();
@@ -153,7 +153,7 @@ public class ExpDiagnoseServiceImpl implements ExpDiagnoseService {
 	@RequiresLog("远程诊断修改")
 	@Override
 	public int update(ExpRemoteDiagnose entity) {
-		System.out.println("entity=" + entity);
+		//System.out.println("entity=" + entity);
 		if (entity == null)
 			throw new ServiceException("数据不能为空");
 		if (StringUtils.isEmpty(entity.getDeptSite()))
