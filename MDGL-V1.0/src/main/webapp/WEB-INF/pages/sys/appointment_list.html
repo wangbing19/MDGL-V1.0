@@ -120,6 +120,8 @@
    }
    function doDeleteObjects(){
 	   var id=doGetCheckedId();
+	   var params={"id":id};
+	   //console.log("删除id="+id);
 	   var url="appointment/dodeleteAppointment.do";
 	   $.getJSON(url,params,function(result){//JsonResult 
 			  alert(result.message);

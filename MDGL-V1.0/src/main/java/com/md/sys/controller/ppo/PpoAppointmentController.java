@@ -67,7 +67,7 @@ public class PpoAppointmentController {
 	@RequestMapping("dodeleteAppointment")
 	@ResponseBody
 	public JsonResult deleteAppointment(Integer id) {
-		//System.out.println("删除ID"+id);
+		System.out.println("删除ID"+id);
 		
 		 ppoAppointmentService.deleteAppointment(id);
 		return new JsonResult("删除成功");
