@@ -152,7 +152,12 @@
 					<li class="treeview"><a href="#"><i class="fa fa-link"></i>
 							<span>专家远程诊断</span> <span class="pull-right-container"> <i
 								class="fa fa-angle-left pull-right"></i>
-						</span> </a></li>
+						</span> </a>
+						<ul class="treeview-menu">
+							<li><a id="load-exp-remote">远程诊断</a></li>
+							<li><a id="load-exp-expert">专家列表</a></li>
+						</ul>
+					</li>
 					<!-- ************************************************** -->
 					<li class="treeview"><a href="#"><i class="fa fa-link"></i>
 							<span>远程处方下载</span> <span class="pull-right-container"> <i
@@ -230,6 +235,8 @@
 		<!-- 局部刷新 -->
 		<script type="text/javascript">
 			$(function() {//页面加载完成执行
+				doLoadUI("load-exp-remote","dia/doRemoteDiagnose.do")
+		    	doLoadUI("load-exp-expert","exp/doExpert.do")
 				doLoadUI("load-log-id", "log/doLogListUI.do")
 				doLoadUI("load-menu-id", "menu/doMenuListUI.do")
 				doLoadUI("load-dept-id", "dept/doDeptListUI.do")
