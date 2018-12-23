@@ -58,7 +58,7 @@
 	   .on("click",".btn-search",doQueryObjects)
 	   .on("click",".btn-delete",doDeleteObjects)
 	   .on("click",".btn-add,.btn-update",doLoadEditUI)
-	   .on("click",".btn-time_set,btn-time_update",doTimeEditUI);
+	   .on("click",".btn-time_set,.btn-time_update",doTimeEditUI);
 	   $("tbody").on("click",".btn-valid",doValidById);
    });
    
@@ -69,7 +69,7 @@
 	   var title;
 	   if($(this).hasClass("btn-time_set")){
 		   title="添加训练师预约时间";
-		   
+		   $("#mainContentId").removeData("rowData1");
 		   var id=doGetCheckedId();
 		   if(!id){
 					alert("请先选择");
@@ -79,9 +79,10 @@
 	   doTimePage(title);
 		   
 	   }else if($(this).hasClass("btn-time_update")){
+		  // alert(13);
 		   title="修改训练师预约时间";
 		   var id=doGetCheckedId();
-		   console.log("id="+id)
+		   //console.log("id="+id)
 		   if(!id){
 			  alert("请先选择");
 			  return;
@@ -94,7 +95,21 @@
 	   
    
    function doAppointmentTimeById(id,title){
-	   
+	   //console.log("id11：="+id)
+	 //1.params
+	   var params={"appointmentId":id};
+	   //2.url
+	   var url="appointment/findappointmentTime.do";
+	   //3.ajax request
+	   $.getJSON(url,params,function(result){//JsonResult
+		   if(result.state==1){
+			  $("#mainContentId").data("rowData1",result.data); 
+			//alert(43);
+			  doTimePage(id,title);
+		   }else{
+			  alert(result.message);
+		   }
+	   });
    }
 		
    function doTimePage(title){
@@ -138,7 +153,6 @@
 	   $.getJSON(url,params,function(result){//JsonResult
 		   if(result.state==1){
 			  $("#mainContentId").data("rowData",result.data); 
-			  
 	          doLoadPage(title);
 		   }else{
 			  alert(result.message);

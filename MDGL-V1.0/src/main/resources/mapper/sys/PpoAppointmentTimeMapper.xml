@@ -9,6 +9,19 @@
 		values
 		(#{startTime},#{endTime},#{appointmentId},now(),null)
 		</insert>
+		
+		<select id="findAppointmentTime" resultType="com.md.sys.vo.ppo.DateTimeAll">
+		select starttime,endtime from ppo_appintmenttime where appointment_id=#{appointment_id}
+		</select>
+		
+		<delete id="deleteAppointmentTime">
+		delete from ppo_appintmenttime where appointment_id=#{appointment_id}
+		</delete>
+		<update id="updateAppointment">
+		update ppo_appintmenttime set starttime=#{startTime},endtime=#{endTime},
+		appointment_id=#{appointmentId},gmt_create=null,gmt_modified=now()
+		</update>
+		
 </mapper>
 
 

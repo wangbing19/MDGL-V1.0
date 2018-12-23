@@ -6,7 +6,6 @@ import org.apache.ibatis.annotations.Param;
 
 import com.md.common.vo.Node;
 import com.md.sys.entity.sys.SysUser;
-import com.md.sys.vo.sys.SysUserDeptResult;
 
 
 

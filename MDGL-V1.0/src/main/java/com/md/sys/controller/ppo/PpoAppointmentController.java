@@ -1,12 +1,10 @@
 package com.md.sys.controller.ppo;
 
 import java.text.ParseException;
-import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -114,4 +112,39 @@ public class PpoAppointmentController {
 		//System.out.println(strDate+":"+parseTime);
 		return parseTime;
 	}
+	/**查询训练师预约时间*/
+	@RequestMapping("findappointmentTime")
+	@ResponseBody
+	public JsonResult findappointmentTime(Integer appointmentId) {
+		//LinkedList<String> list=null;
+		System.out.println("训练时间id"+appointmentId);
+		List<Object> findAppointmentTime = ppoAppointmentTimeService.findAppointmentTime(appointmentId);
+		/*for (Object a : findAppointmentTime) {
+			SimpleDateFormat sd = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+			Date time=(Date)a;
+			String format = sd.format(time);
+			list.add(format);
+		}*/
+		return new JsonResult(findAppointmentTime);
+	}
+	
+	/**修改预约时间*/
+	@RequestMapping("UpdateAppointmentTime")
+	@ResponseBody
+	public JsonResult UpdateAppointmentTime(String sTime,String eTime,Integer appointmentId) {
+		//System.out.println("1:"+sTime+   eTime+    appointmentId);	
+		Date startTime=dateFormat(sTime);
+		Date endTime=dateFormat(eTime);
+		//System.out.println("appointmentId"+appointmentId);
+		ppoAppointmentTimeService.insertAppointment(startTime, endTime, appointmentId);
+		return new JsonResult("修改成功！");
+	}
+	/**删除训练师预约时间*/
+	@RequestMapping("deleteAppointmentTime")
+	@ResponseBody
+	public JsonResult deleteAppointmentTime(Integer appointmentId) {
+		ppoAppointmentTimeService.deleteAppointmentTime(appointmentId);
+		return new JsonResult("删除成功");
+	}
+	
 }

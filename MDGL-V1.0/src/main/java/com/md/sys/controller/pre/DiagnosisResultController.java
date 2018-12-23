@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.md.common.vo.JsonResult;
 import com.md.common.vo.Node;
 import com.md.sys.vo.pre.DiagnosisDate;
-import com.md.sys.dao.pre.DiagnosisResultDescDao;
 import com.md.sys.entity.pre.DiagnosisDesc;
 import com.md.sys.entity.pre.Symptom;
 import com.md.sys.service.pre.DiagnosisDescService;

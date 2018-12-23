@@ -16,11 +16,12 @@ public class PpoAppointmentServiceImpl implements PpoAppointmentService{
 	@Autowired
 	private PpoAppointmentDao ppoAppointmentDao;
 	
+	@Override
 	public List<PpoAppointment> findTrainernameByname(String appointmentName) {
 		if(appointmentName==null)
 			throw new ServiceException("训练师不能为空");
 		
-		List<PpoAppointment> recorde = (List<PpoAppointment>) ppoAppointmentDao.findTrainernameByname(appointmentName);
+		List<PpoAppointment> recorde = ppoAppointmentDao.findTrainernameByname(appointmentName);
 		//System.out.println("PpoAppointmentServiceImpl");	
 		//System.out.println(recorde.toString());
 		if(recorde ==null)
@@ -29,6 +30,7 @@ public class PpoAppointmentServiceImpl implements PpoAppointmentService{
 		return recorde;
 	}
 	
+	@Override
 	public PageObject<PpoAppointment> findAppointment(String appointmentName, Integer pageCurrent) {
 		if(pageCurrent==null||pageCurrent<1)
 			throw new ServiceException("页码值不正确");
@@ -49,6 +51,7 @@ public class PpoAppointmentServiceImpl implements PpoAppointmentService{
 		return pageObject;
 	}
 	
+	@Override
 	public int insertAppointment(PpoAppointment ppoAppointment) {
 		if(ppoAppointment ==null)
 			throw new ServiceException("保存数据不能为空");
@@ -61,6 +64,7 @@ public class PpoAppointmentServiceImpl implements PpoAppointmentService{
 		return rows;
 	}
 	/**删除预约训练师*/
+	@Override
 	public int deleteAppointment(Integer id) {
 		if(id==null)
 			throw new ServiceException("请选择要删除的训练师");
@@ -72,6 +76,7 @@ public class PpoAppointmentServiceImpl implements PpoAppointmentService{
 		return deleteAppointment;
 	}
 
+	@Override
 	public int updateAppointment(PpoAppointment ppoAppointment) {
 		if(ppoAppointment.getId()==null)
 			throw new ServiceException("训练师id不能为空");
@@ -81,6 +86,7 @@ public class PpoAppointmentServiceImpl implements PpoAppointmentService{
 		return rows;
 	}
 
+	@Override
 	public PpoAppointment findAppointmentById(PpoAppointment entity) {
 		if(entity.getId()==null)
 			throw new ServiceException("训练师不能为空");

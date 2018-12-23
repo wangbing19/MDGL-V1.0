@@ -17,12 +17,12 @@ public class AccessInterCeptor extends HandlerInterceptorAdapter{
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		System.out.println("==doPreHandle==");
+		//System.out.println("==doPreHandle==");
 		long time = System.currentTimeMillis();
 		
 		//设置方位时间
 		Calendar c1 = Calendar.getInstance();
-		c1.set(Calendar.HOUR_OF_DAY, 8);
+		c1.set(Calendar.HOUR_OF_DAY, 0);
 		long startTime = c1.getTimeInMillis();
 		
 		
