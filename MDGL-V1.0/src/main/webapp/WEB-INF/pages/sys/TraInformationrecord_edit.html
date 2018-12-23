@@ -94,6 +94,7 @@
     	//异步加载菜单信息,初始化页面菜单
     	//doLoadSysMenus();
     	doInitFormData();//初始化表单数据
+    	$("#gmt_modifiedId").val(getNowFormatDate());
     	$(".box-footer")
     	.on("click",".btn-save",doSaveOrUpdate)
     	.on("click",".btn-cancel",doCancel);
@@ -112,7 +113,7 @@
    	 $("#evaluateId").val(data.evaluate);
    	 $("#contentId").val(data.content);
    	 $("#tutorId").val(data.tutor);
-   	 $("#gmt_modifiedId").val(data.gmtModified);
+  // 	 $("#gmt_modifiedId").val(new Date(data.gmtModified).toLocaleString());
    	 //初始化用户角色信息
    	 var ids=data.roleIds;
    	 for(var i in ids){
@@ -128,6 +129,21 @@
     	}); 
     	
     }
+    
+    /**获取当前时间*/
+    function getNowFormatDate() {
+		var date = new Date();
+		var month = date.getMonth() + 1;
+		var strDate = date.getDate();
+		if (month >= 1 && month <= 9) {
+			month = "0" + month;
+		}
+		if (strDate >= 0 && strDate <= 9) {
+			strDate = "0" + strDate;
+		}
+		var currentdate = date.getFullYear() + "-" + month + "-" + strDate;
+		return currentdate;
+	}
     
     function doSaveOrUpdate(){	
     	
