@@ -147,9 +147,9 @@
 								class="fa fa-angle-left pull-right"></i>
 						</span> </a>
 						<ul class="treeview-menu">
-							<li><a id="load-dept-id">项目配置</a></li>
-							<li><a id="load-dept-id">症状类型</a></li>
-							<li><a id="load-dept-id">提示语</a></li>
+							<li><a id="load-res_project_config-id">项目配置</a></li>
+							<li><a id="load-res_symptom_type-id">症状类型</a></li>
+							<li><a id="load-res_promotional_language-id">提示语</a></li>
 						</ul></li>
 					<!-- ************************************************** -->
 					<li class="treeview"><a href="#"><i class="fa fa-link"></i>
@@ -157,7 +157,7 @@
 								class="fa fa-angle-left pull-right"></i>
 						</span> </a>
 						<ul class="treeview-menu">
-							<li><a id="load-dept-id">训练记录</a></li>
+							<li><a id="load-traInformationrecord-id">训练记录</a></li>
 						</ul></li>
 					<!-- ************************************************** -->
 					<li class="treeview"><a href="#"><i class="fa fa-link"></i>
@@ -304,6 +304,9 @@
 						"cusConsultation/doCusConsultationListUI.do")
 				doLoadUI("load-pre-diagnosis_id", "diagnosis/doDiagnosis.do")
 				doLoadUI("load-cus-diagnose-id","cusDiagnose/doCusDiagnoseListUI.do")
+				doLoadUI("load-traInformationrecord-id","traInformationrecord/doTraInformationrecordUI.do")
+				doLoadUI("load-res_symptom_type-id","ResProjectConfig/doResProjectConfigUI.do")
+				doLoadUI("load-res_project_config-id","resSymptomType/doResSymptomTypeList.do")
 			});
 			function doLoadUI(id, url) {
 				$("#" + id).click(function() {

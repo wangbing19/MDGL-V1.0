@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 命名空间：映射文件所在目录.名称 -->
+<mapper namespace="com.md.sys.dao.res.ResProjectConfigDao">
+	<!-- 根据症状名称查询当前业数据 -->
+	<resultMap type="com.md.sys.entity.res.ResProjectConfig" 
+id="ProjectConfigMap">
+</resultMap>
+	<update id="updateObject"
+	parameterType="com.md.sys.entity.tra.TraInformationrecord">
+		update  res_project_config
+		<set>
+			<if test="projectName!=null and projectName!=''">
+				 project_name=#{projectName},
+			</if>
+			<if test="projectChoose!=null and projectChoose!=''">
+				project_choose=#{projectChoose},
+			</if>
+			<if test="projectState!=null and projectState!=''">
+				project_state=#{projectState},
+			</if>
+			gmt_modified=now()
+		</set>
+		<!-- where id=#{id} -->
+	</update>
+	<select id="findPageObjects" resultType="com.md.sys.entity.res.ResProjectConfig">
+		select * from res_project_config
+		
+		<include refid="queryWhereId" />
+		limit #{startIndex},#{pageSize}
+	</select>
+	<!-- 根据条件查询总页数 -->
+	<select id="getRowCount" resultType="int">
+	select count(*) from res_project_config
+	<!-- where project_name like concat("%",#{projectName},"%") -->
+	<!-- <include refid="queryWhereId" /> -->
+	</select>
+	<update id="projectStateById">
+	update res_project_config set 
+	project_state=#{projectState},
+	gmt_modified=now()
+	where id=#{id}
+	</update>
+	
+	<insert id="insertObject" 
+	useGeneratedKeys="true"
+	keyProperty="id">
+	insert into res_project_config
+	(project_name,project_choose,project_state,gmt_create,gmt_modified)
+	values
+	(#{projectName},#{projectChoose},#{projectState},now(),now())
+	</insert>
+	
+	<delete id="deleteObjects">
+	delete from res_project_config
+	where id in
+	<foreach collection="ids" open="("
+	close=")" separator="," item="item">
+	#{item}
+	</foreach>
+	</delete>
+	<sql id="queryWhereId">
+        <where>
+              <if test="projectName!=null and projectName!=''">
+                 projectName like concat("%",#{projectName},"%")
+              </if>
+       </where> 
+     </sql>
+	</mapper>

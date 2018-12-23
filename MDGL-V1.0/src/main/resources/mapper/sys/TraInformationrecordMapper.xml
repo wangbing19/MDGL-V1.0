@@ -2,12 +2,84 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.md.sys.dao.tra.TraInformationrecordDao">
+
+	<!-- <select id="findObjects" resultType="com.md.sys.entity.tra.TraInformationrecord"> 
+		select customerid,name from tra_informationrecord </select> -->
+	<delete id="deleteObjects">
+	delete from tra_informationrecord
+	where id in
+	<foreach collection="ids" open="("
+	close=")" separator="," item="item">
+	#{item}
+	</foreach>
+	</delete>
 	
-	<!-- 根据客户id(customer_id)查询总数 -->
-	<select id="findByCustomerId" parameterType="int" resultType="Date">
-		select gmt_create from tra_informationrecord
-		where customer_id=#{id}
+	<update id="updateObject"
+		parameterType="com.md.sys.entity.tra.TraInformationrecord">
+		update tra_informationrecord
+		<set>
+			<if test="lVision!=null and lVision!=''">
+				l_vision=#{lVision},
+			</if>
+			<if test="rVision!=null and rVision!=''">
+				r_vision=#{rVision},
+			</if>
+			<if test="grade!=null and grade!=''">
+				grade=#{grade},
+			</if>
+			<if test="evaluate!=null and evaluate!=''">
+				evaluate=#{evaluate},
+			</if>
+			<if test="content!=null and content!=''">
+				content=#{content},
+			</if>
+			<if test="tutor!=null and tutor!=''">
+				tutor=#{tutor},
+			</if>
+			<if test="endTime!=null and endTime!=''">
+				endTime=#{endTime},
+			</if>
+			gmt_modified=now()
+		</set>
+		where id=#{id}
+	</update>
+	<!-- <select id="findObjectById" resultType="com.md.sys.entity.tra.TraInformationrecord"> 
+		select * from tra_informationrecord where customer_id=#{customer_id} </select> -->
+	<insert id="insertObject"
+		parameterType="com.md.sys.entity.tra.TraInformationrecord">
+		insert into tra_informationrecord
+		(username,l_vision,r_vision,grade,evaluate,content,tutor,endTime,
+		gmt_create,gmt_modified,customer_id)
+		values
+		(#{username},#{lVision},#{rVision},#{grade},#{evaluate},#{content},#{tutor},#{endTime},
+		now(),now(),#{customerId})
+	</insert>
+	<select id="findObjects" resultType="map">
+		select * from
+		tra_informationrecord
 	</select>
-	
-	
+	<select id="findObjectById" resultType="com.md.sys.entity.tra.TraInformationrecord">
+	select * from tra_informationrecord
+	where id=#{id}
+	</select>
+	<select id="findPageObjects"
+		resultType="com.md.sys.entity.tra.TraInformationrecord">
+		select *
+		from tra_informationrecord
+		<include refid="queryWhereId" />
+		order by gmt_create desc
+		limit #{startIndex},#{pageSize}
+	</select>
+	<select id="getRowCount" resultType="int">
+		select count(*)
+		from tra_informationrecord
+		<include refid="queryWhereId" />
+	</select>
+	<sql id="queryWhereId">
+       <where>
+              <if test="username!=null and username!=''">
+                 userName like concat("%",#{username},"%")
+              </if>
+       </where>
+     </sql>
 </mapper>

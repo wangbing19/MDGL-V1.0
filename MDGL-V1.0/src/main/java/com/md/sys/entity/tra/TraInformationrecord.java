@@ -8,8 +8,9 @@ import java.util.Date;
  * @author 常卜
  *
  */
-public class TraInformationrecord implements Serializable {
 
+public class TraInformationrecord implements Serializable {
+	
 	private static final long serialVersionUID = 8067154337413395205L;
 	/** 训练管理表id*/
 	private Integer id;

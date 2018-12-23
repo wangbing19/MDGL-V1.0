@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 命名空间：映射文件所在目录.名称 -->
+<mapper namespace="com.md.sys.dao.res.ResSymptomTypeDao">
+<!-- 根据id查询一行数据 -->
+<select id="findPageObject" resultType="map">
+select * from res_symptom_type where id=#{id}
+</select>
+
+<select id="findObjects" resultType="map">
+select * from res_symptom_type
+</select>
+
+<insert id="insertObject" 
+parameterType="com.md.sys.entity.res.ResSymptomType">
+insert into res_symptom_type
+(service_name,choose_type,service_state,gmt_create,gmt_modified)
+values
+(#{serviceName},#{chooseType},#{serviceState},now(),now())
+</insert>
+
+<delete id="deleteObject" parameterType="int">
+delete from res_symptom_type where id=#{id}
+</delete>
+
+<update id="updateObject" parameterType="com.md.sys.entity.res.ResSymptomType">
+update res_symptom_type set
+service_name=#{serviceName},
+choose_type=#{chooseType},
+service_state=#{serviceState},
+gmt_modified=now() where id=#{id}
+</update>
+</mapper>
