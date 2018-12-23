@@ -33,7 +33,11 @@
 				<div class="col-sm-10">
 						<textarea id="descText" class="form-control" name="desc" cols="50" rows="5" placeholder="症状处方..." readonly="readonly"></textarea>
 				</div>
-			</div>
+	</div>
+	
+	<div>
+		<a href="#" class="diagnosisDownload" onclick="doCancel()">退出</a>
+	</div>
 
 	<div class="layui-layer layui-layer-page layui-layer-molv layer-anim"
 		id="menuLayer" type="page" times="2" showtime="0" contype="object"
@@ -92,15 +96,18 @@
 			function doHideTree() {		
 				$("#menuLayer").css("display", "none");
 			}
+			function doCancel(){
+				$("#mainContentId").load("customer/doCustomerListUI.do");
+			}
 			
 			function downloadDesc(){
-				var userDesc = $("#mainContentId").data("rowUserDate");//获取用户的信息
+				var userDesc = $("#mainContentId").data("rowUserData");//获取用户的信息
 				var params0 = {"userId":userDesc.userId};               //封装用户的id
-				alert("用户的id:"+userDesc.userId)
+				//alert("用户的id:"+userDesc.userId)
 				$.post("diagnosisDescuser/doFindUserIdIsExiste.do",params0,function(result){  //异步加载查询数据库中是否存在该用户
 					if(result.state==1){
 						var UserisExiste = result.data;//判断用户是否存在
-						alert("是否存在："+UserisExiste);				
+						//alert("是否存在："+UserisExiste);				
 						var params = {"diagnosisId":$("#parentUserDesc").data("parentId"), //封装症状id
 								           "userId":userDesc.userId};                             //封装用户id
 								           
@@ -127,7 +134,7 @@
 			
 			function deleteDesc(){
 				
-				var params={"userId":$("#mainContentId").data("rowUserDate").userId};
+				var params={"userId":$("#mainContentId").data("rowUserData").userId};
 				$.post("diagnosisDescuser/doDeleteDescObjectByUserId.do",params,function(result){
 					if(result.state==1){
 						alert("删除成功");
@@ -139,7 +146,8 @@
 				})
 			}		
 			function initUserDescDate(){
-				var userDesc = $("#mainContentId").data("rowUserDate");
+				var userDesc = $("#mainContentId").data("rowUserData");
+				//alert(userDesc);
 				$("#userId").val(userDesc.userId);
 				$("#userName").val(userDesc.userName);
 				$("#userPhone").val(userDesc.userPhone);
