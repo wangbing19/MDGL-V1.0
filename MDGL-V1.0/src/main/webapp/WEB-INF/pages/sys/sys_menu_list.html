@@ -133,9 +133,17 @@ function doLoadEditUI(){
 		$("#mainContentId").data("rowData",rowData);
 	}
 	var url="menu/doMenuEditUI.do";
-	 $("#mainContentId").load(url,function(){
-		 $(".box-title").html(title); 
-	  });
+	 
+	 $.post(url,function(result){
+			if(result.state==0){
+				console.log(result);
+				alert(result.message);
+			}else{
+				$("#mainContentId").load(url,function(){
+					 $(".box-title").html(title); 
+				  });
+			}
+		})
 }
 
 

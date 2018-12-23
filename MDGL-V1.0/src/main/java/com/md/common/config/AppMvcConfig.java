@@ -3,6 +3,7 @@ package com.md.common.config;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.ComponentScan.Filter;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -21,8 +22,9 @@ import com.md.common.web.AccessInterCeptor;
  * @author ta
  */
 @ComponentScan(value = "com.md", useDefaultFilters = false, includeFilters = {
-		@Filter(type = FilterType.ANNOTATION, classes = { Controller.class, ControllerAdvice.class }) })
+		@Filter(type = FilterType.ANNOTATION, classes = { Controller.class, ControllerAdvice.class}) })
 @EnableWebMvc
+@EnableAspectJAutoProxy //启用AOP配置
 public class AppMvcConfig extends WebMvcConfigurerAdapter {
 	@Override
 	public void configureViewResolvers(ViewResolverRegistry registry) {

@@ -307,7 +307,14 @@
 			});
 			function doLoadUI(id, url) {
 				$("#" + id).click(function() {
-					$("#mainContentId").load(url);
+					 $.post(url,function(result){
+							if(result.state==0){
+								console.log(result);
+								alert(result.message);
+							}else{
+								$("#mainContentId").load(url);
+							}
+						})
 				});
 			}
 		</script>

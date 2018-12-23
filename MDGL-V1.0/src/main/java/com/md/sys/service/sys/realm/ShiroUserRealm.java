@@ -24,6 +24,7 @@ import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -91,14 +92,15 @@ public class ShiroUserRealm extends AuthorizingRealm {
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
 		// 1.获取登录用户信息
 		SysUser user = (SysUser) principals.getPrimaryPrincipal();
-		AuthorizationInfo aInfo = authorizationCache.get(user.getUsername());
-		if (aInfo != null)
-			return aInfo;
+		AuthorizationInfo aInfo ;
+		System.out.println("getUsername123"+user.getUsername());
+
 		System.out.println("===doGetAuthorizationInfo==");
 		// 2.基于登录用户id获取对应的角色id
 		List<Integer> roleIds = sysUserRoleDao.findRoleIdsByUserId(user.getId());
 		if (roleIds == null || roleIds.size() == 0)
 			throw new AuthorizationException();
+		System.out.println("doGetAuthorizationInfo"+roleIds);
 		// 3.基于用户角色获得对应的菜单id
 		Integer[] array = {};
 		List<Integer> menuIds = sysRoleMenuDao.findMenuIdsByRoleIds(roleIds.toArray(array));
@@ -108,6 +110,7 @@ public class ShiroUserRealm extends AuthorizingRealm {
 		List<String> permissionList = sysMenuDao.findPermissions(menuIds.toArray(array));
 		if (permissionList == null || permissionList.size() == 0)
 			throw new AuthorizationException();
+		System.out.println("doGetAuthorizationInfo"+permissionList);
 		// 5.对用户权限进行封装并返回(授权管理器)
 		Set<String> stringPermissions = new HashSet<>();
 		for (String p : permissionList) {
@@ -115,9 +118,9 @@ public class ShiroUserRealm extends AuthorizingRealm {
 				stringPermissions.add(p);
 			}
 		}
+		System.out.println("doGetAuthorizationInfo"+stringPermissions);
 		SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
 		info.setStringPermissions(stringPermissions);
-		authorizationCache.put(user.getUsername(), info);
 		return info;// 返回给授权管理器
 	}
 

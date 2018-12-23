@@ -30,7 +30,6 @@ public class SysDeptServiceImpl implements SysDeptService {
 	//@Autowired
 	//private SysUserDao sysUserDao;
 	
-	@RequiresPermissions("sys:dept:edit")
 	@Transactional(rollbackFor=Throwable.class)
 	@Override
 	public int updateObject(SysDept entity) {

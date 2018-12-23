@@ -28,9 +28,6 @@ public class SysRoleServiceImpl implements SysRoleService {
 	@Autowired
 	private SysRoleMenuDao sysRoleMenuDao;
 
-	@Autowired
-	private SysUserRoleDao sysUserRoleDao;
-
 	@Override
 	public List<CheckBox> findObjects() {
 		return sysRoleDao.findObjects();
@@ -87,7 +84,6 @@ public class SysRoleServiceImpl implements SysRoleService {
 		if (rows == 0)
 			throw new ServiceException("记录可能已经不存在");
 		sysRoleMenuDao.deleteObjectsByRoleId(id);
-		sysUserRoleDao.deleteObjectsByRoleId(id);
 		return rows;
 	}
 
@@ -101,7 +97,6 @@ public class SysRoleServiceImpl implements SysRoleService {
 		int pageSize = 20;// 页面大小
 		int startIndex = (pageCurrent - 1) * pageSize;// 起始位置
 		List<SysRole> records = sysRoleDao.findPageObjects(username, startIndex, pageSize);
-		System.out.println("records=" + records);
 		PageObject<SysRole> pageObject = new PageObject<>();
 		pageObject.setRowCount(rowCount);
 		pageObject.setRecords(records);

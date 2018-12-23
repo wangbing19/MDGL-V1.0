@@ -19,7 +19,6 @@ public class SysDeptController {
 	 * 
 	 * @return 组织管理--加载页面
 	 */
-	@RequiresPermissions("sys:dept:add")
 	@RequiresLog("增加部门")
 	@RequestMapping("doDeptListUI")
 	public String doDeptListUI() {
@@ -39,7 +38,7 @@ public class SysDeptController {
 	 * 加载编辑页面
 	 * @return
 	 */
-	@RequiresPermissions("sys:dept:edit")
+	@RequiresPermissions("sys:dept:add")
 	@RequestMapping("doDeptEditUI")
 	public String doDeptEditUI() {
 		return "sys/sys_dept_edit";
@@ -81,6 +80,7 @@ public class SysDeptController {
 	 * @param id
 	 * @return
 	 */
+	@RequiresPermissions("sys:dept:delete")
 	@RequestMapping("doDeleteObject")
 	@ResponseBody
 	public JsonResult doDeleteObject(Integer id){

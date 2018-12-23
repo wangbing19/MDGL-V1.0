@@ -3,6 +3,7 @@ package com.md.sys.controller.sys;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,11 +21,13 @@ public class SysMenuController {
 	@Autowired
 	private SysMenuService sysMenuService;
 	
+	@RequiresPermissions("sys:menu:view")
 	@RequestMapping("doMenuListUI")
 	public String doMenuListUI(){
 	 return "sys/sys_menu_list";
 	}
 	
+	@RequiresPermissions("sys:menu:add")
     @RequestMapping("doMenuEditUI")
 	public String doMenuEditUI(){
 	  return "sys/sys_menu_edit";
@@ -51,6 +54,7 @@ public class SysMenuController {
 		 sysMenuService.findZtreeMenuNodes());
 	}
 
+	@RequiresPermissions("sys:menu:delete")
 	@RequestMapping("doDeleteObject")
 	@ResponseBody
 	public JsonResult doDeleteObject(Integer id){
