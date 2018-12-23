@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import com.md.common.annotation.sys.RequiresLog;
 import com.md.common.exception.ServiceException;
 import com.md.common.utils.ShiroUtils;
 import com.md.common.vo.CheckBox;
@@ -44,6 +45,7 @@ public class SysRoleServiceImpl implements SysRoleService {
 	}
 
 	@Override
+	@RequiresLog("系统管理-角色-更新角色信息")
 	public int updateObject(SysRole entity, Integer[] menuIds) {
 		if (entity == null)
 			throw new IllegalArgumentException("保存对象不能为空");
@@ -60,6 +62,7 @@ public class SysRoleServiceImpl implements SysRoleService {
 	}
 
 	@Override
+	@RequiresLog("系统管理-角色新-增角色信息")
 	public int saveObject(SysRole entity, Integer[] menuIds) {
 		if (entity == null)
 			throw new IllegalArgumentException("保存对象不能为空");
@@ -76,6 +79,7 @@ public class SysRoleServiceImpl implements SysRoleService {
 	}
 
 	@Override
+	@RequiresLog("系统管理-角色-删除角色信息")
 	public int deleteObject(Integer id) {
 		if (id == null || id < 1)
 			throw new IllegalArgumentException("id值不合法");
@@ -87,6 +91,7 @@ public class SysRoleServiceImpl implements SysRoleService {
 	}
 
 	@Override
+	@RequiresLog("系统管理-角色-查看角色信息")
 	public PageObject<SysRole> findPageObjects(String username, Integer pageCurrent) {
 		if (pageCurrent == null || pageCurrent < 1)
 			throw new IllegalArgumentException("页码值不正确");

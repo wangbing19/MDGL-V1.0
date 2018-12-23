@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
+import com.md.common.annotation.sys.RequiresLog;
 import com.md.common.exception.ServiceException;
 import com.md.common.vo.Node;
 import com.md.sys.dao.sys.SysDeptDao;
@@ -32,6 +33,7 @@ public class SysDeptServiceImpl implements SysDeptService {
 	
 	@Transactional(rollbackFor=Throwable.class)
 	@Override
+	@RequiresLog("系统管理-部门-更新部门信息")
 	public int updateObject(SysDept entity) {
 		//1.合法验证
 		if(entity==null)
@@ -51,6 +53,7 @@ public class SysDeptServiceImpl implements SysDeptService {
 	}
 	
 	@Override
+	@RequiresLog("系统管理-部门-新增部门")
 	public int saveObject(SysDept entity) {
 		//1.合法验证
 		if(entity==null)
@@ -71,11 +74,13 @@ public class SysDeptServiceImpl implements SysDeptService {
 	}
 	@Transactional(readOnly=true)
 	@Override
+	@RequiresLog("系统管理-部门-查找部门信息")
 	public List<Map<String, Object>> findObjects() {
 		return sysDeptDao.findObjects();
 	}
 	
 	@Override
+	@RequiresLog("系统管理-部门-删除部门信息")
 	public int deleteObject(Integer id) {
 		//1.合法性验证
 		if(id==null||id<=0)

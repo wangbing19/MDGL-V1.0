@@ -23,7 +23,7 @@ public class SysLogServiceImpl implements SysLogService {
 	@Qualifier("sysLogDao")
 	private SysLogDao sysLogDao;
 
-	@RequiresLog("删除日志")
+	@RequiresLog("系统管理-日志-删除日志")
 	@Override
 	public int deleteObjects(Integer... ids) {
 		if (ids == null || ids.length == 0)
@@ -40,7 +40,7 @@ public class SysLogServiceImpl implements SysLogService {
 		return rows;
 	}
 
-	@RequiresLog("查询日志")
+	@RequiresLog("系统管理-日志-查询日志")
 	@Override
 	public PageObject<SysLog> findPageObjects(String username, Integer pageCurrent) {
 		if (pageCurrent == null || pageCurrent < 1)
