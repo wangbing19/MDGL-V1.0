@@ -2,7 +2,7 @@
 	<div class="col-xs-12">
 		<div class="box">
 			<div class="box-header">
-				<h3 class="box-title">用户管理</h3>
+				<h3 class="box-title">客户信息</h3>
 
 				<div class="box-tools">
 					<div class="input-group input-group-sm" style="width: 350px;">
@@ -29,7 +29,7 @@
 							<th>账户余额</th>
 							<th>训练数</th>
 							<!-- <th>充值记录</th> -->
-							<th>课程记录</th>
+							<!-- <th>课程记录</th> -->
 							<th>状态</th>
 							<th>咨询/诊断表</th>
 							<th>主监护人</th>
@@ -214,7 +214,7 @@
 	     "<td>"+row.balance+"</td>"+
 	     "<td>"+row.totalTrainingTime+"/"+row.timesOfTraining+"</td>"+
 	   /*   "<td>"+row.rechargeCount+"</td>"+ */
-	     "<td>"+row.scheduleCount+"</td>"+
+	     /* "<td>"+row.scheduleCount+"</td>"+ */
 	     "<td>"+(row.state?"启用":"禁用")+"</td>"+
 	     "<td><button type='button' class='btn-doConsultationUpdate'>"+"咨询表"+"</button>"+
 	     "<button type='button' class='btn-doDiagnoseUpdate'>"+"诊断表"+"</button></td>"+
@@ -223,7 +223,7 @@
 	     "<td>"+new Date(row.lastTrain).toLocaleString()+"</td>"+
 	     "<td>"+new Date(row.gmtCreate).toLocaleString()+"</td>"+
 	     "<td><button type='button' class='btn btn-default btn-cf'>"+"处方"+"</button></td>"+
-	     "<td><button type='button' class='btn btn-default btn-doDiagnoseInsert'>"+"添加咨询表"+"</button></td>"+
+	     "<td><button type='button' class='btn btn-default btn-doDiagnoseInsert'>"+"添加诊断表"+"</button></td>"+
 	 //    "<td><button type='button' class='btn btn-default btn-all'>"+"查看"+"</button></td>"+
 	     "<td><button type='button' class='btn btn-default btn-delete'>"+"删除"+"</button></td>"+
 	     "<td><button type='button' class='btn btn-default btn-valid'>"+(row.state?"禁用":"启用")+"</button></td>"; 
