@@ -67,12 +67,12 @@ public class SysDeptServiceImpl implements SysDeptService {
 		//3.返回数据
 		return rows;
 	}
-	@Transactional(readOnly=true)//默认为false
+	@Transactional(readOnly=false)//默认为false
 	@Override
 	public List<Node> findZTreeNodes() {
 		return sysDeptDao.findZTreeNodes();
 	}
-	@Transactional(readOnly=true)
+	@Transactional(readOnly=false)
 	@Override
 	@RequiresLog("系统管理-部门-查找部门信息")
 	public List<Map<String, Object>> findObjects() {
