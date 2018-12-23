@@ -91,7 +91,6 @@ public class SysUserServiceImpl implements SysUserService {
 		if (valid != 0 && valid != 1)
 			throw new IllegalArgumentException("状态值不正确");
 		SysUser user = ShiroUtils.getUser();
-		System.out.println("doValidById "+user.getParentId());
 		String username = user.getUsername();
 		int rows = sysUserDao.doValidById(id, valid, username);
 		if (rows == 0)
@@ -102,7 +101,6 @@ public class SysUserServiceImpl implements SysUserService {
 	@Override
 	public List<Node> findZTreeNodes() {
 		List<Node> findZTreeNodes = sysUserDao.findZTreeNodes();
-		System.out.println(findZTreeNodes);
 
 		return findZTreeNodes;
 	}

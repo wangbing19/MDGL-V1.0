@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
+import com.md.common.annotation.sys.RequiresLog;
 import com.md.common.exception.ServiceException;
 import com.md.common.utils.ShiroUtils;
 import com.md.common.vo.Node;
@@ -37,6 +38,7 @@ public class SysMenuServiceImpl implements SysMenuService {
 	
 	@Transactional(timeout=3)
 	@Override
+	@RequiresLog("权限管理-菜单-更新菜单")
 	public int updateObject(SysMenu entity) {
 		if(entity==null)
 			throw new IllegalArgumentException("参数异常");
@@ -49,6 +51,7 @@ public class SysMenuServiceImpl implements SysMenuService {
 	}
 	
 	@Override
+	@RequiresLog("权限管理-菜单-新增菜单")
 	public int saveObject(SysMenu entity) {
 		if(entity==null)
 		throw new IllegalArgumentException("参数异常");
@@ -72,6 +75,7 @@ public class SysMenuServiceImpl implements SysMenuService {
 		return list;
 	}
 	@Override
+	@RequiresLog("权限管理-菜单-删除菜单")
 	public int deleteObject(Integer id) {
 		//1.验证参数有效性
 		if(id==null||id<1)
@@ -92,6 +96,7 @@ public class SysMenuServiceImpl implements SysMenuService {
 
 	@Transactional(readOnly=false,propagation=Propagation.REQUIRES_NEW)
 	@Override
+	@RequiresLog("权限管理-菜单-查询菜单")
 	public List<Map<String, Object>> findObjects() {
 		List<Map<String, Object>> list=sysMenuDao.findObjects();
 		if(list==null||list.size()==0)

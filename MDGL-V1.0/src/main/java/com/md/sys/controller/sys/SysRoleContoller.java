@@ -14,75 +14,62 @@ import com.md.sys.entity.sys.SysRole;
 import com.md.sys.service.sys.SysRoleService;
 import com.md.sys.vo.sys.SysRoleMenuResult;
 
-
-
 @RequestMapping("/role/")
 @Controller
 public class SysRoleContoller {
 
-	 @Autowired
-	 private SysRoleService sysRoleService;
-	 
-	 @RequiresPermissions("sys:role:view")
-	 @RequestMapping("doRoleListUI")
-	 public String doRoleListUI(){
-		 return "sys/sys_role_list";
-	 }
-	 
-	 @RequestMapping("doRoleEditUI")
-	 public String doRoleEditUI(){
-		 return "sys/sys_role_edit";
-	 }
-	 
-	 @RequestMapping("doFindRoles")
-	 @ResponseBody
-	 public JsonResult doFindObjects(){
-	  	 return new JsonResult(sysRoleService.findObjects());
-	 }
-	 @RequestMapping("doFindObjectById")
-	 @ResponseBody
-	 public JsonResult doFindObjectById(Integer id){
-		 SysRoleMenuResult findObjectById = sysRoleService.findObjectById(id);
-		 System.out.println(findObjectById);
-	     return new JsonResult(findObjectById);
-	 }
+	@Autowired
+	private SysRoleService sysRoleService;
 
-	 @RequestMapping("doUpdateObject")
-	 @ResponseBody
-	 public JsonResult doUpdateObject(
-			 SysRole entity,Integer[] menuIds){
-		 System.out.println("entity="+entity);
-		 System.out.println("menuIds="+Arrays.toString(menuIds));
-		 sysRoleService.updateObject(entity, menuIds);
-		 return new JsonResult("update ok");
-	 }
-	 
-	 @RequestMapping("doSaveObject")
-	 @ResponseBody
-	 public JsonResult doSaveObject(
-			 SysRole entity,Integer[] menuIds){
-		 sysRoleService.saveObject(entity, menuIds);
-		 return new JsonResult("save ok");
-	 }
-	 
-	 @RequestMapping("doDeleteObject")
-	 @ResponseBody
-	 public JsonResult doDeleteObject(Integer id){
-		 sysRoleService.deleteObject(id);
-		 return new JsonResult("delete ok");
-	 }
-	 
-	 
-	 
-	 @GetMapping("doFindPageObjects")
-	 @ResponseBody
-	 public JsonResult doFindPageObjects(String name,Integer pageCurrent){
-		 System.out.println("name="+name);
-		 return new JsonResult(
-		sysRoleService.findPageObjects(
-				name, pageCurrent));
-	 }
-	 
-	 
-	 
+	@RequiresPermissions("sys:role:view")
+	@RequestMapping("doRoleListUI")
+	public String doRoleListUI() {
+		return "sys/sys_role_list";
+	}
+
+	@RequestMapping("doRoleEditUI")
+	public String doRoleEditUI() {
+		return "sys/sys_role_edit";
+	}
+
+	@RequestMapping("doFindRoles")
+	@ResponseBody
+	public JsonResult doFindObjects() {
+		return new JsonResult(sysRoleService.findObjects());
+	}
+
+	@RequestMapping("doFindObjectById")
+	@ResponseBody
+	public JsonResult doFindObjectById(Integer id) {
+		SysRoleMenuResult findObjectById = sysRoleService.findObjectById(id);
+		return new JsonResult(findObjectById);
+	}
+
+	@RequestMapping("doUpdateObject")
+	@ResponseBody
+	public JsonResult doUpdateObject(SysRole entity, Integer[] menuIds) {
+		sysRoleService.updateObject(entity, menuIds);
+		return new JsonResult("update ok");
+	}
+
+	@RequestMapping("doSaveObject")
+	@ResponseBody
+	public JsonResult doSaveObject(SysRole entity, Integer[] menuIds) {
+		sysRoleService.saveObject(entity, menuIds);
+		return new JsonResult("save ok");
+	}
+
+	@RequestMapping("doDeleteObject")
+	@ResponseBody
+	public JsonResult doDeleteObject(Integer id) {
+		sysRoleService.deleteObject(id);
+		return new JsonResult("delete ok");
+	}
+
+	@GetMapping("doFindPageObjects")
+	@ResponseBody
+	public JsonResult doFindPageObjects(String name, Integer pageCurrent) {
+		return new JsonResult(sysRoleService.findPageObjects(name, pageCurrent));
+	}
+
 }

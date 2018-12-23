@@ -23,9 +23,6 @@ import com.md.sys.entity.sys.SysLog;
 @Aspect
 @Service
 public class SysLogAspect {
-	public SysLogAspect() {
-		System.out.println("SysLogAspect()");
-	}
 
 	@Autowired
 	private SysLogDao sysLogDao;

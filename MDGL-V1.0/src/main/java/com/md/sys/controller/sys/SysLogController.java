@@ -48,7 +48,6 @@ public class SysLogController {
 	@PostMapping("doDeleteObjects") // 只能处理post请求
 	@ResponseBody
 	public JsonResult doDeleteObjects(Integer... ids) {// spring mvc请求参数映射
-		System.out.println("log.delete.service=" + sysLogService.getClass().getName());
 		sysLogService.deleteObjects(ids);
 		return new JsonResult("delete ok");
 	}

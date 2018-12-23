@@ -67,7 +67,6 @@ public class SysMenuController {
 	public JsonResult doFindObjects(){
 		List<Map<String,Object>> list=
 				sysMenuService.findObjects();
-		System.out.println(list);
 		return new JsonResult(list);
 	}
 }
