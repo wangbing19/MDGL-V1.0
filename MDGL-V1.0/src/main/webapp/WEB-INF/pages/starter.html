@@ -312,8 +312,8 @@
 				$("#" + id).click(function() {
 					 $.post(url,function(result){
 							if(result.state==0){
-								console.log(result);
-								alert(result.message);
+								$("#mainContentId").load("doNullUI.do",function(){
+								});
 							}else{
 								$("#mainContentId").load(url);
 							}

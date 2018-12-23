@@ -18,6 +18,10 @@ public class PageController{//类加载(将类读到内存)-->Class
 	  public String doLoginUI(){
 		  return "login";
 	  }
+	  @RequestMapping("doNullUI")
+	  public String doNullUI(){
+		  return "starter2";
+	  }
 	  
 	  @RequestMapping("doPageUI")
 	  public String doPageUI(){

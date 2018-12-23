@@ -4,6 +4,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,7 +26,8 @@ public class SysUserController {
 	private ShiroUserRealm shiroUserRealm;
 	//	 @Autowired
 	//	 private ShiroUserRealm shiroUserRealm;
-
+	
+	@RequiresPermissions("sys:user:view")
 	@RequestMapping("doUserListUI")
 	public String doUserListUI() {
 		return "sys/sys_user_list";

@@ -75,7 +75,6 @@ public class SysRoleServiceImpl implements SysRoleService {
 		return rows;
 	}
 
-	@RequiresPermissions("sys:role:delete")
 	@Override
 	public int deleteObject(Integer id) {
 		if (id == null || id < 1)

@@ -43,16 +43,14 @@ public class SysLogServiceImpl implements SysLogService {
 	@RequiresLog("查询日志")
 	@Override
 	public PageObject<SysLog> findPageObjects(String username, Integer pageCurrent) {
-		System.out.println("log.findPageObjects");
 		if (pageCurrent == null || pageCurrent < 1)
 			throw new IllegalArgumentException("页码值不正确");
 		int rowCount = sysLogDao.getRowCount(username);
 		if (rowCount == 0)
 			throw new ServiceException("记录不存在");
-		int pageSize = 10;// 页面大小
+		int pageSize = 15;// 页面大小
 		int startIndex = (pageCurrent - 1) * pageSize;// 起始位置
 		List<SysLog> records = sysLogDao.findPageObjects(username, startIndex, pageSize);
-		System.out.println("records=" + records);
 		PageObject<SysLog> pageObject = new PageObject<>();
 		pageObject.setRowCount(rowCount);
 		pageObject.setRecords(records);

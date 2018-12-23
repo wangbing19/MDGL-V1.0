@@ -2,6 +2,7 @@ package com.md.sys.controller.sys;
 
 import java.util.Arrays;
 
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +23,7 @@ public class SysRoleContoller {
 	 @Autowired
 	 private SysRoleService sysRoleService;
 	 
+	 @RequiresPermissions("sys:role:view")
 	 @RequestMapping("doRoleListUI")
 	 public String doRoleListUI(){
 		 return "sys/sys_role_list";

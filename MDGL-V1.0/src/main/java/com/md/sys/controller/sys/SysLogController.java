@@ -1,5 +1,6 @@
 package com.md.sys.controller.sys;
 
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,6 +31,7 @@ public class SysLogController {
 	 * 
 	 * @return
 	 */
+	@RequiresPermissions("sys:log:view")
 	@RequestMapping("doLogListUI")
 	public String doLogListUI() {
 		// 此值会交给视图解析器进行解析
@@ -61,8 +63,6 @@ public class SysLogController {
 	@RequestMapping("doFindPageObjects")
 	@ResponseBody
 	public JsonResult doFindPageObjects(String username, @RequestParam(value = "pageCurrent", required = false) Integer page) {
-		System.out.println(username);
-		System.out.println(page);
 		PageObject<SysLog> pageObject = sysLogService.findPageObjects(username, page);
 		return new JsonResult(pageObject);
 	}

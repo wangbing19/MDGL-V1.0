@@ -34,7 +34,7 @@
 		name=#{name},
 		note=#{note},
 		modified_user=#{modifiedUser},
-		modified_time=#{modifiedTime}
+		modified_time=now()
 		where
 		id=#{id}
 	</update>

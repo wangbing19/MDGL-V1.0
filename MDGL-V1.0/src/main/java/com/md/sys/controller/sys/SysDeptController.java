@@ -71,7 +71,6 @@ public class SysDeptController {
 	@RequestMapping("doUpdateObject")
 	@ResponseBody
 	public JsonResult doUpdateObject(SysDept entity){
-		System.out.println(entity.toString());
 		sysDeptService.updateObject(entity);
 		return new JsonResult("save ok");
 	}
