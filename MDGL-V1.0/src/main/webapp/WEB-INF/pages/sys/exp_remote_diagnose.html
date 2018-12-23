@@ -346,9 +346,14 @@
 	   //进入专家回复页面的地址
 	   var url="dia/doExpertReply.do";
 	   //点击后异步刷新进入症状描述页面
-	   $("#mainContentId").load(url,function(){
-		   
-	   })
+	    $.post(url,function(result){
+			if(result.state==0){
+				console.log(result);
+				alert(result.message);
+			}else{
+				$("#mainContentId").load(url);
+			}
+		})
    }
    
    //获取当前行id在专家回复表中的数据

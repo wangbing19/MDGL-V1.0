@@ -1,5 +1,6 @@
 package com.md.sys.controller.exp;
 
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +23,7 @@ public class ExpertController {
 	 * 进入专家列表添加和修改页面
 	 * @return
 	 */
+	@RequiresPermissions("exp:zj:add")
 	@RequestMapping("doExpertIU")
 	public String doExpertIU() {
 		return "sys/exp_expert_edit";
@@ -55,7 +57,7 @@ public class ExpertController {
 	public JsonResult doInsertExp(Expert entity) {
 		System.out.println("专家表添加="+entity);
 		expertService.insertExp(entity);
-		return new JsonResult("insert ok");
+		return new JsonResult("添加成功");
 	}
 	
 	/**
@@ -67,7 +69,7 @@ public class ExpertController {
 	@ResponseBody
 	public JsonResult doDeleteExp(Integer... ids) {
 		expertService.deleteExp(ids);
-		return new JsonResult("delete ok");
+		return new JsonResult("删除成功");
 	}
 	
 	/**
@@ -79,7 +81,7 @@ public class ExpertController {
 	@ResponseBody
 	public JsonResult doUpdateExp(Expert entity) {
 		expertService.updateExp(entity);
-		return new JsonResult("update ok");
+		return new JsonResult("修改成功");
 	}
 	
 	/**
@@ -124,6 +126,6 @@ public class ExpertController {
 	@ResponseBody
 	public JsonResult doUpdateMessage(Expert entity) {
 		expertService.updateMessage(entity);
-		return new JsonResult("update ok");
+		return new JsonResult("添加成功");
 	}
 }

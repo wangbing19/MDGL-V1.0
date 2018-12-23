@@ -168,10 +168,16 @@
    
    function doLoadPage(title){
 	   var url="exp/doExpertIU.do"
-	   $("#mainContentId").load(url,function(){//#mainContentId在starter页面
-		   //将henl()中的值添加进带".box-title"的标签中
-		   $(".box-title").html(title);
-	   }) 
+		   $.post(url,function(result){
+				if(result.state==0){
+					console.log(result);
+					alert(result.message);
+				}else{
+					$("#mainContentId").load(url,function(){
+						 $(".box-title").html(title); 
+					  });
+				}
+			})
    }	
    /* ========================================================================================== */
 	

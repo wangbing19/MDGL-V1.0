@@ -26,7 +26,7 @@ public class ExpSymptomsDescribedController {
 	@ResponseBody
 	public JsonResult doInsertSym(ExpSymptomsDescribed entity) {
 		ExpSymptomsDescribedService.insertSym(entity);
-		return new JsonResult("insert ok");
+		return new JsonResult("添加成功");
 	}
 	
 	/**
@@ -38,7 +38,7 @@ public class ExpSymptomsDescribedController {
 	@ResponseBody
 	public JsonResult doDeleteSym(Integer... id) {
 		ExpSymptomsDescribedService.deleteSym(id);
-		return new JsonResult("delete ok");
+		return new JsonResult("删除成功");
 	}
 	
 	/**
@@ -51,7 +51,7 @@ public class ExpSymptomsDescribedController {
 	public JsonResult doUpdateSym(ExpSymptomsDescribed entity) {
 		//System.out.println("entity="+entity);
 		ExpSymptomsDescribedService.updateSym(entity);
-		return new JsonResult("update ok");
+		return new JsonResult("修改成功");
 	}
 	
 	/**

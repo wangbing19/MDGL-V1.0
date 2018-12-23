@@ -32,7 +32,7 @@ public class ExpertReplyController {
 	@ResponseBody
 	public JsonResult doInsertRep(ExpertReply entity) {
 		ExpertReplyService.insertRep(entity);
-		return new JsonResult("insert ok");
+		return new JsonResult("添加成功");
 	}
 
 	/**
@@ -44,7 +44,7 @@ public class ExpertReplyController {
 	@ResponseBody
 	public JsonResult doDeleteRep(Integer... id) {
 		ExpertReplyService.deleteRep(id);
-		return new JsonResult("delete ok");
+		return new JsonResult("删除成功");
 	}
 
 	/**
@@ -56,7 +56,7 @@ public class ExpertReplyController {
 	@ResponseBody
 	public JsonResult doUpdateRep(ExpertReply entity) {
 		ExpertReplyService.updateRep(entity);
-		return new JsonResult("update ok");
+		return new JsonResult("修改成功");
 	}
 
 

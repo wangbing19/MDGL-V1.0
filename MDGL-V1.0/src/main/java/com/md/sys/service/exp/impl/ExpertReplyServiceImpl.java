@@ -2,10 +2,12 @@ package com.md.sys.service.exp.impl;
 
 import javax.sql.rowset.serial.SerialException;
 
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.druid.util.StringUtils;
+import com.md.common.annotation.sys.RequiresLog;
 import com.md.common.exception.ServiceException;
 import com.md.sys.dao.exp.ExpertReplyDao;
 import com.md.sys.entity.exp.ExpSymptomsDescribed;
@@ -23,6 +25,8 @@ public class ExpertReplyServiceImpl implements ExpertReplyService{
 	 * @param entity
 	 * @return
 	 */
+	@RequiresPermissions("rep:yc:insert")
+	@RequiresLog("远程诊断添加专家回复")
 	@Override
 	public int insertRep(ExpertReply entity) {
 		//1.判断属性
@@ -59,6 +63,8 @@ public class ExpertReplyServiceImpl implements ExpertReplyService{
 	 * @param entity
 	 * @return
 	 */
+	@RequiresPermissions("rep:yc:update")
+	@RequiresLog("远程诊断添加专家回复修改")
 	@Override
 	public int updateRep(ExpertReply entity) {
 		//1.判断属性
