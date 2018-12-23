@@ -88,7 +88,7 @@ public class ExpertServiceImpl implements ExpertService {
 		if(rowCount==0)
 			throw new ServiceException("您要查询的记录不存在");
 		
-		int pageSize=2;
+		int pageSize=10;
 		int startIndex=(pageCurrent-1)*pageSize;
 
 		//3.依据条件获取当前页数据

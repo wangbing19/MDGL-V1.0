@@ -60,11 +60,15 @@ public class ExpDiagnoseServiceImpl implements ExpDiagnoseService {
 		SysUser user=ShiroUtils.getUser();
 		String loginuser=user.getUsername();//获取添加时用户的账号名
 		String modifyuser=user.getUsername();//获取修改时用户的账号名(添加时默认是自身账号)
+		int parentId=user.getParentId();
+		entity.setRegisterUser(loginuser);
+		entity.setModifiedUser(loginuser);
+		entity.setRegisterParentid(parentId);
+		System.out.println("添加="+entity);
+		
 		// 保存用户自身信息
-		int rows = remoteDiagnoseDao.insertObject(entity,//1,"admin","admin");
-		user.getParentId(),//获取父级id
-		loginuser,
-		modifyuser);//获取登录账号
+		int rows = remoteDiagnoseDao.insertObject(entity);
+		
 		// 通过专家表id查询专家姓名
 		// entity.getExpertId();
 		return rows;
@@ -83,24 +87,24 @@ public class ExpDiagnoseServiceImpl implements ExpDiagnoseService {
 		// 获取登录用户的账号
 		SysUser user=ShiroUtils.getUser(); 
 		//System.out.println("user"+user);
-
+		Integer parentId = user.getParentId();
 		// 2.依据条件获取总记录数
 
-		int rowCount = remoteDiagnoseDao.getRowCount(customerName,1);//user.getParentId());
+		int rowCount = remoteDiagnoseDao.getRowCount(customerName,parentId);
 		System.out.println("rowCount" + rowCount);
 		// 3.判断记录是否存在
 		if (rowCount == 0)
 			throw new ServiceException("您要查询记录不存在");
 
 		// 4.计算每一页的开始下标
-		int pageSize = 3;
+		int pageSize = 10;
 		int startIndex = (pageCurrent - 1) * pageSize;
 
 		// System.out.println("5555"+user.getParentId());
 
 		// 5.依据条件获取当前页数据
 		List<ExpRemoteDiagnoseVo> records = remoteDiagnoseDao.findPageObjects(customerName, startIndex, pageSize,//1);
-		user.getParentId());// 获取父级id
+		parentId);// 获取父级id
 		System.out.println("records=" + records);
 
 		// 6.封装数据
@@ -161,7 +165,9 @@ public class ExpDiagnoseServiceImpl implements ExpDiagnoseService {
 			throw new IllegalArgumentException("发送人电话不能为空");
 		// 执行修改
 		SysUser user = ShiroUtils.getUser();
-		int count = remoteDiagnoseDao.update(entity,user.getUsername());
+		String username = user.getUsername();
+		entity.setModifiedUser(username);
+		int count = remoteDiagnoseDao.update(entity);
 		
 		if (count == 0)
 			throw new ServiceException("要修改的数据已不存在");

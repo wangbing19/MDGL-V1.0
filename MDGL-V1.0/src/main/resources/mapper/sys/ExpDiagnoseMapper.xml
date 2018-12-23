@@ -13,10 +13,10 @@
 		</selectKey>
 		insert into exp_remote_diagnose
 		(dept_site,dept_name,customer_name,customer_tel,expert_id,valid,time_number,
-		send_name,send_tel,gmt_create,gmt_modified,register_user,register_parentid,modified_user)
+		send_name,send_tel,gmt_create,gmt_modified,register_parentid,register_user,modified_user)
 		values
 		(#{deptSite},#{deptName},#{customerName},#{customerTel},#{expertId},#{valid},
-		#{timeNumber},#{sendName},#{sendTel},now(),now(),#{registerUser},#{registerParentid},#{modifiedUser})
+		#{timeNumber},#{sendName},#{sendTel},now(),now(),#{registerParentid},#{registerUser},#{modifiedUser})
 	</insert>
 
 	<!-- 通过sql元素定义sql语句中的共性 -->
@@ -27,7 +27,7 @@
 			</if>
 			
 			<if test="registerParentid !=1">
-				register_parentid=2 
+				register_parentid= #{registerParentid}
 			</if>
 			<if test="registerParentid ==1">
 				register_parentid=1

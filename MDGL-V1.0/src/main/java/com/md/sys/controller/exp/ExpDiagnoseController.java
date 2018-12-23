@@ -64,6 +64,7 @@ public class ExpDiagnoseController {
 	@ResponseBody
 	public JsonResult doSaveObject(
 			ExpRemoteDiagnose entity){
+		System.out.println("ExpRemoteDiagnose="+entity);
 		expDiagnoseService.saveObject(entity);
 		return new JsonResult("save OK");
 	}

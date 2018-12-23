@@ -16,10 +16,8 @@ public interface ExpRemoteDiagnoseDao {
 	 * @param entity:从浏览器获取的添加信息
 	 * @return
 	 */
-	int insertObject(ExpRemoteDiagnose entity,
-			@Param("registerParentid")Integer registerParentid,
-			@Param("registerUser")String registerUser,
-			@Param("modifiedUser")String modifiedUser);
+	int insertObject(ExpRemoteDiagnose entity);
+			
 
 	/**
 	 *不输入客户名字的话默认是查询出全部信息
@@ -56,7 +54,7 @@ public interface ExpRemoteDiagnoseDao {
 	 * @param entity
 	 * @return
 	 */
-	int update(ExpRemoteDiagnose entity,@Param("modifiedUser")String modifiedUser);
+	int update(ExpRemoteDiagnose entity);
 	
 	/**
 	 * 通过选择的id在修改页面获取远程诊断表对应id中的信息
