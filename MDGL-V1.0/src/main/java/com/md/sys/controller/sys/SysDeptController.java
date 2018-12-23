@@ -19,7 +19,8 @@ public class SysDeptController {
 	 * 
 	 * @return 组织管理--加载页面
 	 */
-	@RequiresLog("增加部门")
+	@RequiresLog("部门查询")
+	@RequiresPermissions("sys:dept:view")
 	@RequestMapping("doDeptListUI")
 	public String doDeptListUI() {
 		return "sys/sys_dept_list";
