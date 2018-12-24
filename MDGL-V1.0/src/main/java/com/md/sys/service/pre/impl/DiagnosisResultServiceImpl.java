@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.md.common.annotation.sys.RequiresLog;
 import com.md.common.exception.ServiceException;
 import com.md.common.vo.Node;
 import com.md.sys.vo.pre.DiagnosisDate;
@@ -45,6 +46,7 @@ public class DiagnosisResultServiceImpl implements DiagnosisResultService {
 		return diagnosisResultDao.getChildNum(id);
 	}
 	@Override
+	@RequiresLog("诊断处方-删除处方")
 	public int deleteObjectById(Integer id) {
 		if(id==null) {
 			throw new ServiceException("请先选择症状");
@@ -70,6 +72,7 @@ public class DiagnosisResultServiceImpl implements DiagnosisResultService {
 		return Ztree;
 	}
 	@Override
+	@RequiresLog("诊断处方-新增处方")
 	public int insertObject(Symptom symptom) {
 		if(symptom==null) {
 			throw new ServiceException("插入的数据有误");
@@ -80,6 +83,7 @@ public class DiagnosisResultServiceImpl implements DiagnosisResultService {
 		return row;
 	}
 	@Override
+	@RequiresLog("诊断处方-修改处方")
 	public int updateObject(DiagnosisDate diagnosisDate) {
 		if(diagnosisDate==null) {
 			throw new ServiceException("请先选择");
