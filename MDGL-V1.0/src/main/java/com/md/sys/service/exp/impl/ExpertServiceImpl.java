@@ -91,8 +91,8 @@ public class ExpertServiceImpl implements ExpertService {
 		//2.查询总记录数
 		int rowCount = expertDao.countExp(expertName);
 		//System.out.println("rowCount="+rowCount);
-		if(rowCount==0)
-			throw new ServiceException("您要查询的记录不存在");
+		/*if(rowCount==0)
+			throw new ServiceException("您要查询的记录不存在");*/
 		
 		int pageSize=10;
 		int startIndex=(pageCurrent-1)*pageSize;

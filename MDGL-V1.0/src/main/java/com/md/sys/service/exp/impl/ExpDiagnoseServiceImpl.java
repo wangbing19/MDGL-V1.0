@@ -96,8 +96,8 @@ public class ExpDiagnoseServiceImpl implements ExpDiagnoseService {
 		int rowCount = remoteDiagnoseDao.getRowCount(customerName,parentId);
 		//System.out.println("rowCount" + rowCount);
 		// 3.判断记录是否存在
-		if (rowCount == 0)
-			throw new ServiceException("您要查询记录不存在");
+		/*if (rowCount == 0)
+			throw new ServiceException("您要查询记录不存在");*/
 
 		// 4.计算每一页的开始下标
 		int pageSize = 10;
