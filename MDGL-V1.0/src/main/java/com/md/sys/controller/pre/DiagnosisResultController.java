@@ -3,6 +3,7 @@ package com.md.sys.controller.pre;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -55,6 +56,7 @@ public class DiagnosisResultController {
 		return new JsonResult("删除成功");
 	}
 	
+	@RequiresPermissions("pre:cf:view")
 	@RequestMapping("doDiagnosis")
 	public String doDiagnosis() {
 		return "sys/diagnosis_list";

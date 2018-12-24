@@ -3,12 +3,14 @@ package com.md.sys.service.exp.impl;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import com.md.common.utils.ShiroUtils;
 import com.md.sys.entity.sys.SysUser;
+import com.md.common.annotation.sys.RequiresLog;
 import com.md.common.exception.ServiceException;
 import com.md.common.vo.PageObject;
 import com.md.common.vo.ExpRemoteDiagnoseVo;
@@ -38,6 +40,7 @@ public class ExpDiagnoseServiceImpl implements ExpDiagnoseService {
 	/**
 	 * 对应远程诊断添加
 	 */
+	@RequiresLog("远程诊断添加")
 	@Override
 	public int saveObject(ExpRemoteDiagnose entity) {
 		// 1.对参数进行校验
@@ -64,7 +67,7 @@ public class ExpDiagnoseServiceImpl implements ExpDiagnoseService {
 		entity.setRegisterUser(loginuser);
 		entity.setModifiedUser(loginuser);
 		entity.setRegisterParentid(parentId);
-		System.out.println("添加="+entity);
+		//System.out.println("添加="+entity);
 		
 		// 保存用户自身信息
 		int rows = remoteDiagnoseDao.insertObject(entity);
@@ -91,10 +94,10 @@ public class ExpDiagnoseServiceImpl implements ExpDiagnoseService {
 		// 2.依据条件获取总记录数
 
 		int rowCount = remoteDiagnoseDao.getRowCount(customerName,parentId);
-		System.out.println("rowCount" + rowCount);
+		//System.out.println("rowCount" + rowCount);
 		// 3.判断记录是否存在
-		if (rowCount == 0)
-			throw new ServiceException("您要查询记录不存在");
+		/*if (rowCount == 0)
+			throw new ServiceException("您要查询记录不存在");*/
 
 		// 4.计算每一页的开始下标
 		int pageSize = 10;
@@ -105,7 +108,7 @@ public class ExpDiagnoseServiceImpl implements ExpDiagnoseService {
 		// 5.依据条件获取当前页数据
 		List<ExpRemoteDiagnoseVo> records = remoteDiagnoseDao.findPageObjects(customerName, startIndex, pageSize,//1);
 		parentId);// 获取父级id
-		System.out.println("records=" + records);
+		//System.out.println("records=" + records);
 
 		// 6.封装数据
 		PageObject<ExpRemoteDiagnoseVo> pageObject = new PageObject<>();
@@ -119,6 +122,7 @@ public class ExpDiagnoseServiceImpl implements ExpDiagnoseService {
 	/**
 	 * 删除:通过获取的id删除表中对应的数据
 	 */
+	@RequiresLog("远程诊断删除")
 	@Override
 	public int delete(Integer... ids) {
 		// 1.判断传入的id
@@ -146,9 +150,10 @@ public class ExpDiagnoseServiceImpl implements ExpDiagnoseService {
 	/**
 	 * 从前端获取修改后的信息并在数据库进行修改
 	 */
+	@RequiresLog("远程诊断修改")
 	@Override
 	public int update(ExpRemoteDiagnose entity) {
-		System.out.println("entity=" + entity);
+		//System.out.println("entity=" + entity);
 		if (entity == null)
 			throw new ServiceException("数据不能为空");
 		if (StringUtils.isEmpty(entity.getDeptSite()))
@@ -190,6 +195,7 @@ public class ExpDiagnoseServiceImpl implements ExpDiagnoseService {
 	/**
 	 * 显示是否解决的点击事件切换
 	 */
+	@RequiresLog("远程诊断已解决未解决")
 	@Override
 	public int validById(Integer id, Integer valid) {
 		//1.合法性验证

@@ -34,6 +34,7 @@ public class ExpDiagnoseController {
 	 * 远程诊断管理的添加和修改页面
 	 * @return
 	 */
+	
 	@RequestMapping("doUserEditUI")
 	public String doUserEditUI(){
 		return "sys/exp_remote_diagnose_edit";
@@ -64,9 +65,9 @@ public class ExpDiagnoseController {
 	@ResponseBody
 	public JsonResult doSaveObject(
 			ExpRemoteDiagnose entity){
-		System.out.println("ExpRemoteDiagnose="+entity);
+		//System.out.println("ExpRemoteDiagnose="+entity);
 		expDiagnoseService.saveObject(entity);
-		return new JsonResult("save OK");
+		return new JsonResult("添加成功");
 	}
 
 	/**
@@ -82,8 +83,8 @@ public class ExpDiagnoseController {
 	@ResponseBody
 	public JsonResult doFindPageObjects(
 			String customerName,Integer pageCurrent){
-		System.out.println("username="+customerName);
-		System.out.println("pageCurrent="+pageCurrent);
+		//System.out.println("username="+customerName);
+		//System.out.println("pageCurrent="+pageCurrent);
 		PageObject<ExpRemoteDiagnoseVo> pageObject=
 				expDiagnoseService.findPageObjects(customerName,
 						pageCurrent);
@@ -98,9 +99,9 @@ public class ExpDiagnoseController {
 	@RequestMapping("doDelete")
 	@ResponseBody
 	public JsonResult doDelete(Integer... ids) {
-		System.out.println("id234="+ids);
+		//System.out.println("id234="+ids);
 		expDiagnoseService.delete(ids);
-		return new JsonResult("delete ok");
+		return new JsonResult("删除成功");
 	}
 
 	/**
@@ -112,7 +113,7 @@ public class ExpDiagnoseController {
 	@ResponseBody
 	public JsonResult doUpdate(ExpRemoteDiagnose entity) {
 		expDiagnoseService.update(entity);
-		return new JsonResult("update ok");
+		return new JsonResult("修改成功");
 	}
 	
 	/**
@@ -139,6 +140,6 @@ public class ExpDiagnoseController {
 			Integer id,
 			Integer valid){
 		expDiagnoseService.validById(id,valid);
-		return new JsonResult("update ok");
+		return new JsonResult("切换成功");
 	}
 }

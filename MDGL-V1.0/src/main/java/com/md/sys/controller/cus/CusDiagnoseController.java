@@ -72,5 +72,15 @@ public class CusDiagnoseController {
 	}
 	
 	
+	/**基于咨询表id,查询相关id所有信息*/
+	@RequestMapping("doFindObjectByCustomerId")
+	@ResponseBody
+	public JsonResult doFindObjectByCustomerId(Integer customerId) {
+		
+		CusDiagnose cusDiagnose = cusDiagnoseService.findObjectByCustomerId(customerId);
+		return new JsonResult(cusDiagnose);
+	}
+	
+	
 	
 }

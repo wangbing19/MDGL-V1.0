@@ -2,11 +2,13 @@ package com.md.sys.service.exp.impl;
 
 import java.util.List;
 
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.alibaba.druid.util.StringUtils;
+import com.md.common.annotation.sys.RequiresLog;
 import com.md.common.exception.ServiceException;
 import com.md.common.vo.ExpRemoteDiagnoseVo;
 import com.md.common.vo.Node;
@@ -24,6 +26,7 @@ public class ExpertServiceImpl implements ExpertService {
 	/**
 	 * 为专家表添加数据
 	 */
+	@RequiresLog("专家列表添加")
 	@Override
 	public int insertExp(Expert entity) {
 		if(entity==null)
@@ -44,6 +47,8 @@ public class ExpertServiceImpl implements ExpertService {
 	/**
 	 * 删除专家表指定id的数据
 	 */
+	@RequiresPermissions("exp:zj:delete")
+	@RequiresLog("专家列表删除")
 	@Override
 	public int deleteExp(Integer... ids) {
 		if(ids==null||ids.length==0)
@@ -57,6 +62,7 @@ public class ExpertServiceImpl implements ExpertService {
 	/**
 	 * 修改专家表数据
 	 */
+	@RequiresLog("专家列表修改")
 	@Override
 	public int updateExp(Expert entity) {
 		if(entity==null)
@@ -85,8 +91,8 @@ public class ExpertServiceImpl implements ExpertService {
 		//2.查询总记录数
 		int rowCount = expertDao.countExp(expertName);
 		//System.out.println("rowCount="+rowCount);
-		if(rowCount==0)
-			throw new ServiceException("您要查询的记录不存在");
+		/*if(rowCount==0)
+			throw new ServiceException("您要查询的记录不存在");*/
 		
 		int pageSize=10;
 		int startIndex=(pageCurrent-1)*pageSize;
@@ -129,6 +135,8 @@ public class ExpertServiceImpl implements ExpertService {
 	/**
 	 * 通过从前端获取的专家表id和专家信息在数据进行修改
 	 */
+	@RequiresPermissions("exp:zj:message")
+	@RequiresLog("专家列表专家信息修改")
 	@Override
 	public int updateMessage(Expert entity) {
 		if(entity==null)

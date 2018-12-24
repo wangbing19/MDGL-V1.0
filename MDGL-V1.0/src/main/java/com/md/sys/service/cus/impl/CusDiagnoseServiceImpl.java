@@ -97,8 +97,17 @@ public class CusDiagnoseServiceImpl implements CusDiagnoseService {
 	public CusDiagnose findObjectById(Integer id) {
 		if(id==null||id<=0)
 			throw new ServiceException("id错误");
-		//执行删除
+		//执行查找
 		CusDiagnose cusDiagnose = cusDiagnoseDao.findObjectById(id);
+		return cusDiagnose;
+	}
+
+	@Override
+	public CusDiagnose findObjectByCustomerId(Integer customerId) {
+		System.out.println(customerId);
+		if(customerId==null||customerId<=0)
+			throw new ServiceException("customerId错误");
+		CusDiagnose cusDiagnose = cusDiagnoseDao.findObjectByCustomerId(customerId);
 		return cusDiagnose;
 	}
 

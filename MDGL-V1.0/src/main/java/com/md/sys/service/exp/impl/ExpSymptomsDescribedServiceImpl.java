@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.druid.util.StringUtils;
+import com.md.common.annotation.sys.RequiresLog;
 import com.md.common.exception.ServiceException;
 import com.md.sys.dao.exp.ExpSymptomsDescribedDao;
 import com.md.sys.entity.exp.ExpSymptomsDescribed;
@@ -20,6 +21,7 @@ public class ExpSymptomsDescribedServiceImpl implements ExpSymptomsDescribedServ
 	 * @param entity
 	 * @return
 	 */
+	@RequiresLog("远程诊断症状描述添加")
 	@Override
 	public int insertSym(ExpSymptomsDescribed entity) {
 		//1.判断属性
@@ -56,6 +58,7 @@ public class ExpSymptomsDescribedServiceImpl implements ExpSymptomsDescribedServ
 	 * @param entity
 	 * @return
 	 */
+	@RequiresLog("远程诊断症状描述修改")
 	@Override
 	public int updateSym(ExpSymptomsDescribed entity) {
 		//1.判断属性

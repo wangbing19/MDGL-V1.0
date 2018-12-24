@@ -3,6 +3,7 @@ package com.md.sys.service.pre.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.md.common.annotation.sys.RequiresLog;
 import com.md.common.exception.ServiceException;
 import com.md.sys.dao.pre.DiagnosisResultUserDao;
 import com.md.sys.service.pre.DiagnosisDescUserService;
@@ -12,7 +13,7 @@ public class DiagnosisDescUserServiceImpl implements DiagnosisDescUserService{
 
 	@Autowired
 	private DiagnosisResultUserDao diagnosisResultUserDao;
-	@Override
+	@Override								
 	public DiagnosisDescUserDate findDescObjectByUserId(Integer userId) {
 		if(userId==null) {
 			throw new ServiceException("请先选择");
@@ -20,6 +21,7 @@ public class DiagnosisDescUserServiceImpl implements DiagnosisDescUserService{
 		return diagnosisResultUserDao.findDescObjectByUserId(userId);
 	}
 	@Override
+	@RequiresLog("症状处方-查找症状处方内容")
 	public int deleteDescObjectByUserId(Integer userId) {
 		if(userId==null) {
 			throw new ServiceException("请先选择");
