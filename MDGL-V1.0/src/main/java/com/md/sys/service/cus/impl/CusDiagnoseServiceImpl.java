@@ -55,6 +55,36 @@ public class CusDiagnoseServiceImpl implements CusDiagnoseService {
 	/**将CusDiagnose类型数据添加到数据库*/
 	@Override
 	public int saveObject(CusDiagnose cusDiagnose) {
+		if(cusDiagnose.getrDs()==0)
+			throw new ServiceException("对象不能为空");
+		if(cusDiagnose==null)
+			throw new ServiceException("对象不能为空");
+		if(cusDiagnose==null)
+			throw new ServiceException("对象不能为空");
+		if(cusDiagnose==null)
+			throw new ServiceException("对象不能为空");
+		if(cusDiagnose==null)
+			throw new ServiceException("对象不能为空");
+		if(cusDiagnose==null)
+			throw new ServiceException("对象不能为空");
+		if(cusDiagnose==null)
+			throw new ServiceException("对象不能为空");
+		if(cusDiagnose==null)
+			throw new ServiceException("对象不能为空");
+		if(cusDiagnose==null)
+			throw new ServiceException("对象不能为空");
+		if(cusDiagnose==null)
+			throw new ServiceException("对象不能为空");
+		if(cusDiagnose==null)
+			throw new ServiceException("对象不能为空");
+		if(cusDiagnose==null)
+			throw new ServiceException("对象不能为空");
+		if(cusDiagnose==null)
+			throw new ServiceException("对象不能为空");
+		if(cusDiagnose==null)
+			throw new ServiceException("对象不能为空");
+		if(cusDiagnose==null)
+			throw new ServiceException("对象不能为空");
 		if(cusDiagnose==null)
 			throw new ServiceException("对象不能为空");
 		//保存数据
