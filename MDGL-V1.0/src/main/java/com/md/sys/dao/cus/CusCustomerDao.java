@@ -67,4 +67,14 @@ public interface CusCustomerDao {
 	 * @return
 	 */
 	CusCustomer findObjectById(@Param("id")Integer id);
+	
+	/**
+	 * 根据consultationId查询有无consultationId
+	 * @param consultationId
+	 * @return
+	 */
+	Integer findConsultationIdByConsultationId(@Param("consultationId")Integer consultationId);
+	
+	/**修改诊断表id*/
+	int updateDiagnoseId(CusCustomer cusCustomer);
 }

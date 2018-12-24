@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 
 import com.md.common.exception.ServiceException;
 import com.md.common.vo.PageObject;
+import com.md.sys.dao.cus.CusCustomerDao;
 import com.md.sys.dao.cus.CusDiagnoseDao;
+import com.md.sys.entity.cus.CusCustomer;
 import com.md.sys.entity.cus.CusDiagnose;
 import com.md.sys.service.cus.CusDiagnoseService;
 import com.md.sys.vo.cus.CusDiagnoseResult;
@@ -18,6 +20,8 @@ public class CusDiagnoseServiceImpl implements CusDiagnoseService {
 
 	@Autowired
 	private CusDiagnoseDao cusDiagnoseDao;
+	@Autowired
+	private CusCustomerDao cusCustomerDao;
 
 	/**基于用户id、客户名及当前页码值条件查询用户信息*/
 	@Override
@@ -54,7 +58,13 @@ public class CusDiagnoseServiceImpl implements CusDiagnoseService {
 		if(cusDiagnose==null)
 			throw new ServiceException("对象不能为空");
 		//保存数据
+		
+		
 		int rows = cusDiagnoseDao.insertObject(cusDiagnose);
+		CusCustomer cusCustomer = new CusCustomer();
+		cusCustomer.setId(cusDiagnose.getCustomerId());
+		cusCustomer.setDiagnoseId(cusDiagnose.getId());
+		cusCustomerDao.updateDiagnoseId(cusCustomer);
 		return rows;
 	}
 

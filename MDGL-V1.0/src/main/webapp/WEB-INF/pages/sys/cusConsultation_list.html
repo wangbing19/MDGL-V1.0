@@ -182,30 +182,48 @@
 		var rowData=$(this).parents("tr").data("rowData");
 		var id=rowData.id;
 		var params={"id":id};
-		//2.url
-		var url="cusConsultation/doFindObjectById.do";
-		//3.ajax request
-		$.getJSON(url,params,function(result){//JsonResult
-		if(result.state==1){
-			var customerData = {
-					"consultationId":result.data.id,
-					"name":result.data.name,
-					"age":result.data.age,
-					"gender":result.data.gender,
-					"tel":result.data.tel
+		console.log(params)
+		
+		var consultationId={"consultationId":id}
+		$.getJSON("customer/doFindConsultationIdByConsultationId.do",consultationId,function(result){//JsonResult
+			console.log("111111");
+			console.log(result);
+			if(result.data==0){
+				
+				//2.url
+				var url="cusConsultation/doFindObjectById.do";
+				//3.ajax request
+				$.getJSON(url,params,function(result){//JsonResult
+				if(result.state==1){
+					var customerData = {
+							"consultationId":result.data.id,
+							"name":result.data.name,
+							"age":result.data.age,
+							"gender":result.data.gender,
+							"tel":result.data.tel
+							
+					}
+					$("#mainContentId").data("customerData",customerData);
 					
-			}
-			$("#mainContentId").data("customerData",customerData);
-			
-		//	console.log($("#mainContentId").data("customerData"));
-			var title = "添加用户";
-			$("#mainContentId").load("customer/doCustomerEditUI.do",function(){
-				$(".box-title").html(title);
+				//	console.log($("#mainContentId").data("customerData"));
+					var title = "添加用户";
+					$("#mainContentId").load("customer/doCustomerEditUI.do",function(){
+						$(".box-title").html(title);
+					   });
+					}else{
+						alert(result.message);
+					}
+				   });
+				
+				}else{
+					alert("已有数据，无法添加");
+				}
 			   });
-			}else{
-				alert(result.message);
-			}
-		   });
+		
+		
+		
+		
+		
 		
    }
 </script>

@@ -85,4 +85,13 @@ public class CusCustomerController {
 		return new JsonResult(cusCustomer);
 	}
 	
+	@RequestMapping("doFindConsultationIdByConsultationId")
+	@ResponseBody
+	public JsonResult doFindConsultationIdByConsultationId(Integer consultationId) {
+		Integer rows = cusCustomerService.findConsultationIdByConsultationId(consultationId);
+		return new JsonResult(rows);
+	}
+	
+	
+	
 }

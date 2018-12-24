@@ -156,7 +156,19 @@
 		from cus_customer
         where diagnose_id=#{id}
 	</select>
+	<!-- 根据consultationId查询有无consultationId -->
+	<select id="findConsultationIdByConsultationId" parameterType="int" resultType="int">
+		select count(consultation_id)
+		from cus_customer
+		where consultation_id=#{consultationId}
+	</select>
 	
+	<!-- 修改诊断表id -->
+	<update id="updateDiagnoseId" parameterType="com.md.sys.entity.cus.CusCustomer">
+		update cus_customer set
+		diagnose_id=#{diagnoseId}
+		where id=#{id}
+	</update>
 	
 	
 </mapper>

@@ -151,4 +151,11 @@ public class CusCustomerServiceImpl implements CusCustomerService {
 		return cusCustomer;
 	}
 
+	@Override
+	public Integer findConsultationIdByConsultationId(Integer consultationId) {
+		Integer rows = cusCustomerDao.findConsultationIdByConsultationId(consultationId);
+		
+		return rows;
+	}
+
 }

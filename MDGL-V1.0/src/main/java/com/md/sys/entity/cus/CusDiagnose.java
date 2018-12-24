@@ -266,5 +266,6 @@ public class CusDiagnose implements Serializable {
 		this.modifiedUser = modifiedUser;
 	}
 	
+	
 
 }

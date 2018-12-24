@@ -47,7 +47,8 @@
 	
 
 	<!-- 将CusCustomer类型数据添加到数据库 -->
-	<insert id="insertObject" parameterType="com.md.sys.entity.cus.CusDiagnose" >
+	<insert id="insertObject" parameterType="com.md.sys.entity.cus.CusDiagnose" useGeneratedKeys="true"
+			keyProperty="id">
 		insert into cus_diagnose
 		(r_ds,r_dc,r_x,r_d,l_ds,l_dc,l_x,l_d,pupil_distance,r_glasses_d,r_glasses_dc,l_glasses_d,l_glasses_dc,
 		eye_position_examination,synoptophore,fusionvision,stereopsis,ametropia,amblyopia_degree,amblyopia,
