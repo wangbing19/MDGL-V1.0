@@ -129,7 +129,7 @@
 	   $(obj).html(valid?"启用":"禁用");
 	   //2.修改tr中第5个td中的内容(查询API文档)
 	   var tr=$(obj).parents("tr");
-	   tr.find("td:eq(5)").text(valid?"禁用":"启用");
+	   tr.find("td:eq(8)").text(valid?"禁用":"启用");
 	   //3.获取当前行tr对象，然后重新绑定新的值
 	   var rowData=tr.data("rowData")
 	   rowData.valid=valid?0:1;
