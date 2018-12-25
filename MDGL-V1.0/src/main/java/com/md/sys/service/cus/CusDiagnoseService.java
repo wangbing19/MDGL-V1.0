@@ -1,6 +1,4 @@
 package com.md.sys.service.cus;
-import org.apache.ibatis.annotations.Param;
-
 import com.md.common.vo.PageObject;
 import com.md.sys.entity.cus.CusDiagnose;
 import com.md.sys.vo.cus.CusDiagnoseResult;

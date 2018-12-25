@@ -1,7 +1,5 @@
 package com.md.sys.controller.exp;
 
-import java.util.Arrays;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,8 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.md.common.vo.JsonResult;
-import com.md.sys.dao.exp.ExpertReplyDao;
-import com.md.sys.entity.exp.ExpSymptomsDescribed;
 import com.md.sys.entity.exp.ExpertReply;
 import com.md.sys.service.exp.ExpertReplyService;
 
@@ -20,8 +16,6 @@ public class ExpertReplyController {
 
 	@Autowired
 	private ExpertReplyService ExpertReplyService;
-	@Autowired
-	private ExpertReplyDao expertReplyDao;
 
 	/**
 	 * 从浏览器获取添加信息在专家回复表进行添加

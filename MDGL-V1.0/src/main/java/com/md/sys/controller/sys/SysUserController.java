@@ -87,7 +87,7 @@ public class SysUserController {
 	@RequestMapping("doUpdateObject")
 	@ResponseBody
 	public JsonResult doUpdateObject(SysUser sysUser) {
-		int doUpdateObject = sysUserService.doUpdateObject(sysUser);
+		sysUserService.doUpdateObject(sysUser);
 		return new JsonResult("update ok");
 	}
 

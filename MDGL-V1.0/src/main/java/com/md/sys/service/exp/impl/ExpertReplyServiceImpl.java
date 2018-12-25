@@ -1,6 +1,5 @@
 package com.md.sys.service.exp.impl;
 
-import javax.sql.rowset.serial.SerialException;
 
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +9,6 @@ import com.alibaba.druid.util.StringUtils;
 import com.md.common.annotation.sys.RequiresLog;
 import com.md.common.exception.ServiceException;
 import com.md.sys.dao.exp.ExpertReplyDao;
-import com.md.sys.entity.exp.ExpSymptomsDescribed;
 import com.md.sys.entity.exp.ExpertReply;
 import com.md.sys.service.exp.ExpertReplyService;
 

@@ -24,7 +24,6 @@ import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -92,7 +91,7 @@ public class ShiroUserRealm extends AuthorizingRealm {
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
 		// 1.获取登录用户信息
 		SysUser user = (SysUser) principals.getPrimaryPrincipal();
-		AuthorizationInfo aInfo ;
+	//	AuthorizationInfo aInfo ;
 
 		// 2.基于登录用户id获取对应的角色id
 		List<Integer> roleIds = sysUserRoleDao.findRoleIdsByUserId(user.getId());

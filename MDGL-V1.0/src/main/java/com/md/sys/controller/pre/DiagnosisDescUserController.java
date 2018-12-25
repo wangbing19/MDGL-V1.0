@@ -30,14 +30,14 @@ public class DiagnosisDescUserController {
 	@RequestMapping("doDeleteDescObjectByUserId")
 	@ResponseBody
 	public JsonResult doDeleteDescObjectByUserId(Integer userId) {
-		int row = diagnosisDescUserService.deleteDescObjectByUserId(userId);
+		diagnosisDescUserService.deleteDescObjectByUserId(userId);
 		return new JsonResult("删除成功");
 	}
 	
 	@RequestMapping("doUpdateDescObjectByUserId")
 	@ResponseBody
 	public JsonResult doUpdateDescObjectByUserId(Integer diagnosisId,Integer userId) {
-		int row = diagnosisDescUserService.updateDescObjectByUserId(diagnosisId, userId);
+		diagnosisDescUserService.updateDescObjectByUserId(diagnosisId, userId);
 		return new JsonResult("更新成功");
 	}
 	

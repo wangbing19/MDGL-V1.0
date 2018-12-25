@@ -5,7 +5,6 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import com.md.sys.entity.res.ResProjectConfig;
-import com.md.sys.entity.tra.TraInformationrecord;
 
 public interface ResProjectConfigDao {
 	/**依据症状名称查询当前页数据*/

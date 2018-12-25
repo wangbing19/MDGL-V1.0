@@ -1,9 +1,6 @@
 package com.md.sys.service.exp.impl;
 
 import java.util.List;
-import java.util.Map;
-
-import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -40,6 +37,7 @@ public class ExpDiagnoseServiceImpl implements ExpDiagnoseService {
 	/**
 	 * 对应远程诊断添加
 	 */
+	@SuppressWarnings("unused")
 	@RequiresLog("远程诊断添加")
 	@Override
 	public int saveObject(ExpRemoteDiagnose entity) {

@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.md.common.vo.JsonResult;
 import com.md.sys.entity.exp.ExpSymptomsDescribed;
-import com.md.sys.entity.exp.ExpertReply;
 import com.md.sys.service.exp.ExpSymptomsDescribedService;
 
 @Controller

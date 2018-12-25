@@ -89,7 +89,7 @@ public class SysMenuServiceImpl implements SysMenuService {
 		if(rows==0)
 		throw new ServiceException("记录可能已经不存在");
 		//4.删除菜单角色的关系数据
-		int count=sysRoleMenuDao.deleteObjectsByMenuId(id);
+		/*int count=*/sysRoleMenuDao.deleteObjectsByMenuId(id);
 		//if(count>0)throw new ServiceException("关系数据删除失败");
 		return rows;
 	}

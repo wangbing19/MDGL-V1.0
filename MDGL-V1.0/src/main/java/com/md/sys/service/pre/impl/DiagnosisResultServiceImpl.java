@@ -23,6 +23,7 @@ public class DiagnosisResultServiceImpl implements DiagnosisResultService {
 	private DiagnosisResultDescDao diagnosisResultDescDao;
 	@Autowired
 	private DiagnosisResultUserDao diagnosisResultUserDao;
+	@SuppressWarnings("rawtypes")
 	@Override
 	public List<Map<String,Object>> findObjects() {
 		List<Map<String, Object>> list = diagnosisResultDao.findObjects();

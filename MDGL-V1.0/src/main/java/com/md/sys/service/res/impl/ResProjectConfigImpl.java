@@ -15,6 +15,8 @@ import com.md.sys.service.res.ResProjectConfigService;
 public class ResProjectConfigImpl implements ResProjectConfigService {
 	@Autowired
 	private ResProjectConfigDao resProjectConfigDao;
+	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public PageObject findPageObjects(String projectName, Integer pageCurrent) {
 		//1.数据合法性验证

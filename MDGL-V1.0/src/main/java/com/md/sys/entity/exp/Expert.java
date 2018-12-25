@@ -1,7 +1,6 @@
 package com.md.sys.entity.exp;
 
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * 对应专家表

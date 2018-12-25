@@ -14,7 +14,6 @@ import com.md.common.utils.ShiroUtils;
 import com.md.common.vo.Node;
 import com.md.common.vo.PageObject;
 import com.md.sys.dao.sys.SysUserDao;
-import com.md.sys.dao.sys.SysUserRoleDao;
 import com.md.sys.entity.sys.SysUser;
 import com.md.sys.service.sys.SysUserService;
 
@@ -23,8 +22,6 @@ public class SysUserServiceImpl implements SysUserService {
 
 	@Autowired
 	private SysUserDao sysUserDao;
-	@Autowired
-	private SysUserRoleDao sysUserRoleDao;
 
 	@RequiresLog("直接分页查询用户列表")
 	@Override

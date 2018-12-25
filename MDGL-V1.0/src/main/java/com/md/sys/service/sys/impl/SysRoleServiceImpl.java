@@ -2,7 +2,6 @@ package com.md.sys.service.sys.impl;
 
 import java.util.List;
 
-import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -14,7 +13,6 @@ import com.md.common.vo.CheckBox;
 import com.md.common.vo.PageObject;
 import com.md.sys.dao.sys.SysRoleDao;
 import com.md.sys.dao.sys.SysRoleMenuDao;
-import com.md.sys.dao.sys.SysUserRoleDao;
 import com.md.sys.entity.sys.SysRole;
 import com.md.sys.entity.sys.SysUser;
 import com.md.sys.service.sys.SysRoleService;

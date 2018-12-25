@@ -6,10 +6,8 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.md.common.vo.ExpRemoteDiagnoseVo;
 import com.md.common.vo.Node;
 import com.md.sys.entity.exp.Expert;
-import com.md.sys.entity.exp.ExpertReply;
 
 public interface ExpertDao {
 	/**
